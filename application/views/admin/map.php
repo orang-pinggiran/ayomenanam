@@ -55,20 +55,7 @@
                                     </tbody>
                                 </table>
                             </div>
-									<div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-										    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-                                            <div id="map" style="width:120%; height:520px; border:1px solid green;"></div>
-											<?php
-										foreach ($data->result() as $row) {
-										?>
-											<input type="text" name="latitude_map" id="latitude_map" value="<?php echo $row->latitude_map; ?>">
-											<input type="text" name="longitude_map" id="longitude_map" value="<?php echo $row->longitude_map; ?>" >
-											                                        <?php }?>
-
-                                        </div>
-										
-										</div>
+									
                                 </div>
 						        <div class="row clearfix">
                                
@@ -99,8 +86,5 @@
 
     <!-- Custom Js -->
     <script src="<?php echo base_url(); ?>adminBSB/js/pages/tables/jquery-datatable.js"></script>
-	
-		<script src="<?php echo base_url(); ?>adminBSB/js/mapp.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6MLwjbd-cuOCFqZ48OWjmWGsyoZTlIag&libraries=places&callback=initAutocomplete" async defer></script>
 	
 
