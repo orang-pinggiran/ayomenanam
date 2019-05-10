@@ -54,8 +54,8 @@
 											<?php }
 											?>
 											<td>
-											<a href="<?php echo base_url();?>admin/detailevent/<?php echo $row->id_event; ?>" class="btn btn-warning btn-xs"><i class="material-icons">search</i><span>Detail</span></a>
-											<a href="<?php echo base_url();?>admin/ambilevent/<?php echo $row->id_event; ?>" class="btn btn-info btn-xs"><i class="material-icons">create</i><span>Ubah</span></a>
+											<a href="<?php echo base_url();?>admin/detailevent/<?php echo $row->id_event; ?>" modal-size="modal-lg" class="btn btn-warning btn-xs modal-view"><i class="material-icons">search</i><span>Detail</span></a>
+											<a href="<?php echo base_url();?>admin/ambilevent/<?php echo $row->id_event; ?>" modal-size="modal-lg" class="btn btn-info btn-xs modal-view"><i class="material-icons">create</i><span>Ubah</span></a>
 											<a href="<?php echo base_url();?>admin/hapusevent/<?php echo $row->id_event; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
 
 											</td>

@@ -1470,6 +1470,8 @@ class Admin extends CI_Controller {
 		$tanggal_event			= $this->input->post('tanggal_event');
 		$waktu_event		 	= $this->input->post('waktu_event');
 		$tempat_event		 	= $this->input->post('tempat_event');
+		$longitude_event		= $this->input->post('longitude_event');
+		$latitude_event		 	= $this->input->post('latitude_event');
 		$status 				= $this->input->post('status');
 		$tgl_event 				= $this->input->post('tgl_event');
 		$jam_event 				= $this->input->post('jam_event');
@@ -1494,6 +1496,8 @@ class Admin extends CI_Controller {
 							'tanggal_event'=>$tanggal_event,
 							'waktu_event'=>$waktu_event,
 							'tempat_event'=>$tempat_event,
+							'longitude_event'=>$longitude_event,
+							'latitude_event'=>$latitude_event,
 							'status'=>$status,
 							'tgl_event'=>$tgl_event,
 							'jam_event'=>$jam_event
@@ -1541,6 +1545,8 @@ class Admin extends CI_Controller {
 				$isi['tanggal_event'] =$row->tanggal_event;
 				$isi['waktu_event'] =$row->waktu_event;
 				$isi['tempat_event'] =$row->tempat_event;
+				$isi['longitude_event'] =$row->longitude_event;
+				$isi['latitude_event'] =$row->latitude_event;
 				$isi['status'] =$row->status;
 				$isi['tgl_event'] =$row->tgl_event;
 				$isi['jam_event'] =$row->jam_event;
@@ -1557,11 +1563,13 @@ class Admin extends CI_Controller {
 				$isi['tanggal_event']='';
 				$isi['waktu_event']='';
 				$isi['tempat_event']='';
+				$isi['longitude_event']='';
+				$isi['latitude_event']='';
 				$isi['status']='';
 				$isi['tgl_event']='';
 				$isi['jam_event']='';
 		}
-		$this->load->view('admin/template',$isi);
+		$this->load->view('admin/ubah_event',$isi);
 		}
 
 		public function editevent()
@@ -1585,6 +1593,8 @@ class Admin extends CI_Controller {
 		$tanggal_event			= $this->input->post('tanggal_event');
 		$waktu_event		 	= $this->input->post('waktu_event');
 		$tempat_event		 	= $this->input->post('tempat_event');
+		$longitude_event		= $this->input->post('langitude_event');
+		$latitude_event		 	= $this->input->post('latitude_event');
 		$status 				= $this->input->post('status');
 		$tgl_event 				= $this->input->post('tgl_event');
 		$jam_event 				= $this->input->post('jam_event');
@@ -1619,6 +1629,8 @@ class Admin extends CI_Controller {
 							'tanggal_event'=>$tanggal_event,
 							'waktu_event'=>$waktu_event,
 							'tempat_event'=>$tempat_event,
+							'longitude_event'=>$longitude_event,
+							'latitude_event'=>$latitude_event,
 							'status'=>$status,
 							'tgl_event'=>$tgl_event,
 							'jam_event'=>$jam_event
@@ -1647,6 +1659,8 @@ class Admin extends CI_Controller {
 							'tanggal_event'=>$tanggal_event,
 							'waktu_event'=>$waktu_event,
 							'tempat_event'=>$tempat_event,
+							'longitude_event'=>$longitude_event,
+							'latitude_event'=>$latitude_event,
 							'status'=>$status,
 							'tgl_event'=>$tgl_event,
 							'jam_event'=>$jam_event
@@ -1659,7 +1673,7 @@ class Admin extends CI_Controller {
 		$this->m_event->getupdate($id_event,$data_event);
 		$this->session->set_flashdata('info','<div class="alert alert-success">Data event berhasil diubah</div>');		
 		
-		redirect('admin/ambilevent/'.$id_event);
+		redirect(site_url('admin/event'));
 		}
 		
 		public function detailevent()
@@ -1683,6 +1697,8 @@ class Admin extends CI_Controller {
 				$isi['tanggal_event'] 		=$row->tanggal_event;
 				$isi['waktu_event'] 		=$row->waktu_event;
 				$isi['tempat_event'] 		=$row->tempat_event;
+				$isi['longitude_event'] 	=$row->longitude_event;
+				$isi['latitude_event'] 		=$row->latitude_event;
 				$isi['status']	 			=$row->status;
 				$isi['poster'] 				=$row->poster;
 				$isi['tgl_event'] 			=$row->tgl_event;
@@ -1700,13 +1716,15 @@ class Admin extends CI_Controller {
 				$isi['tanggal_event']='';
 				$isi['waktu_event']='';
 				$isi['tempat_event']='';
+				$isi['longitude_event']='';
+				$isi['latitude_event']='';
 				$isi['status']='';
 				$isi['poster']='';
 				$isi['tgl_event']='';
 				$isi['jam_event']='';
 
 		}
-		$this->load->view('admin/template',$isi);
+		$this->load->view('admin/detail_event',$isi);
 		}
 		
 		public function timeline()
