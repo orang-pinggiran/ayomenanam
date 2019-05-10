@@ -1593,7 +1593,7 @@ class Admin extends CI_Controller {
 		$tanggal_event			= $this->input->post('tanggal_event');
 		$waktu_event		 	= $this->input->post('waktu_event');
 		$tempat_event		 	= $this->input->post('tempat_event');
-		$longitude_event		= $this->input->post('langitude_event');
+		$longitude_event		= $this->input->post('longitude_event');
 		$latitude_event		 	= $this->input->post('latitude_event');
 		$status 				= $this->input->post('status');
 		$tgl_event 				= $this->input->post('tgl_event');
@@ -1725,6 +1725,74 @@ class Admin extends CI_Controller {
 
 		}
 		$this->load->view('admin/detail_event',$isi);
+		}
+		
+		public function adopsipohon()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'admin/tambah_adopsi';
+		
+		$last_segment = $this->uri->total_segments();
+		$id_event = $this->uri->segment($last_segment);
+		$this->db->where('id_event',$id_event);
+		$query =$this->db->get('tbl_event');
+		if ($query->num_rows()>0) {
+			foreach ($query->result() as $row) {
+				$isi['id_event']	 		=$row->id_event;
+				$isi['id_pengguna'] 		=$row->id_pengguna;
+				$isi['judul_event'] 		=$row->judul_event;
+				$isi['keterangan_event'] 	=$row->keterangan_event;
+				$isi['hari_event']		 	=$row->hari_event;
+				$isi['tanggal_event'] 		=$row->tanggal_event;
+				$isi['waktu_event'] 		=$row->waktu_event;
+				$isi['tempat_event'] 		=$row->tempat_event;
+				$isi['status']	 			=$row->status;
+				$isi['poster'] 				=$row->poster;
+			
+			}
+		}
+		else
+		{
+				$isi['id_event']	='';
+				$isi['id_pengguna']='';
+				$isi['judul_event']='';
+				$isi['keterangan_event']='';
+				$isi['hari_event']='';
+				$isi['tanggal_event']='';
+				$isi['waktu_event']='';
+				$isi['tempat_event']='';
+				$isi['status']='';
+				$isi['poster']='';
+
+		}
+		$this->load->view('admin/template',$isi);
+		}
+		
+		public function simpanadopsi()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+	
+		$data['id_adopsi']			= $this->input->post('id_adopsi');
+		$data['id_event']			= $this->input->post('id_event');
+		$data['id_pengguna']		= $_SESSION['id_pengguna'];
+		$data['jenis_adopsi']		= $this->input->post('jenis_adopsi');
+		$data['id_posko']			= $this->input->post('id_posko');
+		$data['id_jenis_pohon']		= $this->input->post('id_jenis_pohon');
+		$data['nama_pohon']			= $this->input->post('nama_pohon');
+		$data['jumlah_pohon']		= $this->input->post('jumlah_pohon');
+		$data['tgl_adopsi']			= $this->input->post('tgl_adopsi');
+		$data['waktu_adopsi']		= $this->input->post('waktu_adopsi');
+		$data['status_adopsi']		= $this->input->post('status_adopsi');
+		$data['keterangan']			= $this->input->post('keterangan');
+
+		$this->load->model('m_adopsi');
+		$this->m_adopsi->getinsert($data);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data adopsi berhasil ditambahkan</div>');		
+		redirect(site_url('admin/adopsipohon'));
 		}
 		
 		public function timeline()

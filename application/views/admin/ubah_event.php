@@ -37,6 +37,20 @@
                                 </div>
 								<div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label></label>
+                                    </div>
+									<div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+										    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                                            <div id="map" style="width:100%; height:300px; border:1px solid green;"></div>
+											<font color="red"><i><b>*)tandai alamat pada map diatas</i></b></font>
+											<input type="text" name="latitude_event" id="latitude_event" value="<?php echo $latitude_event; ?>">
+											<input type="text" name="longitude_event" id="longitude_event" value="<?php echo $longitude_event; ?>">
+                                        </div>
+										</div>
+                                </div>
+								<div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label>Hari</label>
                                     </div>
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
@@ -174,3 +188,7 @@
 
     <!-- Custom Js -->
     <script src="<?php echo base_url(); ?>adminBSB/js/pages/tables/jquery-datatable.js"></script>
+	
+	<script src="<?php echo base_url(); ?>adminBSB/js/maap.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6MLwjbd-cuOCFqZ48OWjmWGsyoZTlIag&libraries=places&callback=initAutocomplete" async defer></script>
+
