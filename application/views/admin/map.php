@@ -5,15 +5,21 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>
-                                DATA PEMETAAN HUTAN
-
-						<ul class="nav navbar-right panel_toolbox">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>DATA PEMETAAN HUTAN</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right">
                                     <a href="<?php echo base_url();?>admin/tambahmap" class="btn bg-deep-orange waves-effect">
-									<i class="material-icons">add</i>
-                                    <span>TAMBAH</span></a></ul>  							
-							
-                            </h2>
+                                        <i class="material-icons">add</i>
+                                        <span>TAMBAH</span>
+                                    </a>
+                                    <a href="<?php echo base_url();?>admin/peta-pemetaan" class="btn btn-info waves-effect">
+                                        <i class="material-icons">map</i>
+                                        <span>LIHAT PETA</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="body">
 						 <div class="table-responsive">

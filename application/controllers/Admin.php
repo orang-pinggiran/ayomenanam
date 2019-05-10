@@ -1277,6 +1277,17 @@ class Admin extends CI_Controller {
 		$isi['data'] 		= $this->m_map->map();
 		$this->load->view('admin/template',$isi);
 		}
+
+		public function peta_pemetaan() {
+			$this->load->model('m_squrity');
+			$this->load->model('m_map');
+			$isi['email'] = $this->session->userdata('email');
+			$this->m_squrity->getsqurity();
+			$isi['content'] 	= 'admin/peta-pemetaan';
+			$isi['data'] 		= $this->m_map->map()->result();
+
+			$this->load->view('admin/template',$isi);
+		}
 		
 		
 		public function tambahmap()
