@@ -58,4 +58,9 @@ function parse_time($timestamp, $format = "l, d F Y - H:i")
 
 		return $result;
 	}
+
+	function debug($data) {
+		$debug = '<pre>'.print_r($data, true).'</pre>';
+		return $debug;
+	}
 ?>

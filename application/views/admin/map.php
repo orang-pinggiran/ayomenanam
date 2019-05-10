@@ -5,15 +5,21 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>
-                                DATA PEMETAAN HUTAN
-
-						<ul class="nav navbar-right panel_toolbox">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>DATA PEMETAAN HUTAN</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right">
                                     <a href="<?php echo base_url();?>admin/tambahmap" class="btn bg-deep-orange waves-effect">
-									<i class="material-icons">add</i>
-                                    <span>TAMBAH</span></a></ul>  							
-							
-                            </h2>
+                                        <i class="material-icons">add</i>
+                                        <span>TAMBAH</span>
+                                    </a>
+                                    <a href="<?php echo base_url();?>admin/peta-pemetaan" class="btn btn-info waves-effect">
+                                        <i class="material-icons">map</i>
+                                        <span>LIHAT PETA</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="body">
 						 <div class="table-responsive">
@@ -49,20 +55,7 @@
                                     </tbody>
                                 </table>
                             </div>
-									<div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-										    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-                                            <div id="map" style="width:120%; height:520px; border:1px solid green;"></div>
-											<?php
-										foreach ($data->result() as $row) {
-										?>
-											<input type="text" name="latitude_map" id="latitude_map" value="<?php echo $row->latitude_map; ?>">
-											<input type="text" name="longitude_map" id="longitude_map" value="<?php echo $row->longitude_map; ?>" >
-											                                        <?php }?>
-
-                                        </div>
-										
-										</div>
+									
                                 </div>
 						        <div class="row clearfix">
                                
@@ -93,8 +86,5 @@
 
     <!-- Custom Js -->
     <script src="<?php echo base_url(); ?>adminBSB/js/pages/tables/jquery-datatable.js"></script>
-	
-		<script src="<?php echo base_url(); ?>adminBSB/js/mapp.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6MLwjbd-cuOCFqZ48OWjmWGsyoZTlIag&libraries=places&callback=initAutocomplete" async defer></script>
 	
 

@@ -52,8 +52,8 @@
 										    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                                             <div id="map" style="width:100%; height:300px; border:1px solid green;"></div>
 											<font color="red"><i><b>*)tandai alamat pada map diatas</i></b></font>
-											<input type="text" name="latitude_map" id="latitude_map" value="<?php echo $latitude_map; ?>">
-											<input type="text" name="longitude_map" id="longitude_map" value="<?php echo $longitude_map; ?>">
+											<input type="hidden" name="latitude_map" id="latitude_map" value="<?php echo $latitude_map; ?>">
+											<input type="hidden" name="longitude_map" id="longitude_map" value="<?php echo $longitude_map; ?>">
                                         </div>
 										</div>
                                 </div>
