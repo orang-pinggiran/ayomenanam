@@ -3,6 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
+	public function __construct() {
+		parent::__construct();
+
+		$user_data = $this->session->userdata();
+		$level = $user_data['level'];
+		
+		if($level != 1) {
+			redirect(404);
+		}
+	}
 	
 	public function index()
 	{

@@ -43,27 +43,25 @@ class Auth extends CI_Controller {
               $this->session->set_userdata('is_login', TRUE);
             }
 			if ($this->session->userdata('level')=='1'){
-				redirect('admin');
+				$redirect = 'admin'; 
 			}
 			if ($this->session->userdata('level')=='2'){
-				redirect('komunitas');
+				$redirect = 'komunitas'; 
 			}
 			if ($this->session->userdata('level')=='3'){
-				redirect('pengguna');
+				$redirect = 'pengguna'; 
 			}
 			elseif ($this->session->userdata('level')=='4'){
-				redirect('posko');
+				$redirect = 'posko'; 
 			}
+
+			$response = array('status' => 'available', 'redirect' => $redirect);
 		}
 		else
 		{
-			header('location:'.base_url().'auth');
-				$this->session->set_flashdata('info','
-										<font color="red">Username atau Password salah....!!</font>
-										<br />
-											');
+			$response = array('status' => 'unavailable');
 		}
-		
+		echo json_encode($response);
 	}
 
 

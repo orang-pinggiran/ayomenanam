@@ -459,8 +459,11 @@ Sehingga Masyarakat dapat dengan mudah ikut andil dalam kegiatan ini.</p>
 			echo $info;
         }
       ?>	
-      <form action="<?php echo base_url();?>auth/cek_login" method="post" role="form">
+      <form action="<?php echo base_url();?>auth/cek_login" method="post" role="form" class="modal-login">
       <div class="modal-body mx-3">
+        <div class="alert bg-red login-gagal hide">
+          <span class="text-danger">Email atau Password Salah !</span>
+        </div>
         <div class="form-group">
          <input type="email" class="form-control" name="email" id="email" placeholder="Email"/>
          <div class="validation"></div>
@@ -496,10 +499,30 @@ Sehingga Masyarakat dapat dengan mudah ikut andil dalam kegiatan ini.</p>
   <script src="<?php echo base_url(); ?>Green/js/grid.js"></script>
   <script src="<?php echo base_url(); ?>Green/js/main.js"></script>
   <script src="<?php echo base_url(); ?>Green/js/wow.min.js"></script>
+  <script src="<?php echo base_url(); ?>Green/contactform/contactform.js"></script>
   <script>
     wow = new WOW({}).init();
+    $(document).ready(function() {
+      $('.modal-login').on('submit', function(e) {
+        e.preventDefault();
+        var data = $(this).serialize();
+        var url  = $(this).attr('action');
+        
+        $.post(url, data).done(function(res) {
+          var response = $.parseJSON(res);
+          var status = response.status;
+
+          if(status == 'available') {
+            location.href = response.redirect;
+          }
+          else {
+            $('.login-gagal').removeClass('hide');
+          }
+        })
+      });
+    })
   </script>
-  <script src="<?php echo base_url(); ?>Green/contactform/contactform.js"></script>
+
 
 </body>
 
