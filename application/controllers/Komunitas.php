@@ -278,6 +278,170 @@ class Komunitas extends CI_Controller {
 		$this->load->view('komunitas/template',$isi);
 		}
 		
+		public function hapusevent($id_event)
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$this->load->model('m_event');
+		$this->m_event->getdelete($id_event);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data event berhasil dihapus</div>');		
+		redirect(site_url('komunitas/event'));
+	
+		}
+
+		public function ambilevent()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'komunitas/ubah_event';
+		
+		$last_segment 	= $this->uri->total_segments();
+		$id_event  		= $this->uri->segment($last_segment);
+		$this->db->where('id_event',$id_event);
+		$query =$this->db->get('tbl_event');
+		if ($query->num_rows()>0) {
+			foreach ($query->result() as $row) {
+				$isi['id_event']	 =$row->id_event;
+				$isi['id_pengguna'] =$row->id_pengguna;
+				$isi['judul_event'] =$row->judul_event;
+				$isi['poster'] =$row->poster;
+				$isi['keterangan_event'] =$row->keterangan_event;
+				$isi['hari_event'] =$row->hari_event;
+				$isi['tanggal_event'] =$row->tanggal_event;
+				$isi['waktu_event'] =$row->waktu_event;
+				$isi['tempat_event'] =$row->tempat_event;
+				$isi['longitude_event'] =$row->longitude_event;
+				$isi['latitude_event'] =$row->latitude_event;
+				$isi['status'] =$row->status;
+				$isi['tgl_event'] =$row->tgl_event;
+				$isi['jam_event'] =$row->jam_event;
+			}
+		}
+		else
+		{
+				$isi['id_event']	='';
+				$isi['id_pengguna']='';
+				$isi['judul_event']='';
+				$isi['poster']='';
+				$isi['keterangan_event']='';
+				$isi['hari_event']='';
+				$isi['tanggal_event']='';
+				$isi['waktu_event']='';
+				$isi['tempat_event']='';
+				$isi['longitude_event']='';
+				$isi['latitude_event']='';
+				$isi['status']='';
+				$isi['tgl_event']='';
+				$isi['jam_event']='';
+		}
+		$this->load->view('komunitas/ubah_event',$isi);
+		}
+		
+		public function editevent()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+
+		 $config = array(
+                        'upload_path'=>'./adminBSB/images',
+                        'allowed_types'=>'jpg|png|jpeg',
+                        'max_size'=>2086
+                        );
+ 
+        $id_event				= $this->input->post('id_event'); 
+		$id_pengguna		    = $this->input->post('id_pengguna');
+		$judul_event	 		= $this->input->post('judul_event'); 
+		$poster 	    		= $this->input->post('poster');
+		$keterangan_event		= $this->input->post('keterangan_event');
+		$hari_event				= $this->input->post('hari_event');
+		$tanggal_event			= $this->input->post('tanggal_event');
+		$waktu_event		 	= $this->input->post('waktu_event');
+		$tempat_event		 	= $this->input->post('tempat_event');
+		$longitude_event		= $this->input->post('longitude_event');
+		$latitude_event		 	= $this->input->post('latitude_event');
+		$status 				= $this->input->post('status');
+		$tgl_event 				= $this->input->post('tgl_event');
+		$jam_event 				= $this->input->post('jam_event');
+        
+		$poster = $this->db->get_where('tbl_event',$id_event);
+   
+    if($poster->num_rows()>0){
+      $pros=$poster->row();
+      $name=$pros->gambar;
+     
+      if(file_exists($lok=FCPATH.'/adminBSB/images/'.$name)){
+        unlink($lok);
+      }
+      if(file_exists($lok=FCPATH.'/adminBSB/images/'.$name)){
+        unlink($lok);
+      }}
+ 
+        $this->load->library('upload',$config);
+       
+        if($this->upload->do_upload('poster')){
+ 
+        $finfo = $this->upload->data();
+        $nama_poster = $finfo['file_name'];
+ 
+        $data_event = array(
+                             'id_event'=>$id_event,
+                            'id_pengguna'=>$id_pengguna,
+                            'judul_event'=>$judul_event,
+                            'poster'=>$nama_poster,
+                            'keterangan_event'=>$keterangan_event,
+                            'hari_event'=>$hari_event,
+							'tanggal_event'=>$tanggal_event,
+							'waktu_event'=>$waktu_event,
+							'tempat_event'=>$tempat_event,
+							'longitude_event'=>$longitude_event,
+							'latitude_event'=>$latitude_event,
+							'status'=>$status,
+							'tgl_event'=>$tgl_event,
+							'jam_event'=>$jam_event
+							);
+ 
+        $config2 = array(
+                'source_image'=>'/adminBSB/images/'.$nama_poster,
+                'image_library'=>'gd2',
+                'new_image'=>'/adminBSB/images/',
+                'maintain_ratio'=>true,
+                'width'=>150,
+                'height'=>200
+            );
+       
+        $this->load->library('image_lib',$config2);
+        $this->image_lib->resize();    
+       
+        }else{
+        
+        $data_event = array(
+                             'id_event'=>$id_event,
+                            'id_pengguna'=>$id_pengguna,
+                            'judul_event'=>$judul_event,
+                            'keterangan_event'=>$keterangan_event,
+                            'hari_event'=>$hari_event,
+							'tanggal_event'=>$tanggal_event,
+							'waktu_event'=>$waktu_event,
+							'tempat_event'=>$tempat_event,
+							'longitude_event'=>$longitude_event,
+							'latitude_event'=>$latitude_event,
+							'status'=>$status,
+							'tgl_event'=>$tgl_event,
+							'jam_event'=>$jam_event
+							);
+ 
+        }
+       
+        $this->load->model('m_event');
+	
+		$this->m_event->getupdate($id_event,$data_event);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data event berhasil diubah</div>');		
+		
+		redirect('komunitas/event');
+		}
+		
 		public function editpassword()
 		{
 		$this->load->model('m_squrity');
@@ -583,6 +747,8 @@ class Komunitas extends CI_Controller {
 				$isi['tanggal_event'] 		=$row->tanggal_event;
 				$isi['waktu_event'] 		=$row->waktu_event;
 				$isi['tempat_event'] 		=$row->tempat_event;
+				$isi['longitude_event'] 	=$row->longitude_event;
+				$isi['latitude_event'] 		=$row->latitude_event;
 				$isi['status']	 			=$row->status;
 				$isi['poster'] 				=$row->poster;
 			
@@ -598,6 +764,8 @@ class Komunitas extends CI_Controller {
 				$isi['tanggal_event']='';
 				$isi['waktu_event']='';
 				$isi['tempat_event']='';
+				$isi['longitude_event']='';
+				$isi['latitude_event']='';
 				$isi['status']='';
 				$isi['poster']='';
 

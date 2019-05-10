@@ -115,7 +115,7 @@
                                 </div>
 						        <div class="row clearfix">
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Ubah</button>
+                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Tambah</button>
                                         <a href="<?php echo base_url();?>komunitas/" class="btn bg-orange m-t-15 waves-effect">Kembali </button></a>
                                     </div>
                                 </div>

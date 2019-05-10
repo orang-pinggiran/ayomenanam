@@ -22,9 +22,24 @@
                         <hr>
 						<p><i class="fa fa-thumb-tack"></i> Dilaksanakan pada hari <?php echo $hari_event; ?> 		
 						<p><i class="fa fa-calendar"></i> Tanggal <?php echo parse_time($tanggal_event,'d F Y'); ?> pukul <?php echo parse_time($waktu_event,'H:i') ; ?> WIB</p>
+						<p><i class="fa fa-chevron-right"></i> Status <span class="label bg-light-blue"><?php echo $status; ?> </span> </p>
                         <div class="space-ten"></div>
                        
                     </div>
+					<hr>
+					<div class="header">
+                            <h4>
+                                Lokasi Event
+                            </h4>
+                        </div>
+						<div class="form-group">
+                            <div id="map" style="width:100%; height:300px; border:1px solid green;"></div>
+							<input type="hidden" name="latitude_event" id="latitude_event" value="<?php echo $latitude_event; ?>">
+							<input type="hidden" name="longitude_event" id="longitude_event" value="<?php echo $longitude_event; ?>">
+                            </div>
 					 <div class="btn-ground">
                         <a href="<?php echo base_url();?>komunitas/adopsipohon/<?php echo $row->id_event; ?>" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Adopsi Pohon</a>
                         </div>
+						
+		<script src="<?php echo base_url(); ?>adminBSB/js/maap.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6MLwjbd-cuOCFqZ48OWjmWGsyoZTlIag&libraries=places&callback=initAutocomplete" async defer></script>

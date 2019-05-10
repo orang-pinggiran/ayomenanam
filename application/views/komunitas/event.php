@@ -1,77 +1,75 @@
 ﻿							<?php echo $this->session->flashdata('info'); ?>
+							<div class="row clearfix">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="card">
 
-        <div class="container-fluid">
-            
-            <!-- Basic Examples -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                DAFTAR EVENT
-								
-						<ul class="nav navbar-right panel_toolbox">
-                                    <a href="<?php echo base_url();?>admin/tambahevent" class="btn bg-deep-orange waves-effect">
-									<i class="material-icons">add</i>
-                                    <span>TAMBAH</span></a></ul>  							
-									</h2>
-                        </div>
-                        <div class="body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama komunitas</th>
-                                            <th>Judul event</th>
-                                            <th>Tanggal event</th>
-                                            <th>Status</th>
-                                            <th>Aksi</th>
-											
-                                        </tr>
-                                    </thead>
-                                    
-                                    <tbody>
-                                        <tr>
-										<?php
-										$no = 1;
-										foreach ($data->result() as $row) {
+								<div class="body">
+									<?php 
+									$cek2 = $this->db->query('Select * from tbl_event, tbl_pengguna WHERE tbl_pengguna.id_pengguna=tbl_event.id_pengguna
+									AND tbl_event.id_pengguna='.$_SESSION['id_pengguna'].' GROUP BY tbl_event.id_event DESC');
+									foreach ($cek2->result() as $row2) {
 										?>
-                                            <td><?php echo $no++; ?></td>
-                                            <td><?php echo $row->nama; ?></td>
-                                            <td><?php echo $row->judul_event; ?></td>
-                                            <td><?php echo ($row->tanggal_event != '0000-00-00' ? date('d-m-Y', strtotime($row->tanggal_event)) : "-" ); ?></td>
-                                            <?php 
-											if ($row->status=="Belum berlangsung") {
-												?>
-												<td> <span class="label label-info">Belum berlangsung</span></td>
-											<?php } else if ($row->status=="Berlangsung") {
-											?>
-											<td> <span class="label label-success">Berlangsung</span></td>
-											<?php } else if ($row->status=="Selesai") {
-											?>
-											<td> <span class="label label-danger">Selesai</span></td>
-											<?php }
-											?>
-											<td>
-											<a href="<?php echo base_url();?>admin/detailevent/<?php echo $row->id_event; ?>" class="btn btn-warning btn-xs"><i class="material-icons">search</i><span>Detail</span></a>
-											<a href="<?php echo base_url();?>admin/ambilevent/<?php echo $row->id_event; ?>" class="btn btn-info btn-xs"><i class="material-icons">create</i><span>Ubah</span></a>
-											<a href="<?php echo base_url();?>admin/hapusevent/<?php echo $row->id_event; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
-
-											</td>
-                                       </tr>
-                                        <?php }?>
-                                       
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# Basic Examples -->
-
-        </div>
+												 <!-- Blockquotes -->
+            
+									<div class="body">
+										<blockquote class="m-b-20">
+													
+													<div class="media">
+                                    <div class="media-left">
+									<div class="image">
+										<img class="bulat" src="<?php echo base_url('adminBSB/images/'.$row2->foto); ?>" width="35" height="35" alt="User" />
+									</div>                                        
+									</a>
+                                    </div>
+                                    <div class="media-body">
+                                       <div class="row">
+													<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+														<div class="card">
+															<div class="header bg-orange">
+																<h2>
+																	<?php echo $row2->judul_event; ?> 
+																	<small><?php echo parse_time($row2->tgl_event,'d F Y'); ?> pukul <?php echo parse_time($row2->jam_event,'H:i') ; ?> WIB oleh <?php echo $row2->nama ; ?></small>
+																</h2>
+																<ul class="header-dropdown m-r--5">
+																	<li class="dropdown">
+																		<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+																			<i class="material-icons">more_vert</i>
+																		</a>
+																		<ul class="dropdown-menu pull-right">
+																			<li><a class="modal-view" modal-size="modal-lg" href="<?php echo base_url();?>komunitas/ambilevent/<?php echo $row2->id_event; ?>"; >Ubah</a></li>
+																			<li><a href="<?php echo base_url();?>komunitas/hapusevent/<?php echo $row2->id_event; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" >Hapus</a></li>
+																		</ul>
+																	</li>
+																</ul>
+															</div>
+															<div class="body">
+									<div class="media">
+                                    <div class="media-left">
+									<div class="image">
+										<img src="<?php echo base_url('adminBSB/images/'.$row2->poster); ?>" width="55" height="55" alt="User" />
+									</div>                                        
+									</a>
+                                    </div>
+                                    <div class="media-body">
+                                        <p align="justify">
+                                           <?php echo word_limiter($row2->keterangan_event,20) ?>...<a class="modal-view" modal-size="modal-lg" modal-title="Detail Event" href="<?php echo base_url();?>komunitas/detailevent/<?php echo $row2->id_event; ?>"; >Lihat selengkapnya</a> 
+                                        </p>	</div>
+											</div>																		</div>
+														</div>
+													</div>
+												</div>
+												<!-- #END# Colored Card - With Loading -->		
+												</div>
+											</div>									
+										</blockquote>
+									</div>
+									<hr>
+									<!-- #END# Blockquotes -->
+									<?php } ?>
+										</div>
+										</div>
+										</div>
+										</div>
  
 
     

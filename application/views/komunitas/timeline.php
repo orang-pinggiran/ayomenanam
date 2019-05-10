@@ -83,8 +83,8 @@
 																			<i class="material-icons">more_vert</i>
 																		</a>
 																		<ul class="dropdown-menu pull-right">
-																			<li><a class="modal-view" modal-size="modal-lg" modal-title="Ubah Timeline" href="<?php echo base_url();?>pengguna/ubahtimeline/<?php echo $row->id_timeline; ?>"; >Ubah</a></li>
-																			<li><a href="<?php echo base_url();?>pengguna/hapustimeline/<?php echo $row->id_timeline; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" >Hapus</a></li>
+																			<li><a class="modal-view" modal-size="modal-lg" modal-title="Ubah Timeline" href="<?php echo base_url();?>komunitas/ubahtimeline/<?php echo $row->id_timeline; ?>"; >Ubah</a></li>
+																			<li><a href="<?php echo base_url();?>komunitas/hapustimeline/<?php echo $row->id_timeline; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" >Hapus</a></li>
 																		</ul>
 																	</li>
 																</ul>
