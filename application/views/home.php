@@ -80,7 +80,10 @@
   
           </div>
 
-          <div class="item" style="background-image: url(<?php echo base_url(); ?>Green/img/banner2.jpg);">
+          <div class="item" style="background-image: url(<?php echo base_url(); ?>Green/img/headermenanam2.jpg);">
+           
+          </div>
+		  <div class="item" style="background-image: url(<?php echo base_url(); ?>Green/img/headermenanam3.jpg);">
            
           </div>
         </div>
@@ -139,33 +142,15 @@
 
             <div class="col-lg-6 ">
               <div class="company mar-left10">
-                <h4>Our Company has created 1928 morbi leo risus, porta ac consectetur ac, <span>vestibulum </span> at
-                  eros.</h4>
-                <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Donec sed odio dui. Fusce dapibus, tellus ac
-                  cursus etiam porta sem malesuada magna mollis euismod. commodo, Faccibus mollis interdum. Morbi leo
-                  risus, porta ac, vestibulum at eros.
-                  Nullam id dolor id nibh ultricies vehicula ut id elit. Donec sed odio dui. Fusce dapibus, tellus ac.</p>
+                <h4>AYO MENANAM </h4>
+                <p align="justify">Gerakan Ayo Menanam merupakan program Pemerintah yang mendukung Program Smart City, Mengajak masyarakat menanam serta merawat pohon demi menumbuhkan budaya menanam dan merawat tumbuhan (pohon) sebagai lifestyle terlebih kepada anak – anak muda.
+Dalam program ini, pemerintah juga berupaya menghijaukan kembali Kabupaten Blitar.
+Pelaksanaan kegiatan menanam bekerjasama dengan komunitas pecinta alam dengan titik lokasi penanaman difokuskan pada lahan gundul.
+Bibit pohon yang akan ditananam dapat berasal dari donatur bibit dan benih yang di kumpulkan pada Bank Pohon. 
+Semua informasi jadwal event, titik lokasi, Ketersediaan Bibit Pohon hingga Sertifikat menanam yang didapat oleh relawan akan teringkas pada aplikasi Ayo menanam.
+Sehingga Masyarakat dapat dengan mudah ikut andil dalam kegiatan ini.</p>
               </div>
-              <div class="list-style">
-                <div class="row">
-                  <div class="col-lg-6 col-sm-6 col-xs-12">
-                    <ul>
-                      <li>Sollicitudin Vestibulum</li>
-                      <li>Fermentum Pellentesque</li>
-                      <li>Sollicitudin Vestibulum</li>
-                      <li>Nullam id dolor id nibh</li>
-                    </ul>
-                  </div>
-                  <div class="col-lg-6 col-sm-6 col-xs-12">
-                    <ul>
-                      <li>Sollicitudin Vestibulum</li>
-                      <li>Fermentum Pellentesque</li>
-                      <li>Sollicitudin Vestibulum</li>
-                      <li>Nullam id dolor id nibh</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              
             </div>
 
           </div>
