@@ -969,6 +969,17 @@ class Pengguna extends CI_Controller {
 		redirect(site_url('pengguna/manajemen_donasi'));
 	
 		}
+
+		public function map() {
+			$this->load->model('m_squrity');
+			$this->load->model('m_map');
+			$isi['email'] = $this->session->userdata('email');
+			$this->m_squrity->getsqurity();
+			$isi['content'] 	= 'pengguna/peta-pemetaan';
+			$isi['data'] 		= $this->m_map->map()->result();
+
+			$this->load->view('admin/template',$isi);
+		}
 		
       public function logout() {
 		$this->session->sess_destroy();
