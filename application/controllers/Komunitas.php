@@ -1276,6 +1276,17 @@ class Komunitas extends CI_Controller {
 	
 		}
 		
+		public function map() {
+			$this->load->model('m_squrity');
+			$this->load->model('m_map');
+			$isi['email'] = $this->session->userdata('email');
+			$this->m_squrity->getsqurity();
+			$isi['content'] 	= 'komunitas/peta-pemetaan';
+			$isi['data'] 		= $this->m_map->map()->result();
+
+			$this->load->view('admin/template',$isi);
+		}
+
       public function logout() {
 		$this->session->sess_destroy();
 		$this->session->set_userdata('is_login', FALSE);
