@@ -1352,6 +1352,7 @@ class Admin extends CI_Controller {
 
 		public function editmap()
 		{
+			// echo debug($this->input->post()); exit();
 		$this->load->model('m_squrity');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
