@@ -411,6 +411,26 @@
      $this->load->view($content);?>
             
         </section>
+		
+		<div class="modal fade" id="main-modal" role="dialog" tabindex="-1" aria-labelledby="modal-box" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+
+			<!--Modal header-->
+			<div class="modal-header">
+				<button data-dismiss="modal" class="close" data-toggle="tooltip" title="close" type="button">
+				<span aria-hidden="true"><i class="fa fa-close"></i></span>
+				</button>
+				<h4 class="modal-title"></h4>
+			</div>
+
+			<!--Modal body-->
+			<div class="modal-body">
+			</div>
+
+		</div>
+	</div>
+</div>
 
 
         <!-- Bootstrap Core Js -->
@@ -451,6 +471,33 @@
 
         <!-- Demo Js -->
         <script src="<?php echo base_url(); ?>adminBSB/js/demo.js"></script>
+		
+		<script>
+		//launch modal 
+			$(document).on('click','.modal-view', function(e) {
+					e.preventDefault();
+					$('#loading').show();
+					var modal = $('#main-modal');
+					if (typeof $(this).attr('modal-size') !== 'undefined') {
+						// set modal type (xs, md, lg)
+						modal.find('.modal-dialog').attr('class', 'modal-dialog '+$(this).attr('modal-size'));
+					} else {
+						// set to default (md)
+						modal.find('.modal-dialog').attr('class', 'modal-dialog modal-md');
+					}
+					modal.find('.modal-body').load(this.href, function(){
+						$('#loading').hide();
+						modal.modal('show');
+					});
+					modal.find('.modal-title').html($(this).attr('modal-title'));
+				});
+
+			//clean modal on close 
+			$('#main-modal').on('hidden.bs.modal', function (e){
+			  $(this).children('div').attr('class','modal-dialog');
+			  $(this).find('.modal-body').html('');
+			});
+		</script>
 
 	
 		
