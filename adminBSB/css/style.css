@@ -8043,3 +8043,6 @@ html.ie11 .bs-searchbox .form-control {
 .pull-right {
   float:right !important;
 }
+.text-danger {
+  color: #F44336 !important;
+}
