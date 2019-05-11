@@ -6,15 +6,19 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="header">
-                            <h2>
-                                DAFTAR EVENT
-								
-						<ul class="nav navbar-right panel_toolbox">
+					
+					<div class="header">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h2>DAFTAR EVENT</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right">
                                     <a href="<?php echo base_url();?>admin/tambahevent" class="btn bg-deep-orange waves-effect">
-									<i class="material-icons">add</i>
-                                    <span>TAMBAH</span></a></ul>  							
-									</h2>
+                                        <i class="material-icons">add</i>
+                                        <span>TAMBAH</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="body">
                             <div class="table-responsive">

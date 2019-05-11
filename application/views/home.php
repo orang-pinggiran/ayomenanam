@@ -80,7 +80,7 @@
   
           </div>
 
-          <div class="item" style="background-image: url(<?php echo base_url(); ?>Green/img/headermenanam2.jpg);">
+          <div class="item" style="background-image: url(<?php echo base_url(); ?>Green/img/header2.jpg);">
            
           </div>
 		  <div class="item" style="background-image: url(<?php echo base_url(); ?>Green/img/headermenanam3.jpg);">
