@@ -999,6 +999,86 @@ class Posko extends CI_Controller {
 		$this->load->view('posko/template',$isi);
 		}
 		
+		public function hapuskategori($id_kategori)
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$this->load->model('m_kategori');
+		$this->m_kategori->getdelete($id_kategori);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Kategori hutan berhasil dihapus</div>');		
+		redirect(site_url('posko/kategori'));
+	
+		}
+		
+		public function tambahkategori()
+		{
+		$this->load->model('m_squrity');
+		$this->load->model('m_kategori');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/form_kategori';
+		$isi['data'] 		= $this->m_kategori->kategori();
+		$this->load->view('posko/template',$isi);
+		}
+		
+		public function simpankategori()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+	
+		$data['id_kategori']	= $this->input->post('id_kategori');
+		$data['nama_kategori']	= $this->input->post('nama_kategori');
+
+		$this->load->model('m_kategori');
+		$this->m_kategori->getinsert($data);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Kategori hutan berhasil ditambahkan</div>');		
+		redirect(site_url('posko/tambahkategori'));
+		}
+		
+		public function ambilkategori()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/ubah_kategori';
+		
+		$last_segment = $this->uri->total_segments();
+		$id_kategori  = $this->uri->segment($last_segment);
+		$this->db->where('id_kategori',$id_kategori);
+		$query =$this->db->get('tbl_kategori');
+		if ($query->num_rows()>0) {
+			foreach ($query->result() as $row) {
+				$isi['id_kategori']	 =$row->id_kategori;
+				$isi['nama_kategori'] =$row->nama_kategori;
+			}
+		}
+		else
+		{
+				$isi['id_kategori']	='';
+				$isi['nama_kategori']='';
+		}
+		$this->load->view('posko/template',$isi);
+		}
+		
+		public function editkategori()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+
+		$id_kategori				= $this->input->post('id_kategori'); 
+		$data['id_kategori']    	= $this->input->post('id_kategori');
+		$data['nama_kategori']		= $this->input->post('nama_kategori'); 
+	
+		$this->load->model('m_kategori');
+	
+		$this->m_kategori->getupdate($id_kategori,$data);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Kategori hutan berhasil diubah</div>');		
+		
+		redirect('posko/ambilkategori/'.$id_kategori);
+		}
+		
 		public function map()
 		{
 		$this->load->model('m_squrity');
@@ -1007,6 +1087,143 @@ class Posko extends CI_Controller {
 		$isi['email'] = $this->session->userdata('email');
 		$isi['content'] 	= 'posko/map';
 		$isi['data'] 		= $this->m_map->map();
+		$this->load->view('posko/template',$isi);
+		}
+		
+		public function peta_pemetaan() {
+			$this->load->model('m_squrity');
+			$this->load->model('m_map');
+			$isi['email'] = $this->session->userdata('email');
+			$this->m_squrity->getsqurity();
+			$isi['content'] 	= 'posko/peta-pemetaan';
+			$isi['data'] 		= $this->m_map->map()->result();
+
+			$this->load->view('posko/template',$isi);
+		}
+		
+		public function tambahmap()
+		{
+		$this->load->model('m_squrity');
+		$this->load->model('m_map');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/form_map';
+		$isi['data'] 		= $this->m_map->map();
+		$this->load->view('posko/template',$isi);
+		}
+		
+		public function simpanmap()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+	
+		$data['id_map']			= $this->input->post('id_map');
+		$data['id_kategori']	= $this->input->post('id_kategori');
+		$data['latitude_map']	= $this->input->post('latitude_map');
+		$data['longitude_map']	= $this->input->post('longitude_map');
+		$data['alamat_map']		= $this->input->post('alamat_map');
+
+		$this->load->model('m_map');
+		$this->m_map->getinsert($data);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Pemetaan hutan berhasil ditambahkan</div>');		
+		redirect(site_url('posko/tambahmap'));
+		}
+		
+		public function hapusmap($id_map)
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$this->load->model('m_map');
+		$this->m_map->getdelete($id_map);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data pemetaan hutan berhasil dihapus</div>');		
+		redirect(site_url('posko/map'));
+	
+		}
+		
+		public function ambilmap()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/ubah_map';
+		
+		$last_segment 	= $this->uri->total_segments();
+		$id_map  		= $this->uri->segment($last_segment);
+		$this->db->where('id_map',$id_map);
+		$query =$this->db->get('tbl_map');
+		if ($query->num_rows()>0) {
+			foreach ($query->result() as $row) {
+				$isi['id_map']	 =$row->id_map;
+				$isi['id_kategori'] =$row->id_kategori;
+				$isi['latitude_map'] =$row->latitude_map;
+				$isi['longitude_map'] =$row->longitude_map;
+				$isi['alamat_map'] =$row->alamat_map;
+			}
+		}
+		else
+		{
+				$isi['id_map']	='';
+				$isi['id_kategori']='';
+				$isi['latitude_map']='';
+				$isi['longitude_map']='';
+				$isi['alamat_map']='';
+		}
+		$this->load->view('posko/template',$isi);
+		}
+		
+		public function editmap()
+		{
+			// echo debug($this->input->post()); exit();
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+
+		$id_map						= $this->input->post('id_map'); 
+		$data['id_map']    			= $this->input->post('id_map');
+		$data['id_kategori']		= $this->input->post('id_kategori'); 
+		$data['latitude_map']		= $this->input->post('latitude_map'); 
+		$data['longitude_map']		= $this->input->post('longitude_map'); 
+		$data['alamat_map']			= $this->input->post('alamat_map'); 
+	
+		$this->load->model('m_map');
+	
+		$this->m_map->getupdate($id_map,$data);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data pemetaan hutan berhasil diubah</div>');		
+		
+		redirect('posko/ambilmap/'.$id_map);
+		}
+		
+		public function detailmap()
+	{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/detail_map';
+		
+		$last_segment = $this->uri->total_segments();
+		$id_map = $this->uri->segment($last_segment);
+		$this->db->where('id_map',$id_map);
+		$query =$this->db->get('tbl_map');
+		if ($query->num_rows()>0) {
+			foreach ($query->result() as $row) {
+				$isi['id_map']	 		=$row->id_map;
+				$isi['id_kategori'] 	=$row->id_kategori;
+				$isi['latitude_map'] 	=$row->latitude_map;
+				$isi['longitude_map'] 	=$row->longitude_map;
+				$isi['alamat_map'] 		=$row->alamat_map;
+			
+			}
+		}
+		else
+		{
+				$isi['id_map']	='';
+				$isi['id_kategori']='';
+				$isi['latitude_map']='';
+				$isi['longitude_map']='';
+				$isi['alamat_map']='';
+
+		}
 		$this->load->view('posko/template',$isi);
 		}
 		
