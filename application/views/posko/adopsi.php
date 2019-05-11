@@ -6,7 +6,13 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-					
+                        <div class="header">
+                            <h2>
+                                DAFTAR ADOPSI
+								
+						<ul class="nav navbar-right panel_toolbox">
+									</h2>
+                        </div>
                         <div class="body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
@@ -14,8 +20,8 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Judul event</th>
-                                            <th>Nama pengadopsi</th>
                                             <th>Jenis pohon</th>
+                                            <th>Jumlah pohon</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
 											
@@ -25,13 +31,17 @@
                                     <tbody>
                                         <tr>
 										<?php
+										$cek = $this->db->query('Select * from tbl_adopsi, tbl_pengguna, tbl_posko, jenis_pohon,tbl_event
+										WHERE tbl_event.id_event=tbl_adopsi.id_event AND tbl_pengguna.id_pengguna=tbl_adopsi.id_pengguna
+										AND tbl_adopsi.id_posko=tbl_posko.id_posko AND tbl_adopsi.id_jenis_pohon=jenis_pohon.id_jenis_pohon
+										AND tbl_adopsi.id_pengguna='.$_SESSION['id_pengguna'].' ');
 										$no = 1;
-										foreach ($data->result() as $row) {
+										foreach ($cek->result() as $row) {
 										?>
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $row->judul_event; ?></td>
-                                            <td><?php echo $row->nama; ?></td>
                                             <td><?php echo $row->nama_jenis_pohon; ?></td>
+                                            <td><?php echo $row->jumlah_pohon; ?></td>
                                             <?php 
 											if ($row->status_adopsi=="Terdaftar") {
 												?>
@@ -49,18 +59,18 @@
 											if ($row->status_adopsi=="Disetujui") {
 												?>
 											<td>
-											<a href="<?php echo base_url();?>admin/detailadopsi/<?php echo $row->id_adopsi; ?>" class="btn btn-warning btn-xs"><i class="material-icons">search</i><span>Detail</span></a>
-											<a href="<?php echo base_url();?>admin/sertifikatadopsi/<?php echo $row->id_adopsi; ?>" class="btn bg-light-green btn-xs"><i class="material-icons">class</i><span>Sertifikat</span></a>
-											<a href="<?php echo base_url();?>admin/ambiladopsi/<?php echo $row->id_adopsi; ?>" class="btn btn-info btn-xs"><i class="material-icons">create</i><span>Ubah</span></a>
-											<a href="<?php echo base_url();?>admin/hapusadopsi/<?php echo $row->id_adopsi; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
+											<a href="<?php echo base_url();?>posko/detailadopsi/<?php echo $row->id_adopsi; ?>" modal-size="modal-lg" modal-title="Detail Adopsi" class="btn btn-warning btn-xs modal-view"><i class="material-icons">search</i><span>Detail</span></a>
+											<a href="<?php echo base_url();?>posko/sertifikatadopsi/<?php echo $row->id_adopsi; ?>" class="btn bg-light-green btn-xs"><i class="material-icons">class</i><span>Sertifikat</span></a>
+											<a href="<?php echo base_url();?>posko/ambiladopsi/<?php echo $row->id_adopsi; ?>" modal-size="modal-lg"  class="btn btn-info btn-xs modal-view"><i class="material-icons">create</i><span>Ubah</span></a>
+											<a href="<?php echo base_url();?>posko/hapusadopsi/<?php echo $row->id_adopsi; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
 
 											</td>
 											<?php } else {
 											?>
 											<td>
-											<a href="<?php echo base_url();?>admin/detailadopsi/<?php echo $row->id_adopsi; ?>" class="btn btn-warning btn-xs"><i class="material-icons">search</i><span>Detail</span></a>
-											<a href="<?php echo base_url();?>admin/ambiladopsi/<?php echo $row->id_adopsi; ?>" class="btn btn-info btn-xs"><i class="material-icons">create</i><span>Ubah</span></a>
-											<a href="<?php echo base_url();?>admin/hapusadopsi/<?php echo $row->id_adopsi; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
+											<a href="<?php echo base_url();?>posko/detailadopsi/<?php echo $row->id_adopsi; ?>" modal-size="modal-lg" modal-title="Detail Timeline" class="btn btn-warning btn-xs modal-view"><i class="material-icons">search</i><span>Detail</span></a>
+											<a href="<?php echo base_url();?>posko/ambiladopsi/<?php echo $row->id_adopsi; ?>" modal-size="modal-lg"  class="btn btn-info btn-xs modal-view"><i class="material-icons">create</i><span>Ubah</span></a>
+											<a href="<?php echo base_url();?>posko/hapusadopsi/<?php echo $row->id_adopsi; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
 
 											</td>
 											<?php }

@@ -10,7 +10,7 @@
                             </h2>
                         </div>
                         <div class="body">
-                            <form class="form-horizontal" method="POST" action="<?php echo base_url();?>admin/editdonasi">
+                            <form class="form-horizontal" method="POST" action="<?php echo base_url();?>posko/editdonasi">
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label>Nama posko</label>
@@ -63,42 +63,13 @@
                                                 <input type="text" id="jumlah_pohon" name="jumlah_pohon" value="<?php echo $jumlah_pohon; ?>" class="form-control" placeholder="Jumlah pohon">
 												<input type="hidden" id="id_donasi" name="id_donasi" value="<?php echo $id_donasi; ?>" class="form-control" placeholder="ID donasi">										
 												<input type="hidden" id="id_pengguna" name="id_pengguna" value="<?php echo $id_pengguna; ?>" class="form-control" placeholder="ID pengguna">										
+												<input type="hidden" id="status" name="status" value="<?php echo $status; ?>" class="form-control" placeholder="Status">										
+												<input type="hidden" id="keterangan" name="keterangan" value="<?php echo $keterangan; ?>" class="form-control" placeholder="Keterangan">										
 												<input type="hidden" id="tgl_donasi" name="tgl_donasi" value="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="Tanggal">										
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-								
-								<div class="row clearfix">
-									 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label>Status</label>
-										</div>
-										<div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-										<div class="demo-radio-button">
-										<input name="status" type="radio" class="with-gap" id="radio_3" value="Terdaftar" />
-										<label for="radio_3">Terdaftar</label>
-										<input name="status" type="radio" id="radio_4" class="with-gap" value="Disetujui" />
-										<label for="radio_4">Disetujui</label>
-										<input name="status" type="radio" id="radio_5" class="with-gap" value="Ditolak" />
-										<label for="radio_5">Ditolak</label>
-									</div>
-										</div>
-                                    </div>
-                                </div>	
-								
-								<div class="row clearfix">
-									 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label>Keterangan</label>
-										</div>
-										<div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-                                        <div class="form-line">
-										<textarea rows="5" class="form-control no-resize" id="keterangan" name="keterangan" placeholder="Keterangan"><?php echo $keterangan; ?></textarea>										
-                                        </div>
-										</div>
-                                    </div>
-                                </div>	
 								
 								<div class="row clearfix">
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
@@ -113,7 +84,7 @@
 						        <div class="row clearfix">
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <button type="submit" class="btn btn-primary m-t-15 waves-effect">Ubah</button>
-                                        <a href="<?php echo base_url();?>admin/donasi" class="btn bg-orange m-t-15 waves-effect">Kembali </button></a>
+                                        <a href="<?php echo base_url();?>posko/manajemen_donasi" class="btn bg-orange m-t-15 waves-effect">Kembali </button></a>
                                     </div>
                                 </div>
                             </form>

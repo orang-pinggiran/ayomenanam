@@ -64,7 +64,7 @@
                 <div class="navbar-header">
                     <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                     <a href="javascript:void(0);" class="bars"></a>
-                    <a class="navbar-brand" href="<?php echo base_url(); ?>admin">AYO MENANAM</a>
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>posko">AYO MENANAM</a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
@@ -210,8 +210,8 @@
                         <div class="btn-group user-helper-dropdown">
                             <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                             <ul class="dropdown-menu pull-right">
-                                <li><a href="<?php echo base_url();?>admin/profil/<?php echo $row->id_pengguna; ?>"><i class="material-icons">person</i>Profil</a></li>
-                                <li><a href="<?php echo base_url('admin/logout'); ?>"><i class="material-icons">input</i>Logout</a></li>
+                                <li><a href="<?php echo base_url();?>posko/profil/<?php echo $row->id_pengguna; ?>"><i class="material-icons">person</i>Profil</a></li>
+                                <li><a href="<?php echo base_url('posko/logout'); ?>"><i class="material-icons">input</i>Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -222,80 +222,47 @@
                     <ul class="list">
                         <li class="header">MENU</li>
                         <li class="active">
-                            <a href="<?php echo base_url(); ?>admin">
+                            <a href="<?php echo base_url(); ?>posko">
                                 <i class="material-icons">home</i>
                                 <span>Beranda</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="<?php echo base_url();?>admin/pengguna">
-                                <i class="material-icons">person</i>
-                                <span>Pengguna</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="<?php echo base_url();?>admin/komunitas">
-                                <i class="material-icons">group</i>
-                                <span>Komunitas</span>
-                            </a>
-                        </li>
-                        <li>
+
+					   <li>
                             <a href="javascript:void(0);" class="menu-toggle">
-                                <i class="material-icons">business_center</i>
-                                <span>Bank Pohon</span>
-                            </a>
+                                <i class="material-icons">pan_tool</i>
+                                <span>Donasi Pohon</span>
+							</a>
 							 <ul class="ml-menu">
                                 <li>
-                                    <a href="<?php echo base_url();?>admin/jenis_pohon">Jenis Pohon</a>
+                                    <a href="<?php echo base_url();?>posko/donasi">Tambah Donasi</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo base_url();?>admin/daftar_pohon">Daftar Pohon</a>
-                                </li>
-								<li>
-                                    <a href="<?php echo base_url();?>admin/posko">Daftar Posko</a>
+                                    <a href="<?php echo base_url();?>posko/manajemen_donasi">Manajemen Donasi</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li>       
+						
 						<li>
-                            <a href="<?php echo base_url();?>admin/event">
-                                <i class="material-icons">event</i>
-                                <span>Event</span>
+                            <a href="<?php echo base_url();?>posko/adopsi">
+                                <i class="material-icons">nature</i>
+                                <span>Adopsi Pohon</span>
                             </a>
-                        </li>
+                        </li> 
+						
 						<li>
-                            <a href="<?php echo base_url();?>admin/timeline">
+                            <a href="<?php echo base_url();?>posko/timeline">
                                 <i class="material-icons">view_list</i>
-                                <span>Timeline</span>
+                                <span>Timeline saya</span>
                             </a>
                         </li>                        
 						                       
+						                
 						<li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <i class="material-icons">shopping_basket</i>
-                                <span>Transaksi Pohon</span>
-                            </a>
-							 <ul class="ml-menu">
-                                <li>
-                                    <a href="<?php echo base_url();?>admin/donasi">Donasi Pohon</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url();?>admin/adopsi">Adopsi Pohon</a>
-                                </li>
-                            </ul>
-                        </li>                       
-						<li>
-                            <a href="javascript:void(0);" class="menu-toggle">
+                            <a href="<?php echo base_url();?>posko/map">
                                 <i class="material-icons">map</i>
                                 <span>Pemetaan Hutan</span>
                             </a>
-							 <ul class="ml-menu">
-                                <li>
-                                    <a href="<?php echo base_url();?>admin/kategori">Kategori</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url();?>admin/map">Map</a>
-                                </li>
-                            </ul>
                         </li>                       
 
                     </ul>
@@ -413,8 +380,8 @@
         </section>
 		
 		<div class="modal fade" id="main-modal" role="dialog" tabindex="-1" aria-labelledby="modal-box" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
+	<div class="modal-dialog">
+		<div class="modal-content">
 
 			<!--Modal header-->
 			<div class="modal-header">
@@ -471,7 +438,8 @@
 
         <!-- Demo Js -->
         <script src="<?php echo base_url(); ?>adminBSB/js/demo.js"></script>
-		
+
+	
 		<script>
 		//launch modal 
 			$(document).on('click','.modal-view', function(e) {
@@ -498,9 +466,6 @@
 			  $(this).find('.modal-body').html('');
 			});
 		</script>
-
-	
-		
     </body>
 
 </html>

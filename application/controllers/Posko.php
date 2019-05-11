@@ -29,7 +29,7 @@ class Posko extends CI_Controller {
 		$this->load->model('m_squrity');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-		$isi['content'] 	= 'pengguna/profil';
+		$isi['content'] 	= 'posko/profil';
 		
 		$last_segment = $this->uri->total_segments();
 		$id_pengguna = $this->uri->segment($last_segment);
@@ -60,7 +60,7 @@ class Posko extends CI_Controller {
 				$isi['foto']='';
 
 		}
-		$this->load->view('pengguna/template',$isi);
+		$this->load->view('posko/template',$isi);
 		}
 		
 		public function editprofil()
@@ -147,7 +147,7 @@ class Posko extends CI_Controller {
 		$this->m_pengguna->getupdate($id_pengguna,$data_pengguna);
 		$this->session->set_flashdata('info','<div class="alert alert-success">Data pengguna berhasil diubah</div>');		
 		
-		redirect('pengguna/profil/'.$id_pengguna);
+		redirect('posko/profil/'.$id_pengguna);
 		}
 		
 		public function editpassword()
@@ -196,7 +196,7 @@ class Posko extends CI_Controller {
 				$this->session->set_flashdata('info','<div class="alert alert-danger">Password yang Anda masukkan salah</div>');		
 				  
 			  }
-			redirect('pengguna/profil/'.$id_pengguna);
+			redirect('posko/profil/'.$id_pengguna);
 		   
 			}
         
@@ -224,7 +224,7 @@ class Posko extends CI_Controller {
 		$this->load->model('m_squrity');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-		$isi['content'] 	= 'pengguna/detail_timeline';
+		$isi['content'] 	= 'posko/detail_timeline';
 		
 		$last_segment = $this->uri->total_segments();
 		$id_timeline = $this->uri->segment($last_segment);
@@ -250,7 +250,7 @@ class Posko extends CI_Controller {
 				$isi['waktu_timeline']='';
 
 		}
-		$this->load->view('pengguna/detail_timeline',$isi);
+		$this->load->view('posko/detail_timeline',$isi);
 		}
 		
 		public function ubahtimeline()
@@ -258,7 +258,7 @@ class Posko extends CI_Controller {
 		$this->load->model('m_squrity');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-		$isi['content'] 	= 'pengguna/ubah_timeline';
+		$isi['content'] 	= 'posko/ubah_timeline';
 		
 		$last_segment = $this->uri->total_segments();
 		$id_timeline = $this->uri->segment($last_segment);
@@ -284,7 +284,7 @@ class Posko extends CI_Controller {
 				$isi['waktu_timeline']='';
 
 		}
-		$this->load->view('pengguna/ubah_timeline',$isi);
+		$this->load->view('posko/ubah_timeline',$isi);
 		}
 		
 		public function edittimeline()
@@ -364,7 +364,7 @@ class Posko extends CI_Controller {
 		$this->m_timeline->getupdate($id_timeline,$data_timeline);
 		$this->session->set_flashdata('info','<div class="alert alert-success">Data timeline berhasil diubah</div>');		
 		
-		redirect('pengguna/timeline/');
+		redirect('posko/timeline/');
 		}
 		
 		public function hapustimeline($id_timeline)
@@ -374,7 +374,7 @@ class Posko extends CI_Controller {
 		$this->load->model('m_timeline');
 		$this->m_timeline->getdelete($id_timeline);
 		$this->session->set_flashdata('info','<div class="alert alert-success">Data timeline berhasil dihapus</div>');		
-		redirect(site_url('pengguna/timeline'));
+		redirect(site_url('posko/timeline'));
 	
 		}
 		
@@ -383,7 +383,7 @@ class Posko extends CI_Controller {
 		$this->load->model('m_squrity');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-		$isi['content'] 	= 'pengguna/detail_event';
+		$isi['content'] 	= 'posko/detail_event';
 		
 		$last_segment = $this->uri->total_segments();
 		$id_event = $this->uri->segment($last_segment);
@@ -399,6 +399,8 @@ class Posko extends CI_Controller {
 				$isi['tanggal_event'] 		=$row->tanggal_event;
 				$isi['waktu_event'] 		=$row->waktu_event;
 				$isi['tempat_event'] 		=$row->tempat_event;
+				$isi['longitude_event'] 	=$row->longitude_event;
+				$isi['latitude_event'] 		=$row->latitude_event;
 				$isi['status']	 			=$row->status;
 				$isi['poster'] 				=$row->poster;
 			
@@ -414,11 +416,13 @@ class Posko extends CI_Controller {
 				$isi['tanggal_event']='';
 				$isi['waktu_event']='';
 				$isi['tempat_event']='';
+				$isi['longitude_event']='';
+				$isi['latitude_event']='';
 				$isi['status']='';
 				$isi['poster']='';
 
 		}
-		$this->load->view('pengguna/detail_event',$isi);
+		$this->load->view('posko/detail_event',$isi);
 		}
 		
 		public function adopsipohon()
@@ -426,7 +430,7 @@ class Posko extends CI_Controller {
 		$this->load->model('m_squrity');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-		$isi['content'] 	= 'pengguna/tambah_adopsi';
+		$isi['content'] 	= 'posko/tambah_adopsi';
 		
 		$last_segment = $this->uri->total_segments();
 		$id_event = $this->uri->segment($last_segment);
@@ -461,7 +465,7 @@ class Posko extends CI_Controller {
 				$isi['poster']='';
 
 		}
-		$this->load->view('pengguna/template',$isi);
+		$this->load->view('posko/template',$isi);
 		}
 		
 		public function simpanadopsi()
@@ -486,7 +490,7 @@ class Posko extends CI_Controller {
 		$this->load->model('m_adopsi');
 		$this->m_adopsi->getinsert($data);
 		$this->session->set_flashdata('info','<div class="alert alert-success">Data adopsi berhasil ditambahkan</div>');		
-		redirect(site_url('pengguna/adopsipohon'));
+		redirect(site_url('posko/adopsipohon'));
 		}
 		
 		public function timeline()
@@ -495,9 +499,65 @@ class Posko extends CI_Controller {
 		$this->load->model('m_timeline');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-		$isi['content'] 	= 'pengguna/timeline';
+		$isi['content'] 	= 'posko/timeline';
 		$isi['data'] 		= $this->m_timeline->timeline();
-		$this->load->view('pengguna/template',$isi);
+		$this->load->view('posko/template',$isi);
+		}
+		
+		public function simpantimeline()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+
+		 $config = array(
+                        'upload_path'=>'./adminBSB/images',
+                        'allowed_types'=>'jpg|png|jpeg',
+                        'max_size'=>2086
+                        );
+ 
+        $id_timeline		= $this->input->post('id_timeline'); 
+		$id_pengguna		= $_SESSION['id_pengguna'];
+		$foto_timeline	 	= $this->input->post('foto_timeline'); 
+		$deskripsi_timeline = $this->input->post('deskripsi_timeline');
+		$tanggal_timeline	= $this->input->post('tanggal_timeline');
+		$waktu_timeline		= $this->input->post('waktu_timeline');
+		
+ 
+        $this->load->library('upload',$config);
+       
+        if($this->upload->do_upload('foto_timeline')){
+ 
+        $finfo = $this->upload->data();
+        $nama_foto = $finfo['file_name'];
+ 
+        $data_timeline = array(
+                            'id_timeline'=>$id_timeline,
+                            'id_pengguna'=>$id_pengguna,
+                            'foto_timeline'=>$nama_foto,
+                            'deskripsi_timeline'=>$deskripsi_timeline,
+                            'tanggal_timeline'=>$tanggal_timeline,
+                            'waktu_timeline'=>$waktu_timeline
+							);
+ 
+        $config2 = array(
+                'source_image'=>'/adminBSB/images/'.$nama_foto,
+                'image_library'=>'gd2',
+                'new_image'=>'/adminBSB/images/',
+                'maintain_ratio'=>true,
+                'width'=>150,
+                'height'=>200
+            );
+       
+        $this->load->library('image_lib',$config2);
+        $this->image_lib->resize();    
+       
+        }
+       
+		$this->load->model('m_timeline');
+		$this->m_timeline->getinsert($data_timeline);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data timeline berhasil ditambahkan</div>');		
+		redirect(site_url('posko/timeline'));
 		}
 		
 		public function adopsi()
@@ -506,9 +566,9 @@ class Posko extends CI_Controller {
 		$this->load->model('m_adopsi');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-		$isi['content'] 	= 'pengguna/adopsi';
+		$isi['content'] 	= 'posko/adopsi';
 		$isi['data'] 		= $this->m_adopsi->adopsi();
-		$this->load->view('pengguna/template',$isi);
+		$this->load->view('posko/template',$isi);
 		}
 		
 		public function hapusadopsi($id_adopsi)
@@ -518,7 +578,7 @@ class Posko extends CI_Controller {
 		$this->load->model('m_adopsi');
 		$this->m_adopsi->getdelete($id_adopsi);
 		$this->session->set_flashdata('info','<div class="alert alert-success">Data adopsi berhasil dihapus</div>');		
-		redirect(site_url('pengguna/adopsi'));
+		redirect(site_url('posko/adopsi'));
 		}
 		
 		public function detailadopsi()
@@ -526,7 +586,7 @@ class Posko extends CI_Controller {
 		$this->load->model('m_squrity');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-		$isi['content'] 	= 'pengguna/detail_adopsi';
+		$isi['content'] 	= 'posko/detail_adopsi';
 		
 		$last_segment = $this->uri->total_segments();
 		$id_adopsi = $this->uri->segment($last_segment);
@@ -565,7 +625,7 @@ class Posko extends CI_Controller {
 				$isi['keterangan'] 		='';
 
 		}
-		$this->load->view('pengguna/detail_adopsi', $isi);
+		$this->load->view('posko/detail_adopsi', $isi);
 		}
 		
 		public function ambiladopsi()
@@ -573,7 +633,7 @@ class Posko extends CI_Controller {
 		$this->load->model('m_squrity');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-		$isi['content'] 	= 'pengguna/ubah_adopsi';
+		$isi['content'] 	= 'posko/ubah_adopsi';
 		
 		$last_segment 	= $this->uri->total_segments();
 		$id_adopsi		= $this->uri->segment($last_segment);
@@ -610,7 +670,7 @@ class Posko extends CI_Controller {
 				$isi['status_adopsi'] 	='';
 				$isi['keterangan'] 		='';
 		}
-		$this->load->view('pengguna/ubah_adopsi',$isi);
+		$this->load->view('posko/ubah_adopsi',$isi);
 		}
 		
 		public function editadopsi()
@@ -688,7 +748,7 @@ class Posko extends CI_Controller {
 			
 			  }
 		}
-			  redirect('pengguna/adopsi');
+			  redirect('posko/adopsi');
 		}
 		
 		public function donasi()
@@ -697,9 +757,9 @@ class Posko extends CI_Controller {
 		$this->load->model('m_pohon');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-		$isi['content'] 	= 'pengguna/donasi';
+		$isi['content'] 	= 'posko/donasi';
 		$isi['data'] 		= $this->m_pohon->pohon();
-		$this->load->view('pengguna/template',$isi);
+		$this->load->view('posko/template',$isi);
 		}
 		
 		public function tambahdonasi()
@@ -707,7 +767,7 @@ class Posko extends CI_Controller {
 		$this->load->model('m_squrity');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-		$isi['content'] 	= 'pengguna/form_donasi';
+		$isi['content'] 	= 'posko/form_donasi';
 		
 		$last_segment = $this->uri->total_segments();
 		$id_pohon = $this->uri->segment($last_segment);
@@ -730,7 +790,7 @@ class Posko extends CI_Controller {
 				$isi['jumlah']='';
 
 		}
-		$this->load->view('pengguna/form_donasi',$isi);
+		$this->load->view('posko/form_donasi',$isi);
 		}
 		
 		public function simpandonasi()
@@ -752,7 +812,7 @@ class Posko extends CI_Controller {
 		$this->load->model('m_donasi');
 		$this->m_donasi->getinsert($data);
 		$this->session->set_flashdata('info','<div class="alert alert-success">Data donasi berhasil ditambahkan</div>');		
-		redirect(site_url('pengguna/donasi'));
+		redirect(site_url('posko/donasi'));
 		}
 		
 		public function manajemen_donasi()
@@ -761,9 +821,9 @@ class Posko extends CI_Controller {
 		$this->load->model('m_donasi');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-		$isi['content'] 	= 'pengguna/manajemen_donasi';
+		$isi['content'] 	= 'posko/manajemen_donasi';
 		$isi['data'] 		= $this->m_donasi->donasi();
-		$this->load->view('pengguna/template',$isi);
+		$this->load->view('posko/template',$isi);
 		}
 		
 		public function detaildonasi()
@@ -771,7 +831,7 @@ class Posko extends CI_Controller {
 		$this->load->model('m_squrity');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-		$isi['content'] 	= 'pengguna/detail_donasi';
+		$isi['content'] 	= 'posko/detail_donasi';
 		
 		$last_segment = $this->uri->total_segments();
 		$id_donasi = $this->uri->segment($last_segment);
@@ -803,7 +863,7 @@ class Posko extends CI_Controller {
 				$isi['keterangan']='';
 
 		}
-		$this->load->view('pengguna/detail_donasi',$isi);
+		$this->load->view('posko/detail_donasi',$isi);
 		}
 		
 		public function ambildonasi()
@@ -811,7 +871,7 @@ class Posko extends CI_Controller {
 		$this->load->model('m_squrity');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-		$isi['content'] 	= 'pengguna/ubah_donasi';
+		$isi['content'] 	= 'posko/ubah_donasi';
 		
 		$last_segment 	= $this->uri->total_segments();
 		$id_donasi		= $this->uri->segment($last_segment);
@@ -842,7 +902,7 @@ class Posko extends CI_Controller {
 				$isi['status']='';
 				$isi['keterangan']='';
 		}
-		$this->load->view('pengguna/ubah_donasi',$isi);
+		$this->load->view('posko/ubah_donasi',$isi);
 		}
 		
 		public function editdonasi()
@@ -910,7 +970,7 @@ class Posko extends CI_Controller {
 			$this->session->set_flashdata('info','<div class="alert alert-success">Data donasi berhasil diubah</div>');		
 			  }
 		}
-			  redirect('pengguna/manajemen_donasi');
+			  redirect('posko/manajemen_donasi');
 		}
 		
 		public function hapusdonasi($id_donasi)
@@ -920,8 +980,19 @@ class Posko extends CI_Controller {
 		$this->load->model('m_donasi');
 		$this->m_donasi->getdelete($id_donasi);
 		$this->session->set_flashdata('info','<div class="alert alert-success">Data donasi berhasil dihapus</div>');		
-		redirect(site_url('pengguna/manajemen_donasi'));
+		redirect(site_url('posko/manajemen_donasi'));
 	
+		}
+		
+		public function map() {
+			$this->load->model('m_squrity');
+			$this->load->model('m_map');
+			$isi['email'] = $this->session->userdata('email');
+			$this->m_squrity->getsqurity();
+			$isi['content'] 	= 'komunitas/peta-pemetaan';
+			$isi['data'] 		= $this->m_map->map()->result();
+
+			$this->load->view('posko/template',$isi);
 		}
 		
       public function logout() {

@@ -103,7 +103,7 @@
 										<!-- #END# Horizontal Layout -->
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="messages_with_icon_title">
-                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>admin/editprofil" enctype="multipart/form-data">
+                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>posko/editprofil" enctype="multipart/form-data">
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label>Nama Lengkap</label>
@@ -213,7 +213,7 @@
 								<!-- password -->
 
 							   <div role="tabpanel" class="tab-pane fade" id="settings_with_icon_title">
-                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>admin/editpassword">
+                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>posko/editpassword">
 								<div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label>Password sekarang</label>

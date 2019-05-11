@@ -1,8 +1,6 @@
 ﻿							<?php echo $this->session->flashdata('info'); ?>
 
                  <!-- Horizontal Layout -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
@@ -10,14 +8,14 @@
                             </h2>
                         </div>
                         <div class="body">
-                            <form class="form-horizontal" method="POST" action="<?php echo base_url();?>admin/editadopsi">
+                            <form class="form-horizontal" method="POST" action="<?php echo base_url();?>posko/editadopsi">
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label>Jenis adopsi</label>
                                     </div>
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                         <div class="form-group">
-                                            <select name="jenis_adopsi" id="jenis_adopsi" class="form-control col-md-3 col-xs-3">
+                                            <select name="jenis_adopsi" id="jenis_adopsi" class="form-control col-md-4 col-xs-4">
                                                 <option value="Tanam bersama">Tanam bersama</option>
                                                 <option value="Titip Tanam">Titip tanam</option>
                                             </select>
@@ -29,9 +27,9 @@
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label>Nama posko</label>
                                     </div>
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                         <div class="form-group">
-                                            <select name="id_posko" id="id_posko" class="form-control col-md-3 col-xs-3">
+                                            <select name="id_posko" id="id_posko" class="form-control col-md-4 col-xs-4">
                                                 
                                                 <?php 
                                                     $posko = $this->db->query('Select * from tbl_posko');
@@ -50,9 +48,9 @@
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label>Jenis pohon</label>
                                     </div>
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                         <div class="form-group">
-                                            <select name="id_jenis_pohon" id="id_jenis_pohon" class="form-control col-md-3 col-xs-3">
+                                            <select name="id_jenis_pohon" id="id_jenis_pohon" class="form-control col-md-4 col-xs-4">
                                                 
                                                 <?php 
                                                     $jenis = $this->db->query('Select * from jenis_pohon');
@@ -92,38 +90,7 @@
                                         </div>
                                     </div>
                                 </div>
-								
-								<div class="row clearfix">
-									 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label>Status</label>
-										</div>
-										<div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-										<div class="demo-radio-button">
-										<input name="status_adopsi" type="radio" class="with-gap" id="radio_3" value="Terdaftar" />
-										<label for="radio_3">Terdaftar</label>
-										<input name="status_adopsi" type="radio" id="radio_4" class="with-gap" value="Disetujui" />
-										<label for="radio_4">Disetujui</label>
-										<input name="status_adopsi" type="radio" id="radio_5" class="with-gap" value="Ditolak" />
-										<label for="radio_5">Ditolak</label>
-									</div>
-										</div>
-                                    </div>
-                                </div>	
-								
-								<div class="row clearfix">
-									 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label>Keterangan</label>
-										</div>
-										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <div class="form-group">
-                                        <div class="form-line">
-										<textarea rows="5" class="form-control no-resize" id="keterangan" name="keterangan" placeholder="Keterangan"><?php echo $keterangan; ?></textarea>										
-                                        </div>
-										</div>
-                                    </div>
-                                </div>	
-								
+									
 								<div class="row clearfix">
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
@@ -134,6 +101,8 @@
  										<input type="hidden" id="id_adopsi" name="id_adopsi" value="<?php echo $id_adopsi; ?>" class="form-control" placeholder="ID adopsi">										
 										<input type="hidden" id="id_pengguna" name="id_pengguna" value="<?php echo $id_pengguna; ?>" class="form-control" placeholder="ID pengguna">										
 										<input type="hidden" id="id_event" name="id_event" value="<?php echo $id_event; ?>" class="form-control" placeholder="ID event">										
+										<input type="hidden" id="status_adopsi" name="status_adopsi" value="<?php echo $status_adopsi; ?>" class="form-control" placeholder="Status Adopsi">										
+										<input type="hidden" id="keterangan" name="keterangan" value="<?php echo $keterangan; ?>" class="form-control" placeholder="Keterangan">										
 										<input type="hidden" id="tgl_adopsi" name="tgl_adopsi" value="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="Tanggal">										
                                        </div>
                                     </div>
@@ -141,14 +110,12 @@
 						        <div class="row clearfix">
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
                                         <button type="submit" class="btn btn-primary m-t-15 waves-effect">Ubah</button>
-                                        <a href="<?php echo base_url();?>admin/adopsi" class="btn bg-orange m-t-15 waves-effect">Kembali </button></a>
+                                        <a href="<?php echo base_url();?>posko/adopsi" class="btn bg-orange m-t-15 waves-effect">Kembali </button></a>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                </div>
-            </div>
             <!-- #END# Horizontal Layout -->
 
     

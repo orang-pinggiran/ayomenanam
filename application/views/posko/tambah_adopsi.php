@@ -10,7 +10,7 @@
                             </h2>
                         </div>
                         <div class="body">
-                            <form class="form-horizontal" method="POST" action="<?php echo base_url();?>admin/simpanadopsi">
+                            <form class="form-horizontal" method="POST" action="<?php echo base_url();?>posko/simpanadopsi">
                                 <div class="row clearfix">
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label>Jenis adopsi</label>
@@ -115,8 +115,8 @@
                                 </div>
 						        <div class="row clearfix">
                                     <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Tambah</button>
-                                        <a href="<?php echo base_url();?>admin/event" class="btn bg-orange m-t-15 waves-effect">Kembali </button></a>
+                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Ubah</button>
+                                        <a href="<?php echo base_url();?>posko/" class="btn bg-orange m-t-15 waves-effect">Kembali </button></a>
                                     </div>
                                 </div>
                             </form>
