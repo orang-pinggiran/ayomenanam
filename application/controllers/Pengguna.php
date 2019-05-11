@@ -456,6 +456,8 @@ class Pengguna extends CI_Controller {
 				$isi['tanggal_event'] 		=$row->tanggal_event;
 				$isi['waktu_event'] 		=$row->waktu_event;
 				$isi['tempat_event'] 		=$row->tempat_event;
+				$isi['longitude_event']		=$row->longitude_event;
+				$isi['latitude_event'] 		=$row->latitude_event;
 				$isi['status']	 			=$row->status;
 				$isi['poster'] 				=$row->poster;
 			
@@ -471,6 +473,8 @@ class Pengguna extends CI_Controller {
 				$isi['tanggal_event']='';
 				$isi['waktu_event']='';
 				$isi['tempat_event']='';
+				$isi['longitude_event']='';
+				$isi['latitude_event']='';
 				$isi['status']='';
 				$isi['poster']='';
 
@@ -989,7 +993,7 @@ class Pengguna extends CI_Controller {
 			$isi['content'] 	= 'pengguna/peta-pemetaan';
 			$isi['data'] 		= $this->m_map->map()->result();
 
-			$this->load->view('admin/template',$isi);
+			$this->load->view('pengguna/template',$isi);
 		}
 		
       public function logout() {

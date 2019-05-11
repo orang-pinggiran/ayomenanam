@@ -38,7 +38,7 @@
 							<input type="hidden" name="longitude_event" id="longitude_event" value="<?php echo $longitude_event; ?>">
                             </div>
 					 <div class="btn-ground">
-                        <a href="<?php echo base_url();?>pengguna/adopsipohon/<?php echo $row->id_event; ?>" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Adopsi Pohon</a>
+                        <a href="<?php echo base_url();?>admin/adopsipohon/<?php echo $row->id_event; ?>" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Adopsi Pohon</a>
                         </div>
 						
 		<script src="<?php echo base_url(); ?>adminBSB/js/maap.js"></script>

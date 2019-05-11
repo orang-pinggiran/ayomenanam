@@ -1294,7 +1294,7 @@ class Komunitas extends CI_Controller {
 			$isi['content'] 	= 'komunitas/peta-pemetaan';
 			$isi['data'] 		= $this->m_map->map()->result();
 
-			$this->load->view('admin/template',$isi);
+			$this->load->view('komunitas/template',$isi);
 		}
 
       public function logout() {

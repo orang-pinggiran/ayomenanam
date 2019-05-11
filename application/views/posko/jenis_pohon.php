@@ -6,13 +6,14 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
+					
 					<div class="header">
                             <div class="row clearfix">
                                 <div class="col-xs-12 col-sm-6">
-                                    <h2>DATA PENGGUNA</h2>
+                                    <h2>DATA JENIS POHON</h2>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 align-right">
-                                    <a href="<?php echo base_url();?>admin/tambahpengguna" class="btn bg-deep-orange waves-effect">
+                                    <a href="<?php echo base_url();?>admin/tambahjenis" class="btn bg-deep-orange waves-effect">
                                         <i class="material-icons">add</i>
                                         <span>TAMBAH</span>
                                     </a>
@@ -25,9 +26,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Lengkap</th>
-                                            <th>Alamat</th>
-                                            <th>Telpon</th>
+                                            <th>Jenis pohon</th>
                                             <th>Aksi</th>
 											
                                         </tr>
@@ -40,13 +39,10 @@
 										foreach ($data->result() as $row) {
 										?>
                                             <td><?php echo $no++; ?></td>
-                                            <td><?php echo $row->nama; ?></td>
-                                            <td><?php echo $row->alamat; ?></td>
-                                            <td><?php echo $row->tlp; ?></td>
+                                            <td><?php echo $row->nama_jenis_pohon; ?></td>
                                             <td>
-											<a href="<?php echo base_url();?>admin/detailpengguna/<?php echo $row->id_pengguna; ?>" class="btn btn-warning btn-xs"><i class="material-icons">search</i><span>Detail</span></a>
-											<a href="<?php echo base_url();?>admin/ambilpengguna/<?php echo $row->id_pengguna; ?>" class="btn btn-info btn-xs"><i class="material-icons">create</i><span>Ubah</span></a>
-											<a href="<?php echo base_url();?>admin/hapuspengguna/<?php echo $row->id_pengguna; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
+											<a href="<?php echo base_url();?>admin/ambiljenis/<?php echo $row->id_jenis_pohon; ?>" class="btn btn-info btn-xs"><i class="material-icons">create</i><span>Ubah</span></a>
+											<a href="<?php echo base_url();?>admin/hapusjenis/<?php echo $row->id_jenis_pohon; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
 
 											</td>
                                        </tr>
@@ -78,7 +74,6 @@
     <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
     <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
     <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-	<script src="<?php echo base_url(); ?>adminBSB/js/pages/tables/jquery-datatable.js"></script>	
+
     <!-- Custom Js -->
-	
-    
+    <script src="<?php echo base_url(); ?>adminBSB/js/pages/tables/jquery-datatable.js"></script>

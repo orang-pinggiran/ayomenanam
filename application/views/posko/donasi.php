@@ -6,13 +6,14 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
+					
 					<div class="header">
                             <div class="row clearfix">
                                 <div class="col-xs-12 col-sm-6">
-                                    <h2>DATA PENGGUNA</h2>
+                                    <h2>DAFTAR DONASI</h2>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 align-right">
-                                    <a href="<?php echo base_url();?>admin/tambahpengguna" class="btn bg-deep-orange waves-effect">
+                                    <a href="<?php echo base_url();?>admin/tambahdonasi" class="btn bg-deep-orange waves-effect">
                                         <i class="material-icons">add</i>
                                         <span>TAMBAH</span>
                                     </a>
@@ -25,9 +26,11 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Lengkap</th>
-                                            <th>Alamat</th>
-                                            <th>Telpon</th>
+                                            <th>Nama pemberi donasi</th>
+                                            <th>Nama posko</th>
+                                            <th>Jenis pohon</th>
+                                            <th>Jumlah pohon</th>
+                                            <th>Status</th>
                                             <th>Aksi</th>
 											
                                         </tr>
@@ -41,12 +44,25 @@
 										?>
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $row->nama; ?></td>
-                                            <td><?php echo $row->alamat; ?></td>
-                                            <td><?php echo $row->tlp; ?></td>
-                                            <td>
-											<a href="<?php echo base_url();?>admin/detailpengguna/<?php echo $row->id_pengguna; ?>" class="btn btn-warning btn-xs"><i class="material-icons">search</i><span>Detail</span></a>
-											<a href="<?php echo base_url();?>admin/ambilpengguna/<?php echo $row->id_pengguna; ?>" class="btn btn-info btn-xs"><i class="material-icons">create</i><span>Ubah</span></a>
-											<a href="<?php echo base_url();?>admin/hapuspengguna/<?php echo $row->id_pengguna; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
+                                            <td><?php echo $row->nama_posko; ?></td>
+                                            <td><?php echo $row->nama_jenis_pohon; ?></td>
+                                            <td><?php echo $row->jumlah_pohon; ?></td>
+                                            <?php 
+											if ($row->status=="Terdaftar") {
+												?>
+												<td> <span class="label label-info">Terdaftar</span></td>
+											<?php } else if ($row->status=="Disetujui") {
+											?>
+											<td> <span class="label label-success">Disetujui</span></td>
+											<?php } else if ($row->status=="Ditolak") {
+											?>
+											<td> <span class="label label-danger">Ditolak</span></td>
+											<?php }
+											?>
+											<td>
+											<a href="<?php echo base_url();?>admin/detaildonasi/<?php echo $row->id_donasi; ?>" class="btn btn-warning btn-xs"><i class="material-icons">search</i><span>Detail</span></a>
+											<a href="<?php echo base_url();?>admin/ambildonasi/<?php echo $row->id_donasi; ?>" class="btn btn-info btn-xs"><i class="material-icons">create</i><span>Ubah</span></a>
+											<a href="<?php echo base_url();?>admin/hapusdonasi/<?php echo $row->id_donasi; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
 
 											</td>
                                        </tr>
@@ -78,7 +94,6 @@
     <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
     <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
     <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-	<script src="<?php echo base_url(); ?>adminBSB/js/pages/tables/jquery-datatable.js"></script>	
+
     <!-- Custom Js -->
-	
-    
+    <script src="<?php echo base_url(); ?>adminBSB/js/pages/tables/jquery-datatable.js"></script>

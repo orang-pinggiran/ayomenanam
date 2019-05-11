@@ -76,14 +76,14 @@
         </ol>
 
         <div class="carousel-inner">
-          <div class="item active" style="background-image: url(<?php echo base_url(); ?>Green/img/banner1.jpg);">
+          <div class="item active" style="background-image: url(<?php echo base_url(); ?>Green/img/header2fix.jpg);">
   
           </div>
 
-          <div class="item" style="background-image: url(<?php echo base_url(); ?>Green/img/header2.jpg);">
+          <div class="item" style="background-image: url(<?php echo base_url(); ?>Green/img/header1fix.jpg);">
            
           </div>
-		  <div class="item" style="background-image: url(<?php echo base_url(); ?>Green/img/headermenanam3.jpg);">
+		  <div class="item" style="background-image: url(<?php echo base_url(); ?>Green/img/banner1.jpg);">
            
           </div>
         </div>
