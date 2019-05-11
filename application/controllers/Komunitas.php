@@ -761,6 +761,8 @@ class Komunitas extends CI_Controller {
 				$isi['latitude_event'] 		=$row->latitude_event;
 				$isi['status']	 			=$row->status;
 				$isi['poster'] 				=$row->poster;
+				$isi['tgl_event'] 			=$row->tgl_event;
+				$isi['jam_event'] 			=$row->jam_event;
 			
 			}
 		}
@@ -778,6 +780,8 @@ class Komunitas extends CI_Controller {
 				$isi['latitude_event']='';
 				$isi['status']='';
 				$isi['poster']='';
+				$isi['tgl_event']='';
+				$isi['jam_event']='';
 
 		}
 		$this->load->view('komunitas/detail_event',$isi);

@@ -259,11 +259,19 @@
 						                       
 						                
 						<li>
-                            <a href="<?php echo base_url();?>posko/map">
+                            <a href="javascript:void(0);" class="menu-toggle">
                                 <i class="material-icons">map</i>
                                 <span>Pemetaan Hutan</span>
                             </a>
-                        </li>                       
+							 <ul class="ml-menu">
+                                <li>
+                                    <a href="<?php echo base_url();?>posko/kategori">Kategori</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url();?>posko/map">Map</a>
+                                </li>
+                            </ul>
+                        </li>                          
 
                     </ul>
                 </div>

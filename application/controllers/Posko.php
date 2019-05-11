@@ -403,6 +403,8 @@ class Posko extends CI_Controller {
 				$isi['latitude_event'] 		=$row->latitude_event;
 				$isi['status']	 			=$row->status;
 				$isi['poster'] 				=$row->poster;
+				$isi['tgl_event'] 			=$row->tgl_event;
+				$isi['jam_event'] 			=$row->jam_event;
 			
 			}
 		}
@@ -420,6 +422,8 @@ class Posko extends CI_Controller {
 				$isi['latitude_event']='';
 				$isi['status']='';
 				$isi['poster']='';
+				$isi['tgl_event']='';
+				$isi['jam_event']='';
 
 		}
 		$this->load->view('posko/detail_event',$isi);
@@ -984,15 +988,26 @@ class Posko extends CI_Controller {
 	
 		}
 		
-		public function map() {
-			$this->load->model('m_squrity');
-			$this->load->model('m_map');
-			$isi['email'] = $this->session->userdata('email');
-			$this->m_squrity->getsqurity();
-			$isi['content'] 	= 'komunitas/peta-pemetaan';
-			$isi['data'] 		= $this->m_map->map()->result();
-
-			$this->load->view('posko/template',$isi);
+		public function kategori()
+		{
+		$this->load->model('m_squrity');
+		$this->load->model('m_kategori');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/kategori';
+		$isi['data'] 		= $this->m_kategori->kategori();
+		$this->load->view('posko/template',$isi);
+		}
+		
+		public function map()
+		{
+		$this->load->model('m_squrity');
+		$this->load->model('m_map');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/map';
+		$isi['data'] 		= $this->m_map->map();
+		$this->load->view('posko/template',$isi);
 		}
 		
       public function logout() {

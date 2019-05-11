@@ -15,7 +15,7 @@
 						<?php } ?>
                 </p>
                 <hr>
-                <p><i class="fa fa-calendar"></i> Diterbitkan <?php echo parse_time($row->tanggal_timeline,'d F Y'); ?> pukul <?php echo parse_time($row->waktu_timeline,'H:i') ; ?> WIB</p>
+                <p><i class="fa fa-calendar"></i> Diterbitkan <?php echo parse_time($tanggal_timeline,'d F Y'); ?> pukul <?php echo parse_time($waktu_timeline,'H:i') ; ?> WIB</p>
 					
                 <hr>
                         <p align="justify"><?php echo $deskripsi_timeline ?></p>

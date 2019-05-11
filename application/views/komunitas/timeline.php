@@ -99,7 +99,7 @@
                                     </div>
                                     <div class="media-body">
                                         <p align="justify">
-                                           <?php echo word_limiter($row->deskripsi_timeline,20) ?>...<a class="modal-view" modal-size="modal-lg" modal-title="Detail Timeline" href="<?php echo base_url();?>pengguna/detailtimeline/<?php echo $row->id_timeline; ?>"; >Lihat selengkapnya</a> 
+                                           <?php echo word_limiter($row->deskripsi_timeline,20) ?>...<a class="modal-view" modal-size="modal-lg" modal-title="Detail Timeline" href="<?php echo base_url();?>komunitas/detailtimeline/<?php echo $row->id_timeline; ?>"; >Lihat selengkapnya</a> 
                                         </p>	</div>
 											</div>																		</div>
 														</div>
