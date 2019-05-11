@@ -1924,7 +1924,7 @@ class Admin extends CI_Controller {
 				$isi['tanggal_timeline']='';
 				$isi['waktu_timeline']='';
 		}
-		$this->load->view('admin/template',$isi);
+		$this->load->view('admin/ubah_timeline',$isi);
 		}
 		
 		public function edittimeline()
@@ -2038,7 +2038,7 @@ class Admin extends CI_Controller {
 				$isi['waktu_timeline']='';
 
 		}
-		$this->load->view('admin/template',$isi);
+		$this->load->view('admin/detail_timeline',$isi);
 		}
 		
 		public function donasi()

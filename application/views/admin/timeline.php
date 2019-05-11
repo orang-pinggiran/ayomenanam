@@ -43,8 +43,8 @@
                                             <td><?php echo ($row->tanggal_timeline != '0000-00-00' ? date('d-m-Y', strtotime($row->tanggal_timeline)) : "-" ); ?></td>
                                             <td><?php echo $row->waktu_timeline; ?></td>
 											<td>
-											<a href="<?php echo base_url();?>admin/detailtimeline/<?php echo $row->id_timeline; ?>" class="btn btn-warning btn-xs"><i class="material-icons">search</i><span>Detail</span></a>
-											<a href="<?php echo base_url();?>admin/ambiltimeline/<?php echo $row->id_timeline; ?>" class="btn btn-info btn-xs"><i class="material-icons">create</i><span>Ubah</span></a>
+											<a href="<?php echo base_url();?>admin/detailtimeline/<?php echo $row->id_timeline; ?>" modal-size="modal-lg" modal-title="Detail Timeline" class="btn btn-warning btn-xs modal-view"><i class="material-icons">search</i><span>Detail</span></a>
+											<a href="<?php echo base_url();?>admin/ambiltimeline/<?php echo $row->id_timeline; ?>" modal-size="modal-lg" class="btn btn-info btn-xs modal-view"><i class="material-icons">create</i><span>Ubah</span></a>
 											<a href="<?php echo base_url();?>admin/hapustimeline/<?php echo $row->id_timeline; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
 
 											</td>
