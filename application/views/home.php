@@ -462,8 +462,10 @@ Sehingga Masyarakat dapat dengan mudah ikut andil dalam kegiatan ini.</p>
       <form action="<?php echo base_url();?>auth/cek_login" method="post" role="form" class="modal-login">
       <div class="modal-body mx-3">
         <div class="alert bg-red login-gagal hide">
-          <span class="text-danger">Email atau Password Salah !</span>
-        </div>
+			<div class="alert alert-danger">
+			   <strong>Maaf</strong> <a href="javascript:void(0);" class="alert-link">email atau password Anda salah
+			</div>        
+		</div>
         <div class="form-group">
          <input type="email" class="form-control" name="email" id="email" placeholder="Email"/>
          <div class="validation"></div>
