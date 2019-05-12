@@ -39,6 +39,8 @@
 		<!-- Number Css -->
         <link href="<?php echo base_url(); ?>adminBSB/css/number.css" rel="stylesheet">
 
+		<!-- Menu Css -->
+        <link href="<?php echo base_url(); ?>adminBSB/css/menu.css" rel="stylesheet">
 		
     </head>
 

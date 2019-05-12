@@ -24,89 +24,117 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="home_with_icon_title">
 								<div class="body">
-							
-									<?php function format_indo1($date){
-											$BulanIndo = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
-
-											$tahun = substr($date, 0, 4);               
-											$bulan = substr($date, 5, 2);
-											$tgl   = substr($date, 8, 2);
-											$result = $tgl . "&nbsp;" . $BulanIndo[(int)$bulan-1]. "&nbsp;". $tahun;
-											return($result);
-											}?>
-									<?php 
-									$cek = $this->db->query('Select * from tbl_timeline, tbl_pengguna WHERE tbl_pengguna.id_pengguna=tbl_timeline.id_pengguna ');
+									<?php
+									$cek = $this->db->query('Select * from tbl_timeline, tbl_pengguna WHERE tbl_pengguna.id_pengguna=tbl_timeline.id_pengguna GROUP BY 
+									tbl_timeline.id_timeline DESC');
 									foreach ($cek->result() as $row) {
 										?>
 												 <!-- Blockquotes -->
             
 									<div class="body">
-										<blockquote class="m-b-25">
-									<div class="media">
+										<blockquote class="m-b-20">
+													
+													<div class="media">
                                     <div class="media-left">
 									<div class="image">
-										<img src="<?php echo base_url('adminBSB/images/'.$row->foto); ?>" width="35" height="35" alt="User" />
+										<img class="bulat" src="<?php echo base_url('adminBSB/images/'.$row->foto); ?>" width="35" height="35" alt="User" />
 									</div>                                        
 									</a>
                                     </div>
                                     <div class="media-body">
-                                        <h6 class="media-heading"><?php echo $row->nama; ?></h6>
-                                        
-										<p><?php echo format_indo1($row->tanggal_timeline); ?> pukul <?php echo $row->waktu_timeline ; ?> </p>
+                                       <div class="row">
+													<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+														<div class="card">
+															<div class="header bg-light-blue">
+																<h2>
+																	<?php echo $row->nama; ?> 
+																	<small><?php echo parse_time($row->tanggal_timeline,'d F Y'); ?> pukul <?php echo parse_time($row->waktu_timeline,'H:i') ; ?> WIB</small>
+																</h2>
+															</div>
+															<div class="body">
+									<div class="media">
+                                    <div class="media-left">
+									<div class="image">
+										<img src="<?php echo base_url('adminBSB/images/'.$row->foto_timeline); ?>" width="55" height="55" alt="User" />
+									</div>                                        
+									</a>
+                                    </div>
+                                    <div class="media-body">
                                         <p align="justify">
-                                           <?php echo word_limiter($row->deskripsi_timeline,20) ?>...<a href="#"; >Lihat selengkapnya</a> 
-                                        </p>
-										<table border="0" width="800" align="center">
-										<tr>
-										<td align="center">
-											<div class="column one single-photo-wrapper image">
-										<div class="image_frame scale-with-grid ">
-										<div class="image_wrapper">
-										<a href="<?php echo base_url('adminBSB/images/'.$row->foto_timeline); ?>" rel="prettyphoto"><div class="mask"></div>
-										<img style="border:2px solid black;" width="600" height="400" src="<?php echo base_url('adminBSB/images/'.$row->foto_timeline); ?>" 
-										class="scale-with-grid wp-post-image" alt="" srcset="<?php echo base_url('adminBSB/images/'.$row->foto_timeline); ?> 1198w, 
-										<?php echo base_url('adminBSB/images/'.$row->foto_timeline); ?> 50w" sizes="(max-width: 1198px) 100vw, 1198px" /></a></p>
-									</div>
-										</div>			
-											</div>
-											</td>
-											</tr>
-											</table>
+                                           <?php echo word_limiter($row->deskripsi_timeline,20) ?>...<a class="modal-view" modal-size="modal-lg" modal-title="Detail Timeline" href="<?php echo base_url();?>pengguna/detailtimeline/<?php echo $row->id_timeline; ?>"; >Lihat selengkapnya</a> 
+                                        </p>	</div>
+											</div>																		</div>
+														</div>
+													</div>
 												</div>
-											</div>										
-											</blockquote>
+												<!-- #END# Colored Card - With Loading -->		
+												</div>
+											</div>									
+										</blockquote>
 									</div>
 									<hr>
 									<!-- #END# Blockquotes -->
 									<?php } ?>
-										
+										</div>
+										</div>
                                 <div role="tabpanel" class="tab-pane fade" id="profile_with_icon_title">
-                                    <b>Profile Content</b>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
-                                        Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
-                                        pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
-                                        sadipscing mel.
-                                    </p>
+                                    								<div class="body">
+							
+									
+									<?php 
+									$cek2 = $this->db->query('Select * from tbl_event, tbl_pengguna WHERE tbl_pengguna.id_pengguna=tbl_event.id_pengguna GROUP BY tbl_event.id_event DESC');
+									foreach ($cek2->result() as $row2) {
+										?>
+												 <!-- Blockquotes -->
+            
+									<div class="body">
+										<blockquote class="m-b-20">
+													
+													<div class="media">
+                                    <div class="media-left">
+									<div class="image">
+										<img class="bulat" src="<?php echo base_url('adminBSB/images/'.$row2->foto); ?>" width="35" height="35" alt="User" />
+									</div>                                        
+									</a>
+                                    </div>
+                                    <div class="media-body">
+                                       <div class="row">
+													<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+														<div class="card">
+															<div class="header bg-orange">
+																<h2>
+																	<?php echo $row2->judul_event; ?> 
+																	<small><?php echo parse_time($row2->tgl_event,'d F Y'); ?> pukul <?php echo parse_time($row2->jam_event,'H:i') ; ?> WIB oleh <?php echo $row2->nama ; ?></small>
+																</h2>
+															</div>
+															<div class="body">
+									<div class="media">
+                                    <div class="media-left">
+									<div class="image">
+										<img src="<?php echo base_url('adminBSB/images/'.$row2->poster); ?>" width="55" height="55" alt="User" />
+									</div>                                        
+									</a>
+                                    </div>
+                                    <div class="media-body">
+                                        <p align="justify">
+                                           <?php echo word_limiter($row2->keterangan_event,20) ?>...<a class="modal-view" modal-size="modal-lg" modal-title="Detail Event" href="<?php echo base_url();?>pengguna/detailevent/<?php echo $row2->id_event; ?>"; >Lihat selengkapnya</a> 
+                                        </p>	</div>
+											</div>																		</div>
+														</div>
+													</div>
+												</div>
+												<!-- #END# Colored Card - With Loading -->		
+												</div>
+											</div>									
+										</blockquote>
+									</div>
+									<hr>
+									<!-- #END# Blockquotes -->
+									<?php } ?>
+										</div>
                                 </div>
-                                <div role="tabpanel" class="tab-pane fade" id="messages_with_icon_title">
-                                    <b>Message Content</b>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
-                                        Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
-                                        pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
-                                        sadipscing mel.
-                                    </p>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="settings_with_icon_title">
-                                    <b>Settings Content</b>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
-                                        Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
-                                        pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
-                                        sadipscing mel.
-                                    </p>
-                                </div>
+                                
+                                
                             </div>
                         </div>
                     </div>
