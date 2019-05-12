@@ -107,11 +107,11 @@
     <div class="container">
       <div class="about">
         <div class="row mar-bot40">
-          <div class="col-md-offset-3 col-md-6">
+          <div class="col-md-offset-4 col-md-6">
             <div class="title">
               <div class="wow bounceIn">
 
-                <h2 class="section-heading animated" data-animation="bounceInUp">Tentang Kami</h2>
+                <h2 class="section-heading animated" data-animation="bounceInUp">TENTANG KAMI</h2>
 
 
               </div>
@@ -142,7 +142,7 @@
 
             <div class="col-lg-6 ">
               <div class="company mar-left10">
-                <h4>AYO MENANAM </h4>
+                <h4>Ayo Menanam </h4>
                 <p align="justify">Gerakan Ayo Menanam merupakan program Pemerintah yang mendukung Program Smart City, Mengajak masyarakat menanam serta merawat pohon demi menumbuhkan budaya menanam dan merawat tumbuhan (pohon) sebagai lifestyle terlebih kepada anak – anak muda.
 Dalam program ini, pemerintah juga berupaya menghijaukan kembali Kabupaten Blitar.
 Pelaksanaan kegiatan menanam bekerjasama dengan komunitas pecinta alam dengan titik lokasi penanaman difokuskan pada lahan gundul.

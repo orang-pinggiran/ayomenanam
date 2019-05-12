@@ -68,7 +68,7 @@
 											<?php } else {
 											?>
 											<td>
-											<a href="<?php echo base_url();?>pengguna/detailadopsi/<?php echo $row->id_adopsi; ?>" modal-size="modal-lg" modal-title="Detail Timeline" class="btn btn-warning btn-xs modal-view"><i class="material-icons">search</i><span>Detail</span></a>
+											<a href="<?php echo base_url();?>pengguna/detailadopsi/<?php echo $row->id_adopsi; ?>" modal-size="modal-lg" modal-title="Detail Adopsi" class="btn btn-warning btn-xs modal-view"><i class="material-icons">search</i><span>Detail</span></a>
 											<a href="<?php echo base_url();?>pengguna/ambiladopsi/<?php echo $row->id_adopsi; ?>" modal-size="modal-lg"  class="btn btn-info btn-xs modal-view"><i class="material-icons">create</i><span>Ubah</span></a>
 											<a href="<?php echo base_url();?>pengguna/hapusadopsi/<?php echo $row->id_adopsi; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
 

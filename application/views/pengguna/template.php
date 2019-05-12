@@ -36,6 +36,9 @@
 		<!-- Map Css -->
         <link href="<?php echo base_url(); ?>adminBSB/css/map.css" rel="stylesheet">
 
+		<!-- Number Css -->
+        <link href="<?php echo base_url(); ?>adminBSB/css/number.css" rel="stylesheet">
+
 		
     </head>
 
