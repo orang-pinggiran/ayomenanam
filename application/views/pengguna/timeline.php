@@ -50,7 +50,7 @@
                         <div class="body">
                            
 
-																<div class="container-fluid mt-5 mb-5">
+								<div class="container-fluid mt-5 mb-5">
 								<div class="col-md-8 offset-md-6">
 									<ul class="timeline">
 									<?php

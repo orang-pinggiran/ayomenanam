@@ -36,6 +36,8 @@
 		<!-- Map Css -->
         <link href="<?php echo base_url(); ?>adminBSB/css/map.css" rel="stylesheet">
 
+		<!-- Menu Css -->
+        <link href="<?php echo base_url(); ?>adminBSB/css/menu.css" rel="stylesheet">
 		
     </head>
 

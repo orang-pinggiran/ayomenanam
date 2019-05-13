@@ -1229,6 +1229,17 @@ class Posko extends CI_Controller {
 		$this->load->view('posko/template',$isi);
 		}
 		
+		public function tambahtimeline()
+		{
+		$this->load->model('m_squrity');
+		$this->load->model('m_timeline');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/form_timeline';
+		$isi['data'] 		= $this->m_timeline->timeline();
+		$this->load->view('posko/form_timeline',$isi);
+		}
+		
       public function logout() {
 		$this->session->sess_destroy();
 		$this->session->set_userdata('is_login', FALSE);
