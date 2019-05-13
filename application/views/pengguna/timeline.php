@@ -75,6 +75,17 @@
 																					<?php echo $row->nama; ?> 
 																					<small><?php echo parse_time($row->tanggal_timeline,'d F Y'); ?> pukul <?php echo parse_time($row->waktu_timeline,'H:i') ; ?> WIB</small>
 																				</h2>
+																				<ul class="header-dropdown m-r--5">
+																					<li class="dropdown">
+																						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+																							<i class="material-icons">more_vert</i>
+																						</a>
+																						<ul class="dropdown-menu pull-right">
+																							<li><a class="modal-view" modal-size="modal-lg" modal-title="Ubah Timeline" href="<?php echo base_url();?>pengguna/ubahtimeline/<?php echo $row->id_timeline; ?>"; >Ubah</a></li>
+																							<li><a href="<?php echo base_url();?>pengguna/hapustimeline/<?php echo $row->id_timeline; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" >Hapus</a></li>
+																						</ul>
+																					</li>
+																				</ul>
 																			</div>
 																			<div class="body">
 													<div class="media">

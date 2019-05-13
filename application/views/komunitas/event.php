@@ -28,6 +28,17 @@
 																				<?php echo $row2->judul_event; ?> 
 																				<small><?php echo parse_time($row2->tgl_event,'d F Y'); ?> pukul <?php echo parse_time($row2->jam_event,'H:i') ; ?> WIB oleh <?php echo $row2->nama ; ?></small>
 																				</h2>
+																				<ul class="header-dropdown m-r--5">
+																				<li class="dropdown">
+																					<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+																						<i class="material-icons">more_vert</i>
+																					</a>
+																					<ul class="dropdown-menu pull-right">
+																						<li><a class="modal-view" modal-size="modal-lg" modal-title="Ubah Event" href="<?php echo base_url();?>komunitas/ambilevent/<?php echo $row2->id_event; ?>"; >Ubah</a></li>
+																						<li><a href="<?php echo base_url();?>komunitas/hapusevent/<?php echo $row2->id_event; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" >Hapus</a></li>
+																					</ul>
+																				</li>
+																			</ul>
 																			</div>
 																			<div class="body">
 													<div class="media">

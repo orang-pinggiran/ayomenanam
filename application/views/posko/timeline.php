@@ -1,56 +1,26 @@
 <?php echo $this->session->flashdata('info'); ?>
 
-<!-- Textarea -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>Tambah Timeline</h2>
-                        </div>
-                        <div class="body">
-                            <form class="form-horizontal" method="POST" action="<?php echo base_url();?>posko/simpantimeline" enctype="multipart/form-data">
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea href="<?php echo base_url();?>posko/tambahtimeline" rows="4" id="deskripsi_timeline" name="deskripsi_timeline" modal-size="modal-lg" class="form-control no-resize modal-view" placeholder="Tulis disini deskripsi timeline"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-							<div class="row clearfix">
-                                <div class="col-sm-12">
-                                        <div class="form-group">
-                                                <input type="file" id="foto_timeline" name="foto_timeline" class="form-control" placeholder="Foto">
-												<input type="hidden" id="id_timeline" name="id_timeline" class="form-control" placeholder="ID timeline">										
-												<input type="hidden" id="id_pengguna" name="id_pengguna" class="form-control" placeholder="ID pengguna">
-												<input type="hidden" id="tanggal_timeline" name="tanggal_timeline" value="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="Tanggal">										
-												<?php
-												date_default_timezone_set("Asia/Jakarta");
-												?>
-												<input type="hidden" id="waktu_timeline" name="waktu_timeline" value="<?php echo date("H:i:sa"); ?>" class="form-control" placeholder="Jam">										
-                                        </div>
-                                    </div>
-                                </div>
-								<div class="modal-footer">
-									<button type="submit" class="btn btn-primary pull-right">Bagikan</button>
-								</div>
-							</form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# Textarea -->
+
 
 <!-- Tabs With Icon Title -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         
-                        <div class="body">
-                           
 
-								<div class="container-fluid mt-5 mb-5">
+                    <div class="body">
+					<div class="col-xs-12 col-sm-6 align-left">
+                           <a href="<?php echo base_url();?>posko/tambahtimeline" class="btn bg-deep-orange waves-effect">
+                               <i class="material-icons">add</i>
+                                  <span>TAMBAH</span>
+                           </a>
+						<hr>
+                    </div>
+
+						
+                    </div>
+					
+					<div class="container-fluid mt-5 mb-5">
 								<div class="col-md-8 offset-md-6">
 									<ul class="timeline">
 									<?php
@@ -75,6 +45,17 @@
 																					<?php echo $row->nama; ?> 
 																					<small><?php echo parse_time($row->tanggal_timeline,'d F Y'); ?> pukul <?php echo parse_time($row->waktu_timeline,'H:i') ; ?> WIB</small>
 																				</h2>
+																				<ul class="header-dropdown m-r--5">
+																					<li class="dropdown">
+																						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+																							<i class="material-icons">more_vert</i>
+																						</a>
+																						<ul class="dropdown-menu pull-right">
+																							<li><a class="modal-view" modal-size="modal-lg" modal-title="Ubah Timeline" href="<?php echo base_url();?>posko/ubahtimeline/<?php echo $row->id_timeline; ?>"; >Ubah</a></li>
+																							<li><a href="<?php echo base_url();?>posko/hapustimeline/<?php echo $row->id_timeline; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" >Hapus</a></li>
+																						</ul>
+																					</li>
+																				</ul>
 																			</div>
 																			<div class="body">
 													<div class="media">
@@ -105,7 +86,6 @@
                   
                                 
                                 
-                        </div>
                     </div>
                 </div>
             </div>
