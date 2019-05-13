@@ -8046,3 +8046,7 @@ html.ie11 .bs-searchbox .form-control {
 .text-danger {
   color: #F44336 !important;
 }
+
+.no-shadow {
+	box-shadow:none !important;
+}
