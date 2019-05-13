@@ -12,6 +12,8 @@ class Posko extends CI_Controller {
 		if($level != 4) {
 			redirect(404);
 		}
+
+		$this->id_pengguna = $user_data['id_pengguna'];
 	}
 	
 	public function index()

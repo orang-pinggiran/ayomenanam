@@ -189,7 +189,7 @@
             <!-- Left Sidebar -->
             <aside id="leftsidebar" class="sidebar">
                 <!-- User Info -->
-				<?php $foto = $this->db->query('Select * from tbl_pengguna where level='.$_SESSION['level'].'');
+				<?php $foto = $this->db->query('Select * from tbl_pengguna where id_pengguna='.$this->id_pengguna.'');
                                                     foreach ($foto->result() as $row1 ) {
                                                        
                                                 ?>
@@ -200,7 +200,7 @@
 					</div>
                     <div class="info-container">
 					<?php 
-                                                    $pengguna = $this->db->query('Select * from tbl_pengguna where level='.$_SESSION['level'].'');
+                                                    $pengguna = $this->db->query('Select * from tbl_pengguna where id_pengguna='.$this->id_pengguna.'');
                                                     foreach ($pengguna->result() as $row ) {
                                                        
                                                 ?>

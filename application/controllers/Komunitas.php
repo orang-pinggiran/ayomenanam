@@ -12,6 +12,8 @@ class Komunitas extends CI_Controller {
 		if($level != 2) {
 			redirect(404);
 		}
+
+		$this->id_pengguna = $user_data['id_pengguna'];
 	}
 	
 	public function index()
