@@ -13,6 +13,8 @@ class Pengguna extends CI_Controller {
 		if($level != 3) {
 			redirect(404);
 		}
+
+		$this->id_pengguna = $user_data['id_pengguna'];
 	}
 	
 	public function index()
