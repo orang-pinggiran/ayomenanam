@@ -2479,7 +2479,7 @@ class Admin extends CI_Controller {
 				$isi['keterangan'] 		='';
 
 		}
-		$this->load->view('admin/template',$isi);
+		$this->load->view('admin/sertifikat_adopsi',$isi);
 		}
 		
 		public function logout() {

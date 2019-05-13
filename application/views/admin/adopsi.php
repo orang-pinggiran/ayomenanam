@@ -50,7 +50,7 @@
 												?>
 											<td>
 											<a href="<?php echo base_url();?>admin/detailadopsi/<?php echo $row->id_adopsi; ?>" class="btn btn-warning btn-xs"><i class="material-icons">search</i><span>Detail</span></a>
-											<a href="<?php echo base_url();?>admin/sertifikatadopsi/<?php echo $row->id_adopsi; ?>" class="btn bg-light-green btn-xs"><i class="material-icons">class</i><span>Sertifikat</span></a>
+											<a href="<?php echo base_url();?>admin/sertifikatadopsi/<?php echo $row->id_adopsi; ?>" modal-size="modal-lg" class="btn bg-light-green btn-xs modal-view"><i class="material-icons">class</i><span>Sertifikat</span></a>
 											<a href="<?php echo base_url();?>admin/ambiladopsi/<?php echo $row->id_adopsi; ?>" class="btn btn-info btn-xs"><i class="material-icons">create</i><span>Ubah</span></a>
 											<a href="<?php echo base_url();?>admin/hapusadopsi/<?php echo $row->id_adopsi; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
 

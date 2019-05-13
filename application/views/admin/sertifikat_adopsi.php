@@ -23,9 +23,6 @@ printing.close();
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
 				<div id="print2">
-                       <div class="header" align="center">
-                               <div class="font-42">SERTIFIKAT WALI POHON</div></p>
-                        </div>
                     <div class="body">
                         <div class="row">
 						   <?php 
