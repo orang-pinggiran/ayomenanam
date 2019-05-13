@@ -2,6 +2,16 @@
 							<div class="row clearfix">
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									<div class="card">
+									
+									<div class="body">
+									<div class="col-xs-12 col-sm-6 align-left">
+										   <a href="<?php echo base_url();?>komunitas/tambahevent" modal-size="modal-lg" class="btn bg-deep-orange waves-effect modal-view">
+											   <i class="material-icons">add</i>
+												  <span>TAMBAH</span>
+										   </a>
+										<hr>
+									</div>
+									</div>
 
 								<div class="container-fluid mt-5 mb-5">
 								<div class="col-md-8 offset-md-6">
@@ -34,7 +44,7 @@
 																						<i class="material-icons">more_vert</i>
 																					</a>
 																					<ul class="dropdown-menu pull-right">
-																						<li><a class="modal-view" modal-size="modal-lg" modal-title="Ubah Event" href="<?php echo base_url();?>komunitas/ambilevent/<?php echo $row2->id_event; ?>"; >Ubah</a></li>
+																						<li><a class="modal-view" modal-size="modal-lg" href="<?php echo base_url();?>komunitas/ambilevent/<?php echo $row2->id_event; ?>"; >Ubah</a></li>
 																						<li><a href="<?php echo base_url();?>komunitas/hapusevent/<?php echo $row2->id_event; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" >Hapus</a></li>
 																					</ul>
 																				</li>

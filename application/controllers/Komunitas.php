@@ -290,6 +290,91 @@ class Komunitas extends CI_Controller {
 		$this->load->view('komunitas/template',$isi);
 		}
 		
+		public function tambahevent()
+		{
+		$this->load->model('m_squrity');
+		$this->load->model('m_event');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'komunitas/form_event';
+		$isi['data'] 		= $this->m_event->event();
+		$this->load->view('komunitas/form_event',$isi);
+		}
+		
+		public function simpanevent()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+
+		 $config = array(
+                        'upload_path'=>'./adminBSB/images',
+                        'allowed_types'=>'jpg|png|jpeg',
+                        'max_size'=>2086
+                        );
+ 
+        $id_event				= $this->input->post('id_event'); 
+		$id_pengguna			= $_SESSION['id_pengguna'];
+		$judul_event	 		= $this->input->post('judul_event'); 
+		$poster 	    		= $this->input->post('poster');
+		$keterangan_event		= $this->input->post('keterangan_event');
+		$hari_event				= $this->input->post('hari_event');
+		$tanggal_event			= $this->input->post('tanggal_event');
+		$waktu_event		 	= $this->input->post('waktu_event');
+		$tempat_event		 	= $this->input->post('tempat_event');
+		$longitude_event		= $this->input->post('longitude_event');
+		$latitude_event		 	= $this->input->post('latitude_event');
+		$status 				= $this->input->post('status');
+		$tgl_event 				= $this->input->post('tgl_event');
+		$jam_event 				= $this->input->post('jam_event');
+
+        
+		
+ 
+        $this->load->library('upload',$config);
+       
+        if($this->upload->do_upload('poster')){
+ 
+        $finfo = $this->upload->data();
+        $nama_poster = $finfo['file_name'];
+ 
+        $data_event = array(
+                            'id_event'=>$id_event,
+                            'id_pengguna'=>$id_pengguna,
+                            'judul_event'=>$judul_event,
+                            'poster'=>$nama_poster,
+                            'keterangan_event'=>$keterangan_event,
+                            'hari_event'=>$hari_event,
+							'tanggal_event'=>$tanggal_event,
+							'waktu_event'=>$waktu_event,
+							'tempat_event'=>$tempat_event,
+							'longitude_event'=>$longitude_event,
+							'latitude_event'=>$latitude_event,
+							'status'=>$status,
+							'tgl_event'=>$tgl_event,
+							'jam_event'=>$jam_event
+							);
+ 
+        $config2 = array(
+                'source_image'=>'/adminBSB/images/'.$nama_poster,
+                'image_library'=>'gd2',
+                'new_image'=>'/adminBSB/images/',
+                'maintain_ratio'=>true,
+                'width'=>150,
+                'height'=>200
+            );
+       
+        $this->load->library('image_lib',$config2);
+        $this->image_lib->resize();    
+       
+        }
+       
+		$this->load->model('m_event');
+		$this->m_event->getinsert($data_event);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data event berhasil ditambahkan</div>');		
+		redirect(site_url('komunitas/event'));
+		}
+		
 		public function hapusevent($id_event)
 		{
 		$this->load->model('m_squrity');
@@ -680,6 +765,17 @@ class Komunitas extends CI_Controller {
 		$this->session->set_flashdata('info','<div class="alert alert-success">Data timeline berhasil dihapus</div>');		
 		redirect(site_url('komunitas/timeline'));
 	
+		}
+		
+		public function tambahtimeline()
+		{
+		$this->load->model('m_squrity');
+		$this->load->model('m_timeline');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'komunitas/form_timeline';
+		$isi['data'] 		= $this->m_timeline->timeline();
+		$this->load->view('komunitas/form_timeline',$isi);
 		}
 		
 		public function simpantimeline()

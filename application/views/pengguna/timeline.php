@@ -1,54 +1,19 @@
 <?php echo $this->session->flashdata('info'); ?>
 
-<!-- Textarea -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>Tambah Timeline</h2>
-                        </div>
-                        <div class="body">
-                            <form class="form-horizontal" method="POST" action="<?php echo base_url();?>pengguna/simpantimeline" enctype="multipart/form-data">
-                            <div class="row clearfix">
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <textarea rows="4" id="deskripsi_timeline" name="deskripsi_timeline" class="form-control no-resize" placeholder="Tulis disini deskripsi timeline"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-							<div class="row clearfix">
-                                <div class="col-sm-12">
-                                        <div class="form-group">
-                                                <input type="file" id="foto_timeline" name="foto_timeline" class="form-control" placeholder="Foto">
-												<input type="hidden" id="id_timeline" name="id_timeline" class="form-control" placeholder="ID timeline">										
-												<input type="hidden" id="id_pengguna" name="id_pengguna" class="form-control" placeholder="ID pengguna">
-												<input type="hidden" id="tanggal_timeline" name="tanggal_timeline" value="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="Tanggal">										
-												<?php
-												date_default_timezone_set("Asia/Jakarta");
-												?>
-												<input type="hidden" id="waktu_timeline" name="waktu_timeline" value="<?php echo date("H:i:sa"); ?>" class="form-control" placeholder="Jam">										
-                                        </div>
-                                    </div>
-                                </div>
-								<div class="modal-footer">
-									<button type="submit" class="btn btn-primary pull-right">Bagikan</button>
-								</div>
-							</form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- #END# Textarea -->
-
 		<!-- Tabs With Icon Title -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         
-                        <div class="body">
-                           
+                       <div class="body">
+						<div class="col-xs-12 col-sm-6 align-left">
+							   <a href="<?php echo base_url();?>pengguna/tambahtimeline" modal-size="modal-lg" class="btn bg-deep-orange waves-effect modal-view">
+								   <i class="material-icons">add</i>
+									  <span>TAMBAH</span>
+							   </a>
+							<hr>
+						</div>
+						</div>     
 
 								<div class="container-fluid mt-5 mb-5">
 								<div class="col-md-8 offset-md-6">
@@ -113,10 +78,7 @@
 					</ul>
 				</div>
 			</div>
-                  
-                                
-                                
-                        </div>
+                           
                     </div>
                 </div>
             </div>

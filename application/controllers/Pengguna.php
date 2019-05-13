@@ -381,6 +381,17 @@ class Pengguna extends CI_Controller {
 	
 		}
 		
+		public function tambahtimeline()
+		{
+		$this->load->model('m_squrity');
+		$this->load->model('m_timeline');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'pengguna/form_timeline';
+		$isi['data'] 		= $this->m_timeline->timeline();
+		$this->load->view('pengguna/form_timeline',$isi);
+		}
+		
 		public function simpantimeline()
 		{
 		$this->load->model('m_squrity');
