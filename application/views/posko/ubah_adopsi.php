@@ -1,7 +1,7 @@
 ﻿							<?php echo $this->session->flashdata('info'); ?>
 
                  <!-- Horizontal Layout -->
-                    <div class="card">
+                    <div class="card no-shadow">
                         <div class="header">
                             <h2>
                                 UBAH DATA ADOPSI POHON
