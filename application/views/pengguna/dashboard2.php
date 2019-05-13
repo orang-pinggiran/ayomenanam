@@ -34,7 +34,7 @@
 									<div class="body">
 										<blockquote class="m-b-20">
 													
-													<div class="media">
+									<div class="media">
                                     <div class="media-left">
 									<div class="image">
 										<img class="bulat" src="<?php echo base_url('adminBSB/images/'.$row->foto); ?>" width="35" height="35" alt="User" />
