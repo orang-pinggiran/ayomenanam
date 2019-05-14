@@ -96,7 +96,7 @@
                   <table style="width: 100% !important; min-width: 100%; max-width: 100%; background: #e64b3b;" width="100%" cellspacing="0" cellpadding="0" border="0" >
                     <tbody><tr>
                       <td align="left" valign="top"> <font style="font-size: 17px; line-height: 23px;" face="'Source Sans Pro', sans-serif" color="#7f7f7f">
-                              <P style="padding: 7px 20px 0px 20px; font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 12px; line-height: 13px; font-weight: 300; color:#fff">&copy; <?= date('Y') ?> Ayo Menanam Kabupaten Blitar</P>
+                              <P style="padding: 7px 20px 0px 20px; font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 12px; line-height: 13px; font-weight: 300; color:#fff">&copy; <?= date('Y') ?> Diskominfo Kabupaten Blitar</P>
                             </font>
                         <div style="height: 10px; line-height: 30px; font-size: 28px;">&nbsp;</div>
                       </td>
