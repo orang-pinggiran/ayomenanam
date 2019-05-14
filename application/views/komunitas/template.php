@@ -42,7 +42,7 @@
 		
     </head>
 
-    <body class="theme-red">
+    <body class="theme-light-green">
         <!-- Page Loader -->
         <div class="page-loader-wrapper">
             <div class="loader">
@@ -297,7 +297,7 @@
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active in active" id="skins">
                         <ul class="demo-choose-skin">
-                            <li data-theme="red" class="active">
+                            <li data-theme="red" >
                                 <div class="red"></div>
                                 <span>Red</span>
                             </li>
@@ -337,7 +337,7 @@
                                 <div class="green"></div>
                                 <span>Green</span>
                             </li>
-                            <li data-theme="light-green">
+                            <li data-theme="light-green" class="active">
                                 <div class="light-green"></div>
                                 <span>Light Green</span>
                             </li>
