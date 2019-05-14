@@ -63,6 +63,45 @@ class Auth extends CI_Controller {
 		}
 		echo json_encode($response);
 	}
+	
+	public function lupapassword()
+	{
+		$this->load->view('forgot-password');
+	}
+	
+	public function aksilupa() {
+		$email = $this->input->post('email');
+		if($email == '') {
+			show_404();
+			exit();
+		}
+
+		$cek = $this->db->query("Select * from tbl_pengguna where email='$email'");
+
+		 if($cek->num_rows()>0){
+			$data=$cek->row_array();
+			$data_pengguna = array(
+                            'id_pengguna'=>$data['id_pengguna'],
+                            'nama'=>$data['nama'],
+                            'email'=>$data['email'],
+                            'password'=>$data['password'],
+                            'level'=>$data['level'],
+							'alamat'=>$data['alamat'],
+							'tlp'=>$data['tlp'],
+							'foto'=>$data['foto']
+							);
+		
+
+			//$url = base_url('mailer/konfirmasi-reset-kata-sandi/');
+			//post_to_url($url, $data_pengguna);
+			$this->session->set_flashdata('info','<div class="alert alert-success">Tautan reset kata sandi berhasil dikirim ke '.$data['email'].' <br>Silahkan cek email anda</div>');		
+			redirect('auth/lupapassword');
+		}
+		else {
+			$this->session->set_flashdata('info','<div class="alert alert-success">Email tidak ditemukan</div>');		
+			redirect('auth/lupapassword');
+		}
+	}
 
 
 }

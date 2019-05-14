@@ -477,9 +477,10 @@ Sehingga Masyarakat dapat dengan mudah ikut andil dalam kegiatan ini.</p>
         </div>
 
       </div>
-      <div class="modal-footer d-flex justify-content-center">
-		<button type="submit" name="submit" class="line-btn green" id="submit" >Login</button>
-      </div>
+	  <div class="modal-footer d-flex justify-content-center">
+		<a href="<?php echo base_url();?>auth/lupapassword" type="button" name="lupa" class="line-btn red" id="lupa" >Lupa Password?</a>
+ 		<button type="submit" name="submit" class="line-btn green" id="submit" >Login</button><br>
+     </div>
 	  </form>
     </div>
   </div>
