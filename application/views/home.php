@@ -1,3 +1,9 @@
+<?php  
+$valid_duration             = 20;
+$valid_until                = date("Y-m-d H:i:s", strtotime("+$valid_duration minutes"));
+echo date("Y-m-d H:i:s").'<br>'; 
+echo $valid_until; exit();
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
