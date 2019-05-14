@@ -95,14 +95,13 @@ class Mailer extends CI_Controller {
 		//$registered_time            = $this->input->post('registered_time');
 		//$user_email                 = $this->input->post('user_email');
 		//$full_name                  = $this->input->post('full_name');
-		$user_id			=23;
-		$registered_time	='2019-04-29 14:55:36';
-		$user_email			='yesikatrestiarso@gmail.com';
-		$full_name			='Yesika Trestiarso';
+		$user_id			=$this->input->post('id_pengguna');
+		$registered_time	=$this->input->post('waktu_registrasi');
+		$user_email			=$this->input->post('email');
+		$full_name			=$this->input->post('nama');
 		// generate valid time duration for forgot password
 		$valid_duration             = 60;
 		$valid_until                = date("Y-m-d H:i:s", strtotime("+$valid_duration minutes"));
-		
 		// generate hash
 		$key                        = parse_time($registered_time, 'sih');
 		$hash_data                  = $user_id.'|'.$valid_until.'|'.$registered_time;
