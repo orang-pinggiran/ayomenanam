@@ -63,4 +63,27 @@ function parse_time($timestamp, $format = "l, d F Y - H:i")
 		$debug = '<pre>'.print_r($data, true).'</pre>';
 		return $debug;
 	}
+	
+	function insert_at_position($string, $insert, $position) {
+  	return substr_replace($string, $insert, $position, 0);
+}
+
+ function encrypt_id($id_user, $registered_time, $salt = '(^_^)') {
+	$id_hash    = base64_encode($id_user);
+	$time_hash = substr(md5($registered_time.$salt), 0, 10);
+
+	// get first number on time hash
+	$filtered_number = array_filter(preg_split("/\D+/", $time_hash));
+	$first_occurence = reset($filtered_number);
+	$first_number    = substr($first_occurence,0 , 1);
+	return insert_at_position($id_hash, $time_hash, $first_number);
+}
+
+function decrypt_id($hash, $registered_time, $salt = '(^_^)'){
+	$time_hash  = substr(md5($registered_time.$salt), 0, 10);
+	$id_hash    = str_replace($time_hash, '', $hash);
+	$decoded_id = base64_decode($id_hash);
+	// $result     = preg_replace('~[^\\pL\d]+~u', ' ', $decoded_id);
+	return $decoded_id;	
+}
 ?>

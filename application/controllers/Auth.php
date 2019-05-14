@@ -92,13 +92,13 @@ class Auth extends CI_Controller {
 							);
 		
 
-			//$url = base_url('mailer/konfirmasi-reset-kata-sandi/');
-			//post_to_url($url, $data_pengguna);
-			$this->session->set_flashdata('info','<div class="alert alert-success">Tautan reset kata sandi berhasil dikirim ke '.$data['email'].' <br>Silahkan cek email anda</div>');		
+			$url = base_url('mailer/konfirmasi-reset-kata-sandi/');
+			post_to_url($url, $data_pengguna);
+			$this->session->set_flashdata('info','<div class="alert alert-success">Tautan reset kata sandi berhasil dikirim ke '.$data['email'].'. Silahkan cek email anda</div>');		
 			redirect('auth/lupapassword');
 		}
 		else {
-			$this->session->set_flashdata('info','<div class="alert alert-success">Email tidak ditemukan</div>');		
+			$this->session->set_flashdata('info','<div class="alert alert-danger">Mohon maaf email tidak ditemukan</div>');		
 			redirect('auth/lupapassword');
 		}
 	}
