@@ -7517,8 +7517,9 @@ fieldset[disabled] .form-control {
     white-space: nowrap;
     position: relative;
     border-bottom: 1px solid #e9e9e9;
-    background: url("../images/user-img-background.jpg") no-repeat no-repeat;
-    height: 135px; }
+    background: url("../images/user-img-background.jpeg") no-repeat no-repeat;
+    height: 135px;
+	background-size: cover;	}
     .sidebar .user-info .image {
       margin-right: 12px;
       display: inline-block; }
@@ -7541,7 +7542,7 @@ fieldset[disabled] .form-control {
         overflow: hidden;
         font-size: 14px;
         max-width: 200px;
-        color: #fff; }
+        color: #333; }
       .sidebar .user-info .info-container .email {
         white-space: nowrap;
         -ms-text-overflow: ellipsis;
@@ -7550,7 +7551,7 @@ fieldset[disabled] .form-control {
         overflow: hidden;
         font-size: 12px;
         max-width: 200px;
-        color: #fff; }
+        color: #333; }
       .sidebar .user-info .info-container .user-helper-dropdown {
         position: absolute;
         right: -3px;
@@ -7720,7 +7721,8 @@ fieldset[disabled] .form-control {
 
 /* Login Page ================================== */
 .login-page {
-  background-color: #00BCD4;
+  background :url("../images/2.jpg") no-repeat no-repeat;
+  background-size: cover;
   padding-left: 0;
   max-width: 360px;
   margin: 5% auto;
@@ -7780,7 +7782,8 @@ fieldset[disabled] .form-control {
 
 /* Forgot Password Page ======================== */
 .fp-page {
-  background-color: #00BCD4;
+  background :url("../images/2.jpg") no-repeat no-repeat;
+  background-size: cover;
   padding-left: 0;
   max-width: 360px;
   margin: 5% auto;
