@@ -35,7 +35,7 @@
                   <table style="width: 100% !important; min-width: 100%; max-width: 100%; background: #f5f8fa;" width="100%" cellspacing="0" cellpadding="0" border="0">
                     <tbody><tr>
                       <td align="right" valign="top">
-                        <div class="top_pad" style="border-top: 4px solid #e64b3b;">&nbsp;</div>
+                        <div class="top_pad" style="border-top: 4px solid #8BC34A;">&nbsp;</div>
                       </td>
                     </tr>
                   </tbody></table>
@@ -71,7 +71,7 @@
                         <table width="100%" class="mob_btn" cellspacing="0" cellpadding="0" border="0">
                           <tbody><tr>
                             <td width="30%" align="center" valign="top">
-                              <a href="<?= $reset_password_url ?>" target="_blank" style="width:150px; background: #e64b3b; border-radius: 0px; display: block; border: 1px solid #e64b3b; border-radius: 4px; text-align:center; padding: 5px 6px; font-family: 'Source Sans Pro', Arial, Verdana, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 26px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;">
+                              <a href="<?= $reset_password_url ?>" target="_blank" style="width:150px; background: #8BC34A; border-radius: 0px; display: block; border: 1px solid #8BC34A; border-radius: 4px; text-align:center; padding: 5px 6px; font-family: 'Source Sans Pro', Arial, Verdana, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 26px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;">
                                 <font style="font-size: 26px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 600;" face="'Source Sans Pro', sans-serif" color="#ffffff">
                                   <span style="font-family: 'Source Sans Pro', Arial, Verdana, Tahoma, Geneva, sans-serif; color: #ffffff; font-size: 18px; line-height: 30px; text-decoration: none; white-space: nowrap; font-weight: 300;">Reset Kata Sandi</span>
                                 </font>
@@ -93,7 +93,7 @@
                       </td>
                     </tr>
                   </tbody></table>
-                  <table style="width: 100% !important; min-width: 100%; max-width: 100%; background: #e64b3b;" width="100%" cellspacing="0" cellpadding="0" border="0" >
+                  <table style="width: 100% !important; min-width: 100%; max-width: 100%; background: #8BC34A;" width="100%" cellspacing="0" cellpadding="0" border="0" >
                     <tbody><tr>
                       <td align="left" valign="top"> <font style="font-size: 17px; line-height: 23px;" face="'Source Sans Pro', sans-serif" color="#7f7f7f">
                               <P style="padding: 7px 20px 0px 20px; font-family: 'Source Sans Pro', Arial, Tahoma, Geneva, sans-serif; color: #1a1a1a; font-size: 12px; line-height: 13px; font-weight: 300; color:#fff">&copy; <?= date('Y') ?> Diskominfo Kabupaten Blitar</P>
