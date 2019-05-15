@@ -15,9 +15,9 @@
                                         <i class="material-icons">face</i> PROFIL
                                     </a>
                                 </li>
-                                <li role="presentation">
-                                    <a href="#messages_with_icon_title" data-toggle="tab">
-                                        <i class="material-icons">settings</i> UBAH PROFIL
+								<li role="presentation">
+                                    <a href="#struktur_with_icon_title" data-toggle="tab">
+                                        <i class="material-icons">domain</i> DATA POSKO
                                     </a>
                                 </li>
                                 <li role="presentation">
@@ -96,118 +96,171 @@
 																
 															</div>
 														</div>
+														<div class="row clearfix">
+														<div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3">
+															<a href="<?php echo base_url();?>posko/ambilpengguna/<?php echo $id_pengguna; ?>" modal-size="modal-lg" class="btn btn-primary m-t-15 waves-effect modal-view">Ubah</a>
+														</div>
+													</div>
 													</div>
 
 											</div>
 										</div>
 										<!-- #END# Horizontal Layout -->
                                 </div>
-                                <div role="tabpanel" class="tab-pane fade" id="messages_with_icon_title">
-                                    <form class="form-horizontal" method="POST" action="<?php echo base_url();?>posko/editprofil" enctype="multipart/form-data">
-                                <div class="row clearfix">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label>Nama Lengkap</label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" id="nama" name="nama" value="<?php echo $nama; ?>" class="form-control" placeholder="Nama lengkap">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-								<div class="row clearfix">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label>Alamat</label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" id="alamat" name="alamat" value="<?php echo $alamat; ?>" class="form-control" placeholder="Alamat">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-								<div class="row clearfix">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label>Nomor telepon</label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="text" id="tlp" name="tlp" value="<?php echo $tlp; ?>" class="form-control" placeholder="Nomor telepon">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-								<div class="row clearfix">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label>Email</label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="email" id="email" name="email" value="<?php echo $email; ?>" class="form-control" placeholder="Email">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-								<div class="row clearfix">
-                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
-                                        <label>Foto</label>
-                                    </div>
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="file" id="foto" name="foto" value="<?php echo $foto; ?>" class="form-control" placeholder="Foto">
-                                            </div>
-											 <div>
-										<?php 
-										if ($foto == '') {
-												# code...
-										} else {
-											?>
-											*) Foto sebelumnya <br> 
-											<img src="<?= base_url('adminBSB/images/'.$foto) ?>" width='90' height='90'>
-											<?php
+								
+								<div role="tabpanel" class="tab-pane fade" id="struktur_with_icon_title">
+							   <!-- Horizontal Layout -->
+								   <?php 
+								$cek = $this->db->query('Select * from tbl_posko, tbl_pengguna where tbl_posko.id_pengguna=tbl_pengguna.id_pengguna
+								AND tbl_pengguna.id_pengguna='.$id_pengguna.'');
+								if ($cek->num_rows()>0) {
+								foreach ($cek->result() as $row) {
+									?>
+										<div class="row clearfix">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="body">
+													   <div class="row">
+															<div class="col-xs-5 col-sm-9">
+																<div class="row clearfix">
+																<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+																	<label>Nama posko</label>
+																</div>
+																<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+																	<div class="form-group">
+																<div class="form-line disabled">                                                
+																	<input type="text" class="form-control" value="<?php echo $row->nama_posko;?>" disabled />
+																		</div>
+																	</div>
+																</div>
+															</div>
+															
+															<div class="row clearfix">
+																<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+																	<label>Alamat posko</label>
+																</div>
+																<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+																	<div class="form-group">
+																<div class="form-line disabled">                                                
+																	<input type="text" class="form-control" value="<?php echo $row->alamat_posko;?>" disabled />
+																		</div>
+																	</div>
+																</div>
+															</div>
+															
+															<div class="row clearfix">
+																<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+																</div>
+																<div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+																	<div class="form-group">
+																		<div id="map" style="width:100%; height:300px; border:1px solid green;"></div>
+																		<input type="hidden" name="latitude_posko" id="latitude_posko" value="<?php echo $row->latitude_posko;?>">
+																		<input type="hidden" name="longitude_posko" id="longitude_posko" value="<?php echo $row->longitude_posko;?>">
+																	</div>
+																	</div>
+															</div>
+																
+															<div class="row clearfix">
+																<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+																	<label>No. telpon</label>
+																</div>
+																<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+																	<div class="form-group">
+																<div class="form-line disabled">                                                
+																	<input type="text" class="form-control" value="<?php echo $row->tlp_posko;?>" disabled />
+																		</div>
+																	</div>
+																</div>
+															</div>	
+																
+															</div>
+														</div>
+														<div class="row clearfix">
+														<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">
+															<a href="<?php echo base_url();?>posko/ambilposko/<?php echo $id_pengguna; ?>" modal-size="modal-lg" class="btn btn-primary m-t-15 waves-effect modal-view">Ubah</a>
+														</div>
+													</div>
+													</div>
+
+											</div>
+										</div>
+										<!-- #END# Horizontal Layout -->
+										<?php
+											}
+												}
+													else
+												{ 
+										?>
+													<div class="row clearfix">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													<div class="body">
+													   <div class="row">
+															<div class="col-xs-5 col-sm-9">
+																<div class="row clearfix">
+																<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+																	<label>Nama posko</label>
+																</div>
+																<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+																	<div class="form-group">
+																<div class="form-line disabled">                                                
+																	<input type="text" class="form-control" value="-" disabled />
+																		</div>
+																	</div>
+																</div>
+															</div>
+															
+															<div class="row clearfix">
+																<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+																	<label>Alamat posko</label>
+																</div>
+																<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+																	<div class="form-group">
+																<div class="form-line disabled">                                                
+																	<input type="text" class="form-control" value="-" disabled />
+																		</div>
+																	</div>
+																</div>
+															</div>
+															
+															<div class="row clearfix">
+																<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+																</div>
+																<div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+																	<div class="form-group">
+																		<div id="map" style="width:100%; height:300px; border:1px solid green;"></div>
+																		<input type="hidden" name="latitude_posko" id="latitude_posko" >
+																		<input type="hidden" name="longitude_posko" id="longitude_posko" >
+																	</div>
+																	</div>
+															</div>
+																
+															<div class="row clearfix">
+																<div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+																	<label>No. telpon</label>
+																</div>
+																<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+																	<div class="form-group">
+																<div class="form-line disabled">                                                
+																	<input type="text" class="form-control" value="-" disabled />
+																		</div>
+																	</div>
+																</div>
+															</div>	
+
+															</div>
+														</div>
+														<div class="row clearfix">
+														<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">
+															<a href="<?php echo base_url();?>posko/ambilposko/<?php echo $id_pengguna; ?>" modal-size="modal-lg" class="btn btn-primary m-t-15 waves-effect modal-view">Ubah</a>
+														</div>
+													</div>
+													</div>
+
+											</div>
+										</div>
+										<!-- #END# Horizontal Layout -->
+										<?php
 										}
 										?>
-									</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-                                                <input type="hidden" id="password" name="password" value="<?php echo $password; ?>" class="form-control" placeholder="Password">
-                                        </div>
-                                    </div>
-                                </div>
-								
-								
-								<div class="row clearfix">
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-										<input type="hidden" id="id_pengguna" name="id_pengguna" value="<?php echo $id_pengguna; ?>" class="form-control" placeholder="ID pengguna">										
-                                        </div>
-                                    </div>
-                                </div>
-								<div class="row clearfix">
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-										<input type="hidden" id="level" name="level" value="<?php echo $level; ?>" class="form-control" placeholder="Level">										
-                                        </div>
-                                    </div>
-                                </div>
-								
-								
-								
-                                <div class="row clearfix">
-                                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
-                                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Ubah</button>
-                                    </div>
-                                </div>
-                            </form>
                                 </div>
                                
 								<!-- password -->
@@ -270,3 +323,7 @@
                 </div>
             </div>
             <!-- #END# Tabs With Icon Title -->
+			
+		<script src="<?php echo base_url(); ?>adminBSB/js/map.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6MLwjbd-cuOCFqZ48OWjmWGsyoZTlIag&libraries=places&callback=initAutocomplete" async defer></script>
+

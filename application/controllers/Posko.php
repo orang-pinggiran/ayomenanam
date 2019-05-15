@@ -1431,6 +1431,217 @@ class Posko extends CI_Controller {
 		redirect(site_url('posko/daftar_pohon'));
 	
 	}
+	
+	public function ambilpengguna()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/ubah_pengguna';
+		
+		$last_segment = $this->uri->total_segments();
+		$id_pengguna = $this->uri->segment($last_segment);
+		$this->db->where('id_pengguna',$id_pengguna);
+		$query =$this->db->get('tbl_pengguna');
+		if ($query->num_rows()>0) {
+			foreach ($query->result() as $row) {
+				$isi['id_pengguna']	 =$row->id_pengguna;
+				$isi['nama'] =$row->nama;
+				$isi['email'] =$row->email;
+				$isi['password'] =$row->password;
+				$isi['level'] =$row->level;
+				$isi['alamat'] =$row->alamat;
+				$isi['tlp'] =$row->tlp;
+				$isi['foto'] =$row->foto;
+			
+			}
+		}
+		else
+		{
+				$isi['id_pengguna']	='';
+				$isi['nama']='';
+				$isi['email']='';
+				$isi['password']='';
+				$isi['level']='';
+				$isi['alamat']='';
+				$isi['tlp']='';
+				$isi['foto']='';
+
+		}
+		$this->load->view('posko/ubah_pengguna',$isi);
+		}
+		
+		public function editpengguna()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+
+		 $config = array(
+                        'upload_path'=>'./adminBSB/images',
+                        'allowed_types'=>'jpg|png|jpeg',
+                        'max_size'=>2086
+                        );
+ 
+        $id_pengguna			= $this->input->post('id_pengguna'); 
+		$data['id_pengguna']    = $this->input->post('id_pengguna');
+		$data['nama']	 		= $this->input->post('nama'); 
+		$data['email']     		= $this->input->post('email');
+		$password 				= $this->input->post('password');
+		$level 					= $this->input->post('level');
+		$data['alamat']		 	= $this->input->post('alamat');
+		$data['tlp']		 	= $this->input->post('tlp');
+		$data['foto'] 			= $this->input->post('foto');
+        
+		$foto = $this->db->get_where('tbl_pengguna',$id_pengguna);
+   
+    if($foto->num_rows()>0){
+      $pros=$foto->row();
+      $name=$pros->gambar;
+     
+      if(file_exists($lok=FCPATH.'/adminBSB/images/'.$name)){
+        unlink($lok);
+      }
+      if(file_exists($lok=FCPATH.'/adminBSB/images/'.$name)){
+        unlink($lok);
+      }}
+ 
+        $this->load->library('upload',$config);
+       
+        if($this->upload->do_upload('foto')){
+ 
+        $finfo = $this->upload->data();
+        $nama_foto = $finfo['file_name'];
+ 
+        $data_pengguna = array(
+                            'id_pengguna'=>$id_pengguna,
+                            'nama'=>$data['nama'],
+                            'email'=>$data['email'],
+                            'password'=>$password,
+                            'level'=>$level,
+							'alamat'=>$data['alamat'],
+							'tlp'=>$data['tlp'],
+							'foto'=>$nama_foto
+							);
+ 
+        $config2 = array(
+                'source_image'=>'/adminBSB/images/'.$nama_foto,
+                'image_library'=>'gd2',
+                'new_image'=>'/adminBSB/images/',
+                'maintain_ratio'=>true,
+                'width'=>150,
+                'height'=>200
+            );
+       
+        $this->load->library('image_lib',$config2);
+        $this->image_lib->resize();    
+       
+        }else{
+        
+        $data_pengguna = array(
+                            'id_pengguna'=>$id_pengguna,
+                            'nama'=>$data['nama'],
+                            'email'=>$data['email'],
+                            'password'=>$password,
+                            'level'=>$level,
+							'alamat'=>$data['alamat'],
+							'tlp'=>$data['tlp']
+							);
+ 
+        }
+       
+        $this->load->model('m_pengguna');
+	
+		$this->m_pengguna->getupdate($id_pengguna,$data_pengguna);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data pengguna berhasil diubah</div>');		
+		
+		redirect('posko/profil/'.$id_pengguna);
+		}
+		
+		public function ambilposko()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/ubah_posko';
+		
+		$last_segment = $this->uri->total_segments();
+		$id_pengguna = $this->uri->segment($last_segment);
+		$this->db->where('id_pengguna',$id_pengguna);
+		$query =$this->db->get('tbl_pengguna');
+		if ($query->num_rows()>0) {
+			foreach ($query->result() as $row) {
+				$isi['id_pengguna']	 =$row->id_pengguna;
+				$isi['nama'] =$row->nama;
+				$isi['email'] =$row->email;
+				$isi['password'] =$row->password;
+				$isi['level'] =$row->level;
+				$isi['alamat'] =$row->alamat;
+				$isi['tlp'] =$row->tlp;
+				$isi['foto'] =$row->foto;
+			
+			}
+		}
+		else
+		{
+				$isi['id_pengguna']	='';
+				$isi['nama']='';
+				$isi['email']='';
+				$isi['password']='';
+				$isi['level']='';
+				$isi['alamat']='';
+				$isi['tlp']='';
+				$isi['foto']='';
+
+		}
+		$this->load->view('posko/ubah_posko',$isi);
+		}
+		
+		public function editposko()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+
+		$id_posko						= $this->input->post('id_posko'); 
+		$data['id_posko']	    		= $this->input->post('id_posko');
+		$data['nama_posko']				= $this->input->post('nama_posko'); 
+		$data['alamat_posko']			= $this->input->post('alamat_posko'); 
+		$data['longitude_posko']		= $this->input->post('longitude_posko'); 
+		$data['latitude_posko']			= $this->input->post('latitude_posko'); 
+		$id_pengguna					= $this->input->post('id_pengguna'); 
+		$data['tlp_posko']				= $this->input->post('tlp_posko'); 
+	
+		$this->load->model('m_posko');
+	
+		$this->m_posko->getupdate($id_posko,$data);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data posko berhasil diubah</div>');		
+		
+		redirect('posko/profil/'.$id_pengguna);
+		}
+		
+		public function saveposko()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+	
+		$id_pengguna					= $this->input->post('id_pengguna');
+		$data['id_pengguna']			= $this->input->post('id_pengguna');
+		$data['id_posko']				= $this->input->post('id_posko');
+		$data['nama_posko']				= $this->input->post('nama_posko');
+		$data['alamat_posko']			= $this->input->post('alamat_posko');
+		$data['longitude_posko']		= $this->input->post('longitude_posko');
+		$data['latitude_posko']			= $this->input->post('latitude_posko');
+		$data['tlp_posko']				= $this->input->post('tlp_posko');
+
+		$this->load->model('m_posko');
+		$this->m_posko->getinsert($data);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data posko berhasil ditambahkan</div>');		
+		redirect('posko/profil/'.$id_pengguna);
+		}
+		
+		
 		
       public function logout() {
 		$this->session->sess_destroy();
