@@ -13,7 +13,7 @@
                                     <h2>DAFTAR POHON</h2>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 align-right">
-                                    <a href="<?php echo base_url();?>admin/tambahpohon" class="btn bg-deep-orange waves-effect">
+                                    <a href="<?php echo base_url();?>admin/tambahpohon" modal-size="modal-lg" class="btn bg-deep-orange waves-effect modal-view">
                                         <i class="material-icons">add</i>
                                         <span>TAMBAH</span>
                                     </a>
@@ -45,8 +45,8 @@
                                             <td><?php echo $row->nama_jenis_pohon; ?></td>
                                             <td><?php echo $row->jumlah; ?></td>
                                             <td>
-											<a href="<?php echo base_url();?>admin/detailpohon/<?php echo $row->id_pohon; ?>" class="btn btn-warning btn-xs"><i class="material-icons">search</i><span>Detail</span></a>
-											<a href="<?php echo base_url();?>admin/ambilpohon/<?php echo $row->id_pohon; ?>" class="btn btn-info btn-xs"><i class="material-icons">create</i><span>Ubah</span></a>
+											<a href="<?php echo base_url();?>admin/detailpohon/<?php echo $row->id_pohon; ?>" modal-size="modal-lg" class="btn btn-warning btn-xs modal-view"><i class="material-icons">search</i><span>Detail</span></a>
+											<a href="<?php echo base_url();?>admin/ambilpohon/<?php echo $row->id_pohon; ?>" modal-size="modal-lg" class="btn btn-info btn-xs modal-view"><i class="material-icons">create</i><span>Ubah</span></a>
 											<a href="<?php echo base_url();?>admin/hapuspohon/<?php echo $row->id_pohon; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
 
 											</td>

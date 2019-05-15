@@ -227,15 +227,15 @@
 								
 									
 								</div>
-								 
-							</div>
-							<table border="0" width="1000">
+								<table border="0" width="1000">
 							<tr>
 							<td align="right">
                                         <a href="<?php echo base_url();?>admin/posko" class="btn bg-orange m-t-15 waves-effect">Kembali </button></a>
 								</td>
 								</tr>
-								</table>
+								</table> 
+							</div>
+							
                         </div>
 						
                     </div>

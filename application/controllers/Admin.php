@@ -910,7 +910,7 @@ class Admin extends CI_Controller {
 		$isi['email'] = $this->session->userdata('email');
 		$isi['content'] 	= 'admin/form_pohon';
 		$isi['data'] 		= $this->m_pohon->pohon();
-		$this->load->view('admin/template',$isi);
+		$this->load->view('admin/form_pohon',$isi);
 		}
 		
 	public function simpanpohon()
@@ -958,7 +958,7 @@ class Admin extends CI_Controller {
 				$isi['jumlah']='';
 
 		}
-		$this->load->view('admin/template',$isi);
+		$this->load->view('admin/ubah_pohon',$isi);
 		}
 		
 		public function editpohon()
@@ -1008,7 +1008,7 @@ class Admin extends CI_Controller {
 				$isi['jumlah']='';
 
 		}
-		$this->load->view('admin/template',$isi);
+		$this->load->view('admin/detail_pohon',$isi);
 		}
 		
 		public function profil()

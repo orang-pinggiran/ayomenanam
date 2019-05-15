@@ -183,8 +183,8 @@
 										    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                                             <div id="map" style="width:100%; height:300px; border:1px solid green;"></div>
 											<font color="red"><i><b>*)tandai alamat pada map diatas</i></b></font>
-											<input type="text" name="latitude_posko" id="latitude_posko" value="<?php echo $row->latitude_posko; ?>">
-											<input type="text" name="longitude_posko" id="longitude_posko" value="<?php echo $row->longitude_posko; ?>">
+											<input type="hidden" name="latitude_posko" id="latitude_posko" value="<?php echo $row->latitude_posko; ?>">
+											<input type="hidden" name="longitude_posko" id="longitude_posko" value="<?php echo $row->longitude_posko; ?>">
                                         </div>
 										</div>
                                 </div>
@@ -273,8 +273,8 @@
 										    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                                             <div id="map" style="width:100%; height:300px; border:1px solid green;"></div>
 											<font color="red"><i><b>*)tandai alamat pada map diatas</i></b></font>
-											<input type="text" name="latitude_posko" id="latitude_posko" >
-											<input type="text" name="longitude_posko" id="longitude_posko" >
+											<input type="hidden" name="latitude_posko" id="latitude_posko" >
+											<input type="hidden" name="longitude_posko" id="longitude_posko" >
                                         </div>
 										</div>
                                 </div>

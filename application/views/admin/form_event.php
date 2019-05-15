@@ -44,8 +44,8 @@
 										    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                                             <div id="map" style="width:100%; height:300px; border:1px solid green;"></div>
 											<font color="red"><i><b>*)tandai alamat pada map diatas</i></b></font>
-											<input type="text" name="latitude_event" id="latitude_event" >
-											<input type="text" name="longitude_event" id="longitude_event">
+											<input type="hidden" name="latitude_event" id="latitude_event" >
+											<input type="hidden" name="longitude_event" id="longitude_event">
                                         </div>
 										</div>
                                 </div>
