@@ -13,7 +13,7 @@
                                     <h2>DATA JENIS POHON</h2>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 align-right">
-                                    <a href="<?php echo base_url();?>admin/tambahjenis" class="btn bg-deep-orange waves-effect">
+                                    <a href="<?php echo base_url();?>admin/tambahjenis" modal-size="modal-lg" class="btn bg-deep-orange waves-effect modal-view">
                                         <i class="material-icons">add</i>
                                         <span>TAMBAH</span>
                                     </a>
@@ -41,7 +41,7 @@
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $row->nama_jenis_pohon; ?></td>
                                             <td>
-											<a href="<?php echo base_url();?>admin/ambiljenis/<?php echo $row->id_jenis_pohon; ?>" class="btn btn-info btn-xs"><i class="material-icons">create</i><span>Ubah</span></a>
+											<a href="<?php echo base_url();?>admin/ambiljenis/<?php echo $row->id_jenis_pohon; ?>" modal-size="modal-lg" class="btn btn-info btn-xs modal-view"><i class="material-icons">create</i><span>Ubah</span></a>
 											<a href="<?php echo base_url();?>admin/hapusjenis/<?php echo $row->id_jenis_pohon; ?>" onclick="return confirm('anda yakin akan menghapus data ini');" class="btn btn-danger btn-xs"><i class="material-icons">delete</i><span>Hapus</span></a>
 
 											</td>

@@ -533,7 +533,7 @@ class Admin extends CI_Controller {
 		$isi['email'] = $this->session->userdata('email');
 		$isi['content'] 	= 'admin/form_jenis';
 		$isi['data'] 		= $this->m_jenis->jenis_pohon();
-		$this->load->view('admin/template',$isi);
+		$this->load->view('admin/form_jenis',$isi);
 		}
 		
 		 public function simpanjenis()
@@ -584,7 +584,7 @@ class Admin extends CI_Controller {
 				$isi['id_jenis_pohon']	='';
 				$isi['nama_jenis_pohon']='';
 		}
-		$this->load->view('admin/template',$isi);
+		$this->load->view('admin/ubah_jenis',$isi);
 		}
 		
 		public function editjenis()
@@ -2480,6 +2480,54 @@ class Admin extends CI_Controller {
 
 		}
 		$this->load->view('admin/sertifikat_adopsi',$isi);
+		}
+		
+		public function download_sertifikat()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'admin/sertifikat_adopsi';
+		
+		$last_segment = $this->uri->total_segments();
+		$id_adopsi = $this->uri->segment($last_segment);
+		$this->db->where('id_adopsi',$id_adopsi);
+		$this->load->helper('download_helper');
+		$query =$this->db->get('tbl_adopsi');
+		if ($query->num_rows()>0) {
+			foreach ($query->result() as $row) {
+				$isi['id_adopsi']	 	=$row->id_adopsi;
+				$isi['id_event'] 		=$row->id_event;
+				$isi['id_pengguna'] 	=$row->id_pengguna;
+				$isi['jenis_adopsi'] 	=$row->jenis_adopsi;
+				$isi['id_posko']		=$row->id_posko;
+				$isi['id_jenis_pohon'] 	=$row->id_jenis_pohon;
+				$isi['nama_pohon'] 		=$row->nama_pohon;
+				$isi['jumlah_pohon'] 	=$row->jumlah_pohon;
+				$isi['tgl_adopsi'] 		=$row->tgl_adopsi;
+				$isi['waktu_adopsi'] 	=$row->waktu_adopsi;
+				$isi['status_adopsi'] 	=$row->status_adopsi;
+				$isi['keterangan'] 		=$row->keterangan;
+			}
+		}
+		else
+		{
+				
+				$isi['id_adopsi']	 	='';
+				$isi['id_event'] 		='';
+				$isi['id_pengguna'] 	='';
+				$isi['jenis_adopsi'] 	='';
+				$isi['id_posko'] 		='';
+				$isi['id_jenis_pohon'] 	='';
+				$isi['nama_pohon'] 		='';
+				$isi['jumlah_pohon'] 	='';
+				$isi['tgl_adopsi'] 		='';
+				$isi['waktu_adopsi'] 	='';
+				$isi['status_adopsi'] 	='';
+				$isi['keterangan'] 		='';
+
+		}
+		force_download('admin/sertifikat_adopsi',$isi);		
 		}
 		
 		public function logout() {
