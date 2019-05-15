@@ -1240,6 +1240,198 @@ class Posko extends CI_Controller {
 		$this->load->view('posko/form_timeline',$isi);
 		}
 		
+		public function jenis_pohon()
+	{
+		$this->load->model('m_squrity');
+		$this->load->model('m_jenis');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/jenis_pohon';
+		$isi['data'] 		= $this->m_jenis->jenis_pohon();
+		$this->load->view('posko/template',$isi);
+		}
+		
+		public function tambahjenis()
+	{
+		$this->load->model('m_squrity');
+		$this->load->model('m_jenis');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/form_jenis';
+		$isi['data'] 		= $this->m_jenis->jenis_pohon();
+		$this->load->view('posko/form_jenis',$isi);
+		}
+		
+		public function simpanjenis()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+	
+		$data['id_jenis_pohon']		= $this->input->post('id_jenis_pohon');
+		$data['nama_jenis_pohon']	= $this->input->post('nama_jenis_pohon');
+
+		$this->load->model('m_jenis');
+		$this->m_jenis->getinsert($data);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data jenis pohon berhasil ditambahkan</div>');		
+		redirect(site_url('posko/jenis_pohon'));
+		}
+		
+		public function hapusjenis($id_jenis_pohon)
+	{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$this->load->model('m_jenis');
+		$this->m_jenis->getdelete($id_jenis_pohon);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data jenis pohon berhasil dihapus</div>');		
+		redirect(site_url('posko/jenis_pohon'));
+	
+	}
+	
+		public function ambiljenis()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/ubah_jenis';
+		
+		$last_segment = $this->uri->total_segments();
+		$id_jenis_pohon = $this->uri->segment($last_segment);
+		$this->db->where('id_jenis_pohon',$id_jenis_pohon);
+		$query =$this->db->get('jenis_pohon');
+		if ($query->num_rows()>0) {
+			foreach ($query->result() as $row) {
+				$isi['id_jenis_pohon']	 =$row->id_jenis_pohon;
+				$isi['nama_jenis_pohon'] =$row->nama_jenis_pohon;
+			}
+		}
+		else
+		{
+				$isi['id_jenis_pohon']	='';
+				$isi['nama_jenis_pohon']='';
+		}
+		$this->load->view('posko/ubah_jenis',$isi);
+		}
+		
+		public function editjenis()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+
+		$id_jenis_pohon				= $this->input->post('id_jenis_pohon'); 
+		$data['id_jenis_pohon']    	= $this->input->post('id_jenis_pohon');
+		$data['nama_jenis_pohon']	= $this->input->post('nama_jenis_pohon'); 
+	
+		$this->load->model('m_jenis');
+	
+		$this->m_jenis->getupdate($id_jenis_pohon,$data);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Nama jenis pohon berhasil diubah</div>');		
+		
+		redirect(site_url('posko/jenis_pohon'));
+		}
+		
+		public function daftar_pohon()
+	{
+		$this->load->model('m_squrity');
+		$this->load->model('m_pohon');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/daftar_pohon';
+		$isi['data'] 		= $this->m_pohon->pohon();
+		$this->load->view('posko/template',$isi);
+		}
+		
+		public function tambahpohon()
+	{
+		$this->load->model('m_squrity');
+		$this->load->model('m_pohon');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/form_pohon';
+		$isi['data'] 		= $this->m_pohon->pohon();
+		$this->load->view('posko/form_pohon',$isi);
+		}
+		
+		public function simpanpohon()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+	
+		$data['id_pohon']				= $this->input->post('id_pohon');
+		$data['id_posko']				= $this->input->post('id_posko');
+		$data['id_jenis_pohon']			= $this->input->post('id_jenis_pohon');
+		$data['jumlah']					= $this->input->post('jumlah');
+
+		$this->load->model('m_pohon');
+		$this->m_pohon->getinsert($data);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data pohon berhasil ditambahkan</div>');		
+		redirect(site_url('posko/daftar_pohon'));
+		}
+		
+		public function ambilpohon()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/ubah_pohon';
+		
+		$last_segment = $this->uri->total_segments();
+		$id_pohon = $this->uri->segment($last_segment);
+		$this->db->where('id_pohon',$id_pohon);
+		$query =$this->db->get('tbl_pohon');
+		if ($query->num_rows()>0) {
+			foreach ($query->result() as $row) {
+				$isi['id_pohon']	 =$row->id_pohon;
+				$isi['id_posko'] =$row->id_posko;
+				$isi['id_jenis_pohon'] =$row->id_jenis_pohon;
+				$isi['jumlah'] =$row->jumlah;
+			
+			}
+		}
+		else
+		{
+				$isi['id_pohon']	='';
+				$isi['id_posko']='';
+				$isi['id_jenis_pohon']='';
+				$isi['jumlah']='';
+
+		}
+		$this->load->view('posko/ubah_pohon',$isi);
+		}
+		
+		public function editpohon()
+		{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+
+		$id_pohon						= $this->input->post('id_pohon'); 
+		$data['id_pohon']	    		= $this->input->post('id_pohon');
+		$data['id_posko']				= $this->input->post('id_posko'); 
+		$data['id_jenis_pohon']			= $this->input->post('id_jenis_pohon'); 
+		$data['jumlah']					= $this->input->post('jumlah'); 
+	
+		$this->load->model('m_pohon');
+	
+		$this->m_pohon->getupdate($id_pohon,$data);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data pohon berhasil diubah</div>');		
+		
+		redirect('posko/daftar_pohon');
+		}
+		
+		public function hapuspohon($id_pohon)
+	{
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$this->load->model('m_pohon');
+		$this->m_pohon->getdelete($id_pohon);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data pohon berhasil dihapus</div>');		
+		redirect(site_url('posko/daftar_pohon'));
+	
+	}
+		
       public function logout() {
 		$this->session->sess_destroy();
 		$this->session->set_userdata('is_login', FALSE);

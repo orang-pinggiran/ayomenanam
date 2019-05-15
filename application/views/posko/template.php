@@ -229,6 +229,20 @@
                                 <span>Beranda</span>
                             </a>
                         </li>
+						<li>
+                            <a href="javascript:void(0);" class="menu-toggle">
+                                <i class="material-icons">business_center</i>
+                                <span>Bank Pohon</span>
+                            </a>
+							 <ul class="ml-menu">
+                                <li>
+                                    <a href="<?php echo base_url();?>posko/jenis_pohon">Jenis Pohon</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url();?>posko/daftar_pohon">Daftar Pohon</a>
+                                </li>
+                            </ul>
+                        </li>
 
 					   <li>
                             <a href="javascript:void(0);" class="menu-toggle">

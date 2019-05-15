@@ -548,7 +548,7 @@ class Admin extends CI_Controller {
 		$this->load->model('m_jenis');
 		$this->m_jenis->getinsert($data);
 		$this->session->set_flashdata('info','<div class="alert alert-success">Data jenis pohon berhasil ditambahkan</div>');		
-		redirect(site_url('admin/tambahjenis'));
+		redirect(site_url('admin/jenis_pohon'));
 		}
 		
 		public function hapusjenis($id_jenis_pohon)
@@ -602,7 +602,7 @@ class Admin extends CI_Controller {
 		$this->m_jenis->getupdate($id_jenis_pohon,$data);
 		$this->session->set_flashdata('info','<div class="alert alert-success">Nama jenis pohon berhasil diubah</div>');		
 		
-		redirect('admin/ambiljenis/'.$id_jenis_pohon);
+		redirect(site_url('posko/jenis_pohon'));
 		}
 		
 		public function posko()
@@ -927,7 +927,7 @@ class Admin extends CI_Controller {
 		$this->load->model('m_pohon');
 		$this->m_pohon->getinsert($data);
 		$this->session->set_flashdata('info','<div class="alert alert-success">Data pohon berhasil ditambahkan</div>');		
-		redirect(site_url('admin/tambahposko'));
+		redirect(site_url('admin/daftar_pohon'));
 		}
 		
 		public function ambilpohon()
