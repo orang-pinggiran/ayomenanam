@@ -1837,7 +1837,7 @@ class Admin extends CI_Controller {
 		$isi['email'] = $this->session->userdata('email');
 		$isi['content'] 	= 'admin/form_timeline';
 		$isi['data'] 		= $this->m_timeline->timeline();
-		$this->load->view('admin/template',$isi);
+		$this->load->view('admin/form_timeline',$isi);
 		}
 		
 		public function simpantimeline()

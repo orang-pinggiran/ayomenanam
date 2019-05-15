@@ -13,7 +13,7 @@
                                     <h2>DAFTAR TIMELINE</h2>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 align-right">
-                                    <a href="<?php echo base_url();?>admin/tambahtimeline" class="btn bg-deep-orange waves-effect">
+                                    <a href="<?php echo base_url();?>admin/tambahtimeline" modal-size="modal-lg" class="btn bg-deep-orange waves-effect modal-view">
                                         <i class="material-icons">add</i>
                                         <span>TAMBAH</span>
                                     </a>
