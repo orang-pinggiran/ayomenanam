@@ -161,19 +161,10 @@
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label>Tanggal adopsi</label>
                                     </div>
-									<?php function format_indo1($date){
-									$BulanIndo = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
-
-									$tahun = substr($date, 0, 4);               
-									$bulan = substr($date, 5, 2);
-									$tgl   = substr($date, 8, 2);
-									$result = $tgl . "&nbsp;" . $BulanIndo[(int)$bulan-1]. "&nbsp;". $tahun;
-									return($result);
-									}?>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                         <div class="form-group">
 									<div class="form-line disabled">                                                
-										 <input type="text" class="form-control" value="<?php echo format_indo1($tgl_adopsi); ?>" disabled />
+										 <input type="text" class="form-control" value="<?php echo parse_time($tgl_adopsi,'d F Y'); ?>" disabled />
                                             </div>
                                         </div>
                                     </div>
@@ -186,7 +177,7 @@
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                         <div class="form-group">
 									<div class="form-line disabled">                                                
-										 <input type="text" class="form-control" value="<?php echo $row->waktu_adopsi;?>" disabled />
+										 <input type="text" class="form-control" value="<?php echo parse_time($row->waktu_adopsi,'H:i');?> WIB" disabled />
                                             </div>
                                         </div>
                                     </div>
