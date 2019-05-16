@@ -186,6 +186,3 @@
 
 
 	
-		<script src="<?php echo base_url(); ?>adminBSB/js/map.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6MLwjbd-cuOCFqZ48OWjmWGsyoZTlIag&libraries=places&callback=initAutocomplete" async defer></script>
-

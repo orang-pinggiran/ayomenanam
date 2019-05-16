@@ -189,7 +189,7 @@
             <!-- Left Sidebar -->
             <aside id="leftsidebar" class="sidebar">
                 <!-- User Info -->
-				<?php $foto = $this->db->query('Select * from tbl_pengguna where id_pengguna='.$this->id_pengguna.'');
+				<?php $foto = $this->db->query('Select * from tbl_pengguna where id_pengguna='.$_SESSION['id_pengguna'].'');
                                                     foreach ($foto->result() as $row1 ) {
                                                        
                                                 ?>
@@ -200,19 +200,20 @@
 					</div>
                     <div class="info-container">
 					<?php 
-                                                    $pengguna = $this->db->query('Select * from tbl_pengguna where id_pengguna='.$this->id_pengguna.'');
+                                                    $pengguna = $this->db->query('Select * from tbl_pengguna where id_pengguna='.$_SESSION['id_pengguna'].'');
                                                     foreach ($pengguna->result() as $row ) {
                                                        
                                                 ?>
                         <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $row->nama;?></div>
-						<?php }?>
-                        <div class="email"><?php echo $email; ?></div>
+						
+                        <div class="email"><?php echo $row->email; ?></div>
                         <div class="btn-group user-helper-dropdown">
                             <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                             <ul class="dropdown-menu pull-right">
                                 <li><a href="<?php echo base_url();?>admin/profil/<?php echo $row->id_pengguna; ?>"><i class="material-icons">person</i>Profil</a></li>
                                 <li><a href="<?php echo base_url('admin/logout'); ?>"><i class="material-icons">input</i>Logout</a></li>
                             </ul>
+							<?php }?>
                         </div>
                     </div>
                 </div>
