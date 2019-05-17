@@ -2533,6 +2533,45 @@ class Admin extends CI_Controller {
 		export_pdf($halaman,'sertifikat_adopsi');
 		}
 		
+		public function diagrampohon() {
+		$this->load->model('m_grafik');		
+		$id_posko          = $this->input->post('id_posko');
+	
+		$statistik            = $this->m_grafik->hasilcari($id_posko);
+		$grafik_statistik     = array();
+		//echo debug($statistik);
+		//exit();
+		foreach ($statistik as $key => $item) {
+			foreach ($item as $key2 => $item2) {
+				$content[$key2][] = $item2;
+			}
+		}
+		$x     = 0;
+		$color = array('#36a2eb');
+		foreach ($content as $key => $val) {
+			if($key == 'nama_jenis_pohon') {
+				$grafik_statistik['labels'] = $val;
+			}
+			if($key == 'jumlah') {
+				$grafik_statistik['datasets'][] = array(
+					'label'           => str_replace('_', ' ', $key),
+					'backgroundColor' => $color[$x],
+					'borderColor'     => $color[$x],
+					'lineTension'     => 0,
+					'borderWidth'	  => 1.3,
+					'data'            => $val,
+					'fill'            => false
+				);
+			$x++;
+			}
+		}
+
+		$data['grafik_statistik'] = $grafik_statistik;
+		//echo debug($grafik_statistik);
+		//exit();
+		echo json_encode($data['grafik_statistik']);
+	}
+		
 		public function logout() {
 		$this->session->sess_destroy();
 		$this->session->set_userdata('is_login', FALSE);

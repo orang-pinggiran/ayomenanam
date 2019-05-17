@@ -125,4 +125,40 @@ if (! function_exists('export_pdf'))
 		$CI->dompdf_lib->stream($filename.'.pdf');
 	}
 }
+
+function extract_where_query($where = array())
+{
+	global $CI;
+	$extract_where = '';
+	if (!empty($where)) {
+		foreach ($where as $field => $value) {
+			$field = trim($field);
+			if ($extract_where == '') {
+				$extract_where = 'WHERE ';
+			} else {
+				if (substr(strtolower($field), 0, 3) == 'or ') {
+					$extract_where .= ' OR ';
+					$field = str_replace('or ', '', strtolower($field));
+				} else {
+					$extract_where .= ' AND ';
+				}
+			}
+
+			if (!preg_match('/(\s|<|>|!|=|is null|is not null)/i', $field)) {
+				$operator = ' = ';
+			} else {
+				$operator = '';
+			}
+			$pattern = '/(\)$)/';
+			if (preg_match($pattern, $field)) {
+				$enclosed = ')';
+				$field = preg_replace($pattern, '', $field);
+			} else {
+				$enclosed = '';
+			}
+			$extract_where .= "$field $operator '".$CI->db->escape_str($value)."'".$enclosed;
+		}
+	}
+	return $extract_where;
+}
 ?>

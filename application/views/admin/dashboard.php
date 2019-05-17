@@ -61,21 +61,22 @@
                             <h2>GRAFIK POHON</h2>
                         </div>
                     </div>
-                    <ul class="header-dropdown m-r--5">
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="material-icons">more_vert</i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
-                                <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
-                                <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
                 </div>
                 <div class="body">
-                    <div id="real_time_chart" class="dashboard-flot-chart" style="padding: 0px; position: relative;"><canvas class="flot-base" width="861" height="275" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 861px; height: 275px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 258px; left: 23px; text-align: center;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 258px; left: 102px; text-align: center;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 258px; left: 185px; text-align: center;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 258px; left: 267px; text-align: center;">30</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 258px; left: 350px; text-align: center;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 258px; left: 432px; text-align: center;">50</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 258px; left: 515px; text-align: center;">60</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 258px; left: 597px; text-align: center;">70</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 258px; left: 680px; text-align: center;">80</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 258px; left: 762px; text-align: center;">90</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 78px; top: 258px; left: 841px; text-align: center;">100</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 245px; left: 14px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 196px; left: 8px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 147px; left: 8px; text-align: right;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 98px; left: 8px; text-align: right;">60</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 49px; left: 8px; text-align: right;">80</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 1px; text-align: right;">100</div></div></div><canvas class="flot-overlay" width="861" height="275" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 861px; height: 275px;"></canvas></div>
+				<div class="col-sm-2">
+                    <select class="form-control show-tick filter-posko">
+                        <option value="all">Semua Posko</option>
+						<?php 
+                        $posko = $this->db->query('Select * from tbl_posko, tbl_pohon where tbl_posko.id_posko=tbl_pohon.id_posko GROUP BY tbl_posko.id_posko');
+                        foreach ($posko->result() as $row ) {
+						?>
+						<option value="<?php echo $row->id_posko;?>"><?php echo $row->nama_posko;?></option>
+                        <?php }?>						
+                    </select>
+                 </div>			
+				 <div class="area-diagram-pohon">
+				    <canvas width="1000" height="300" id="chart-statistik-pohon"></canvas>
+			  </div>
                 </div>
             </div>
         </div>
@@ -296,3 +297,91 @@
         <!-- #END# Browser Usage -->
     </div>
 </div>
+
+        <!-- Grafik Js -->
+        <script src="<?php echo base_url(); ?>adminBSB/js/chart.bundle.js"></script>
+		
+		<script>
+		var base_url='<?php echo base_url();?>';
+		
+		function clear_chart_statistik_pohon() {
+			$('.area-diagram-pohon').html('');
+			var elm = '<canvas id="chart-statistik-pohon" height="300" width="1000"></canvas>';
+			$('.area-diagram-pohon').append(elm);
+		}
+		
+		function initialize_diagram_statistik_pohon(id_posko = 'all') {
+		var data = {'id_posko': id_posko};
+		var url  = base_url+'admin/diagrampohon/';
+		
+		$.post(url, data).done(function(res) {
+			var chart_data = $.parseJSON(res); 
+			var ctx        = document.getElementById("chart-statistik-pohon");
+			var myChart    = new Chart(ctx, {
+				type: 'line',
+				animation: true,
+				data: chart_data,
+				barValueSpacing: 5,
+				barDatasetSpacing: 4,
+				options: {
+					legend: {
+						position: "bottom",
+						display:true
+					},
+					animation: {
+						onProgress: function() {
+							var ctx = this.chart.ctx;
+							var y = this.scales['y-axis-0'].height + this.scales['y-axis-0'].top + 80;
+							ctx.fillText('', 50,y);
+						},
+					},
+					responsive: true,
+					tooltips: {
+						mode: 'index',
+						intersect: false,
+					},
+					scales: {
+						xAxes: [{
+							display: true,
+							scaleLabel: {
+								display: true,
+								labelString: '- Jenis Pohon -'
+							}
+						}],
+						yAxes: [{
+							display: true,
+							scaleLabel: {
+								display: true,
+								labelString: '- Jumlah Pohon -'
+							},
+							ticks: {
+							   stepSize: 5,
+							   beginAtZero: true
+							}
+						}]
+					},
+					hover: {
+						onHover: function(e) {
+							var point = this.getElementAtEvent(e);
+							if (point.length) e.target.style.cursor = 'pointer';
+							else e.target.style.cursor = 'default';
+						}
+					}
+				}
+			});
+
+			myChart.clear();
+		});
+	}
+	
+	initialize_diagram_statistik_pohon();
+	
+	$(document).ready(function() {
+	$('.filter-posko').on('change', function() {
+		var id_posko  = $(this).find(':selected').val();
+		clear_chart_statistik_pohon();		
+		initialize_diagram_statistik_pohon(id_posko);
+	});
+})
+		</script>
+		
