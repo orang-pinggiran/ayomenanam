@@ -112,4 +112,17 @@ function post_to_url($url, $data) {
     curl_close($post);
     return $result;
 }
+
+if (! function_exists('export_pdf'))
+{
+	function export_pdf($template, $filename, $paper_size = 'A4', $orientation = 'potrait')
+	{
+		global $CI;
+		$CI->load->library('dompdf_lib');
+		$CI->dompdf_lib->load_html($template);
+		$CI->dompdf_lib->set_paper($paper_size, $orientation);
+		$CI->dompdf_lib->render();
+		$CI->dompdf_lib->stream($filename.'.pdf');
+	}
+}
 ?>

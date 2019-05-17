@@ -2527,7 +2527,10 @@ class Admin extends CI_Controller {
 				$isi['keterangan'] 		='';
 
 		}
-		force_download('admin/sertifikat_adopsi',$isi);		
+		$halaman = $this->load->view('admin/sertifikatadopsi', $isi, TRUE);		
+		//echo $halaman;
+		//exit();
+		export_pdf($halaman,'sertifikat_adopsi');
 		}
 		
 		public function logout() {

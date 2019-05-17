@@ -14,16 +14,16 @@
 
     .nama {
         position: absolute;
-        top: 370px;
+        top: 290px;
         font-size: 40px;
         color: #3a3a3a;
-        width: 94.7%;
+        width: 100%;
     }
 
     .no-sertifikat {
         position: absolute;
         text-align: right;
-        top: 31px;
+        top: 12px;
         right: 60px;
         font-size: 17px;
         color: #fff;
@@ -32,10 +32,10 @@
     .nama-pohon {
         position: absolute;
         vertical-align: middle;
-        top: 577px;
+        top: 465px;
         color: #3a3a3a;
         text-align: center;
-        width: 94.7%;
+        width: 92%;
         font-weight: bold;
         font-size: 17px;
         left: 80px;
@@ -44,10 +44,10 @@
     .nama-jenis-pohon {
         position: absolute;
         vertical-align: middle;
-        top: 608px;
+        top: 491px;
         color: #3a3a3a;
         text-align: center;
-        width: 94.7%;
+        width: 92%;
         font-weight: bold;
         font-size: 17px;
         left: 75px;
@@ -56,10 +56,10 @@
     .judul-event {
         position: absolute;
         vertical-align: middle;
-        top: 700px;
+        top: 570px;
         color: #1e7d4e;
         text-align: center;
-        width: 94.7%;
+        width: 105%;
         font-weight: bold;
         font-size: 25px;
     }
@@ -84,14 +84,14 @@
 
     .logo-area {
         position: absolute;
-        bottom: 162px;
-        left: 210px;
+        bottom: 120px;
+        left: -300px;
         color: #2d2d2d;
         font-size: 12px;
     }
 
     .logo-area img {
-        width: 100px !important;
+        width: 85px !important;
     }
 
     @media print {
@@ -288,8 +288,3 @@ $data = $this->db->query($sql)->row_array();
     </figure>
 	<?php } ?>
 </div>
-
-   
-<a href="<?php echo base_url();?>admin/adopsi" class="btn bg-orange m-t-15 waves-effect">Kembali </button></a>
-<a href="<?php echo base_url();?>admin/download_sertifikat/<?php echo $id_adopsi; ?>" class="btn btn-primary m-t-15 waves-effect">Download</button>
-							
