@@ -17,6 +17,11 @@
                                         <i class="material-icons">add</i>
                                         <span>TAMBAH</span>
                                     </a>
+									<a href="<?php echo base_url();?>posko/grafikpohon" class="btn btn-info waves-effect">
+                                        <i class="material-icons">trending_down</i>
+                                        <span>LIHAT GRAFIK</span>
+                                    </a>
+
                                 </div>
                             </div>
                         </div>

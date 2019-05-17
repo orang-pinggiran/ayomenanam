@@ -2535,6 +2535,7 @@ class Admin extends CI_Controller {
 		
 		public function diagrampohon() {
 		$this->load->model('m_grafik');		
+		$isi['content'] 	= 'admin/grafik_pohon';
 		$id_posko          = $this->input->post('id_posko');
 	
 		$statistik            = $this->m_grafik->hasilcari($id_posko);
@@ -2571,6 +2572,8 @@ class Admin extends CI_Controller {
 		//exit();
 		echo json_encode($data['grafik_statistik']);
 	}
+	
+	
 		
 		public function logout() {
 		$this->session->sess_destroy();
