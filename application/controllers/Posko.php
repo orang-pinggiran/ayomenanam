@@ -1642,9 +1642,18 @@ class Posko extends CI_Controller {
 		}
 		
 		public function grafikpohon() {
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		$isi['content'] 	= 'posko/grafik_pohon';
+		$isi['data'] 		= $this->db->get('tbl_pengguna');
+		$this->load->view('posko/template',$isi);
+	}
+	
+	public function diagrampohon() {
 		$this->load->model('m_grafik');		
 		$id_posko          = $this->input->post('id_posko');
-
+	
 		$statistik            = $this->m_grafik->hasilcari($id_posko);
 		$grafik_statistik     = array();
 		//echo debug($statistik);
@@ -1679,6 +1688,7 @@ class Posko extends CI_Controller {
 		//exit();
 		echo json_encode($data['grafik_statistik']);
 	}
+	
 		
 		
 		
