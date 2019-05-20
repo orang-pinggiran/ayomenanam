@@ -8,12 +8,16 @@ class Posko extends CI_Controller {
 
 		$user_data = $this->session->userdata();
 		$level = $user_data['level'];
+		//echo debug($user_data);
+		//exit();
 		
 		if($level != 4) {
 			redirect(404);
 		}
 
 		$this->id_pengguna = $user_data['id_pengguna'];
+		$this->id_posko = $user_data['id_posko'];
+
 	}
 	
 	public function index()

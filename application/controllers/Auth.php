@@ -30,6 +30,7 @@ class Auth extends CI_Controller {
 		if ($hasil->num_rows() == 1){
 			foreach($hasil->result() as $sess)
             {
+				
               $sess_data['logged_in']	= 'logged_in';
               $sess_data['id_pengguna']	= $sess->id_pengguna;
               $sess_data['nama'] = $sess->nama;
@@ -39,8 +40,18 @@ class Auth extends CI_Controller {
 			  $sess_data['alamat'] = $sess->alamat;
 			  $sess_data['tlp'] = $sess->tlp;
 			  
+			 if ($sess->level=='4'){
+				$cek = $this->db->query("Select * from tbl_posko where id_pengguna=$sess->id_pengguna")->row();
+				//echo debug($cek);
+				//exit();
+				$sess_data['id_posko'] = $cek->id_posko;
+			}
+
+			  
               $this->session->set_userdata($sess_data);
               $this->session->set_userdata('is_login', TRUE);
+			  	
+
             }
 			if ($this->session->userdata('level')=='1'){
 				$redirect = 'admin'; 

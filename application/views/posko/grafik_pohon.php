@@ -13,15 +13,6 @@
                 </div>
                 <div class="body">
 				<div class="col-sm-2">
-                    <select class="form-control show-tick filter-posko">
-                        <option value="all">Semua Posko</option>
-						<?php 
-                        $posko = $this->db->query('Select * from tbl_posko, tbl_pohon where tbl_posko.id_posko=tbl_pohon.id_posko GROUP BY tbl_posko.id_posko');
-                        foreach ($posko->result() as $row ) {
-						?>
-						<option value="<?php echo $row->id_posko;?>"><?php echo $row->nama_posko;?></option>
-                        <?php }?>						
-                    </select>
                  </div>			
 				 <div class="area-diagram-pohon">
 				    <canvas width="1000" height="300" id="chart-statistik-pohon"></canvas>
@@ -40,6 +31,7 @@
 		
 		<script>
 		var base_url='<?php echo base_url();?>';
+		var id_pos ='<?php echo $this->id_posko;?>';
 		
 		function clear_chart_statistik_pohon() {
 			$('.area-diagram-pohon').html('');
@@ -47,7 +39,7 @@
 			$('.area-diagram-pohon').append(elm);
 		}
 		
-		function initialize_diagram_statistik_pohon(id_posko = 'all') {
+		function initialize_diagram_statistik_pohon(id_posko = id_pos) {
 		var data = {'id_posko': id_posko};
 		var url  = base_url+'posko/diagrampohon/';
 		
