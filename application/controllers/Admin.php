@@ -2580,8 +2580,8 @@ class Admin extends CI_Controller {
 		
 		$statistik            = $this->m_grafik->hasilgrafik($filter_range_tanggal,$id_posko);
 		$grafik_statistik     = array();
-		echo debug($statistik);
-		exit();
+		//echo debug($statistik);
+		//exit();
 		foreach ($statistik as $key => $item) {
 			foreach ($item as $key2 => $item2) {
 				$content[$key2][] = $item2;

@@ -36,6 +36,10 @@
 		<!-- Map Css -->
         <link href="<?php echo base_url(); ?>adminBSB/css/map.css" rel="stylesheet">
 
+		<!-- Date Css -->
+        <link href="<?php echo base_url(); ?>adminBSB/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+
 		
     </head>
 
@@ -472,6 +476,8 @@
 
         <!-- Demo Js -->
         <script src="<?php echo base_url(); ?>adminBSB/js/demo.js"></script>
+
+
 		
 		<script>
 		//launch modal 

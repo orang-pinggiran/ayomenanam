@@ -96,16 +96,10 @@
                 </div>
                 <div class="body">
 				<div class="col-sm-2">
-					<select class="form-control show-tick filter-bulan">
-                        <option value="all">Semua Bulan</option>
-						<?php 
-                        $posko = $this->db->query('Select * from tbl_posko, tbl_pohon where tbl_posko.id_posko=tbl_pohon.id_posko GROUP BY tbl_posko.id_posko');
-                        foreach ($posko->result() as $row ) {
-						?>
-						<option value="<?php echo $row->id_posko;?>"><?php echo $row->nama_posko;?></option>
-                        <?php }?>						
-                    </select>
-                    <select class="form-control show-tick filter-posko">
+					<input type="search" id="filter-month" name="month" class="form-control filter-month" placeholder="Filter Bulan">
+                 </div>		
+				<div class="col-sm-2">
+				<select class="form-control show-tick filter-posko">
                         <option value="all">Semua Posko</option>
 						<?php 
                         $posko = $this->db->query('Select * from tbl_posko, tbl_pohon where tbl_posko.id_posko=tbl_pohon.id_posko GROUP BY tbl_posko.id_posko');
@@ -114,7 +108,7 @@
 						<option value="<?php echo $row->id_posko;?>"><?php echo $row->nama_posko;?></option>
                         <?php }?>						
                     </select>
-                 </div>			
+				</div>
 				 <div class="area-transaksi-pohon">
 				    <canvas width="1000" height="300" id="chart-transaksi-pohon"></canvas>
 			  </div>
@@ -128,7 +122,10 @@
 
         <!-- Grafik Js -->
         <script src="<?php echo base_url(); ?>adminBSB/js/chart.bundle.js"></script>
-		
+        <!-- Tanggal Js -->
+        <script src="<?php echo base_url(); ?>adminBSB/js/bootstrap-datepicker.min.js"></script>
+
+	
 		<script>
 		var base_url='<?php echo base_url();?>';
 		
@@ -216,7 +213,7 @@
 		<script>
 		var base_url='<?php echo base_url();?>';
 		
-		function clear_chart_grafik_pohon() {
+		function clear_chart_transaksi_pohon() {
 			$('.area-transaksi-pohon').html('');
 			var elm = '<canvas id="chart-transaksi-pohon" height="300" width="1000"></canvas>';
 			$('.area-transaksi-pohon').append(elm);
@@ -298,3 +295,21 @@
 })
 		</script>
 		
+		<script>
+		$('.filter-month').datepicker({
+	    format: 'MM yyyy',
+	    startView: 'months',
+	    minViewMode: 'months',
+	    autoclose: true,
+	}).on('hide', function(date) {
+	    var selected_date = date.date;
+		var day     = selected_date.getDate();
+		var month   = selected_date.getMonth()+1;
+		var year    = selected_date.getFullYear();
+		var date    = year+'-'+str_pad(month)+'-'+str_pad(day);
+		var id_skpd = $('.filter-skpd').find(':selected').val() == '' ? 'all' : $('.filter-skpd').find(':selected').val();
+
+	    clear_chart_statistik_harian();
+	    initialize_diagram_statistik_harian(date, id_skpd);
+	});
+		</script>
