@@ -2587,7 +2587,7 @@ class Admin extends CI_Controller {
 			}
 		}
 		$x     = 0;
-		$color = array('#36a2eb','#f03434');
+		$color = array('#2ecc71','#e74c3c');
 		foreach ($content as $key => $val) {
 			if($key == 'tanggal') {
 				$grafik_statistik['labels'] = $val;
