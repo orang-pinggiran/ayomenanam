@@ -2574,11 +2574,10 @@ class Admin extends CI_Controller {
 	
 	public function diagramtransaksi() {
 		$this->load->model('m_grafik');		
-		
-		$filter_range_tanggal	= $this->input->post('tanggal');
-		$id_posko				= $this->input->post('id_posko');	
-		
-		$statistik            = $this->m_grafik->hasilgrafik($filter_range_tanggal,$id_posko);
+		//echo debug($this->input->post()); exit();
+		$filter_posko	= $this->input->post('filter_posko');
+		$filter_month   = date('Y-m-01', strtotime($this->input->post('filter_month')));
+		$statistik            = $this->m_grafik->hasilgrafik($filter_month,$filter_posko);
 		$grafik_statistik     = array();
 		//echo debug($statistik);
 		//exit();
@@ -2588,7 +2587,7 @@ class Admin extends CI_Controller {
 			}
 		}
 		$x     = 0;
-		$color = array('#36a2eb','#B22222');
+		$color = array('#36a2eb','#f03434');
 		foreach ($content as $key => $val) {
 			if($key == 'tanggal') {
 				$grafik_statistik['labels'] = $val;

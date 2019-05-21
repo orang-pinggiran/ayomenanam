@@ -96,10 +96,10 @@
                 </div>
                 <div class="body">
 				<div class="col-sm-2">
-					<input type="search" id="filter-month" name="month" class="form-control filter-month" placeholder="Filter Bulan">
-                 </div>		
+					<input type="text" id="filter-month" name="month" class="form-control filter-month" placeholder="Filter Bulan">
+                 </div>	
 				<div class="col-sm-2">
-				<select class="form-control show-tick filter-posko">
+                    <select class="form-control show-tick filter-posko2">
                         <option value="all">Semua Posko</option>
 						<?php 
                         $posko = $this->db->query('Select * from tbl_posko, tbl_pohon where tbl_posko.id_posko=tbl_pohon.id_posko GROUP BY tbl_posko.id_posko');
@@ -108,7 +108,7 @@
 						<option value="<?php echo $row->id_posko;?>"><?php echo $row->nama_posko;?></option>
                         <?php }?>						
                     </select>
-				</div>
+                 </div>			
 				 <div class="area-transaksi-pohon">
 				    <canvas width="1000" height="300" id="chart-transaksi-pohon"></canvas>
 			  </div>
@@ -125,8 +125,27 @@
         <!-- Tanggal Js -->
         <script src="<?php echo base_url(); ?>adminBSB/js/bootstrap-datepicker.min.js"></script>
 
-	
+		
 		<script>
+		var date          = new Date(), locale = "en-us";
+		var day           = str_pad(date.getDay());
+		var month         = date.toLocaleString(locale, {month: "long"});
+		var year          = date.getFullYear();
+		var cur_date      = month+' '+year;
+		var selected_date = cur_date;
+
+		function str_pad(n) {
+			return String("00" + n).slice(-2);
+		}
+		
+		function get_formatted_date(iso_date) {
+		var day   = iso_date.getDate();
+		var month = iso_date.getMonth()+1;
+		var year  = iso_date.getFullYear();
+		date      = year+'-'+str_pad(month)+'-'+str_pad(day);
+		return date;
+	}
+		
 		var base_url='<?php echo base_url();?>';
 		
 		function clear_chart_statistik_pohon() {
@@ -219,16 +238,26 @@
 			$('.area-transaksi-pohon').append(elm);
 		}
 		
-		function initialize_transaksi_pohon(tanggal = 'all' , id_posko = 'all') {
-		var data = {'id_posko': id_posko};
-		var data = {'tanggal': tanggal};
+		function initialize_transaksi_pohon(filter_month = 'all' , filter_posko = 'all') {
+			if(filter_month == 'all') {
+				var filter_month = cur_date;
+			}
+			else {
+				var filter_month = filter_month;
+			}
+
+			if(filter_posko != 'all') {
+				filter_posko = $('.filter-posko2').find(':selected').val();
+			}
+			
+		var data = {'filter_posko': filter_posko, 'filter_month': filter_month};
 		var url  = base_url+'admin/diagramtransaksi/';
 		
 		$.post(url, data).done(function(res) {
 			var chart_data = $.parseJSON(res); 
 			var ctx        = document.getElementById("chart-transaksi-pohon");
 			var myChart    = new Chart(ctx, {
-				type: 'line',
+				type: 'bar',
 				animation: true,
 				data: chart_data,
 				barValueSpacing: 5,
@@ -287,16 +316,20 @@
 	initialize_transaksi_pohon();
 	
 	$(document).ready(function() {
-	$('.filter-posko').on('change', function() {
-		var id_posko  = $(this).find(':selected').val();
-		clear_chart_transaksi_pohon();		
-		initialize_transaksi_pohon();
+	$('.filter-posko2').on('change', function() {
+		clear_chart_transaksi_pohon();
+        var filter_posko  	= $(this).find(':selected').val();
+		var iso_date 		= new Date(Date.parse($('.filter-month').val()));
+		var filter_month 	= get_formatted_date(iso_date);
+		initialize_transaksi_pohon(filter_month, filter_posko);
 	});
 })
-		</script>
-		
-		<script>
-		$('.filter-month').datepicker({
+
+
+
+
+
+$('.filter-month').datepicker({
 	    format: 'MM yyyy',
 	    startView: 'months',
 	    minViewMode: 'months',
@@ -307,9 +340,9 @@
 		var month   = selected_date.getMonth()+1;
 		var year    = selected_date.getFullYear();
 		var date    = year+'-'+str_pad(month)+'-'+str_pad(day);
-		var id_skpd = $('.filter-skpd').find(':selected').val() == '' ? 'all' : $('.filter-skpd').find(':selected').val();
-
-	    clear_chart_statistik_harian();
-	    initialize_diagram_statistik_harian(date, id_skpd);
+		var filter_posko = $('.filter-posko2').find(':selected').val() == '' ? 'all' : $('.filter-posko2').find(':selected').val();
+	    clear_chart_transaksi_pohon();
+	    initialize_transaksi_pohon(date, filter_posko);
 	});
+	$('.filter-month').val(cur_date).trigger('change');
 		</script>

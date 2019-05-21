@@ -40,20 +40,29 @@ WHERE
 		return $this->db->query($data)->result_array();
 	}
 	
-	public function hasilgrafik()
-	{
-		//$where = array();
-		//if($id_posko!='all'){
-			//$where['a.id_posko'] = $id_posko;
-		//}
-		//$custom_where = extract_where_query($where);
+	public function hasilgrafik($filter_month, $filter_posko = 'all')
+	{	
+		// custom where donasi 
+		$where_donasi = array();
+		$where_adopsi = array();
+		
+		$where_donasi['a.status'] = 'Disetujui';
+		$where_adopsi['a.status_adopsi'] = 'Disetujui';
+		
+		if($filter_posko != 'all'){
+			$where_donasi['a.id_posko'] = $filter_posko;
+			$where_adopsi['a.id_posko'] = $filter_posko;
+		}
+		$custom_where_donasi = extract_where_query($where_donasi);
+		$custom_where_adopsi = extract_where_query($where_adopsi);
+		
 		$data = " SELECT 
 			DATE_FORMAT(all_date.tanggal, '%d-%m-%Y') as tanggal,
 			COALESCE(data_adopsi.total_adopsi, 0) as total_adopsi,
 			COALESCE(data_donasi.total_donasi, 0) as total_donasi
 		FROM (
 			SELECT 
-				LAST_DAY('2019-05-01') - INTERVAL (a.a + (10 * b.a) + (100 * c.a)) DAY AS tanggal
+				LAST_DAY('$filter_month') - INTERVAL (a.a + (10 * b.a) + (100 * c.a)) DAY AS tanggal
 			FROM (
 				SELECT 0 AS a UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) AS a
 				CROSS JOIN (SELECT 0 AS a UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) AS b
@@ -65,9 +74,7 @@ WHERE
 				SUM(a.jumlah_pohon) as total_donasi
 			FROM 
 				tbl_donasi a 
-			WHERE 
-				status = 'Disetujui'
-				
+			$custom_where_donasi
 			GROUP BY 
 				DATE(a.tgl_donasi)
 		) data_donasi ON data_donasi.tanggal = all_date.tanggal
@@ -77,12 +84,11 @@ WHERE
 				SUM(a.jumlah_pohon) as total_adopsi
 			FROM
 				tbl_adopsi a
-			WHERE 
-				a.status_adopsi = 'Disetujui'
+			$custom_where_adopsi
 			GROUP BY 
 				DATE(a.tgl_adopsi)
 		) data_adopsi ON data_adopsi.tanggal = all_date.tanggal
-		WHERE all_date.tanggal BETWEEN '2019-05-01' AND LAST_DAY('2019-05-01') ORDER BY all_date.tanggal
+		WHERE all_date.tanggal BETWEEN '$filter_month' AND LAST_DAY('$filter_month') ORDER BY all_date.tanggal
 				";
 		return $this->db->query($data)->result_array();
 	}	

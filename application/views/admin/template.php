@@ -22,7 +22,7 @@
         <link href="<?php echo base_url(); ?>adminBSB/plugins/animate-css/animate.css" rel="stylesheet" />
 
         <!-- Custom Css -->
-        <link href="<?php echo base_url(); ?>adminBSB/css/style.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>adminBSB/css/style.css?ver=0" rel="stylesheet">
         
 		<!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="<?php echo base_url(); ?>adminBSB/css/themes/all-themes.css" rel="stylesheet" />
@@ -38,6 +38,9 @@
 
 		<!-- Date Css -->
         <link href="<?php echo base_url(); ?>adminBSB/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+		<!-- Date Css -->
+        <link href="<?php echo base_url(); ?>adminBSB/css/daterangepicker.css" rel="stylesheet">
 
 
 		
