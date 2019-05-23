@@ -44,8 +44,8 @@
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $row->nama; ?></td>
                                             <td align="center"><img src="<?php echo base_url('adminBSB/images/'.$row->foto_timeline); ?>" width='60' height='60' /></td>
-                                            <td><?php echo ($row->tanggal_timeline != '0000-00-00' ? date('d-m-Y', strtotime($row->tanggal_timeline)) : "-" ); ?></td>
-                                            <td><?php echo $row->waktu_timeline; ?></td>
+                                            <td><?php echo parse_time($row->tanggal_timeline,'d F Y'); ?></td>
+                                            <td><?php echo parse_time($row->waktu_timeline,'H:i'); ?> WIB</td>
 											<td>
 											<a href="<?php echo base_url();?>admin/detailtimeline/<?php echo $row->id_timeline; ?>" modal-size="modal-lg" modal-title="Detail Timeline" class="btn btn-warning btn-xs modal-view"><i class="material-icons">search</i><span>Detail</span></a>
 											<a href="<?php echo base_url();?>admin/ambiltimeline/<?php echo $row->id_timeline; ?>" modal-size="modal-lg" class="btn btn-info btn-xs modal-view"><i class="material-icons">create</i><span>Ubah</span></a>

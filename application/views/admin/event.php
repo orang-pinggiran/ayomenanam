@@ -44,7 +44,7 @@
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $row->nama; ?></td>
                                             <td><?php echo $row->judul_event; ?></td>
-                                            <td><?php echo ($row->tanggal_event != '0000-00-00' ? date('d-m-Y', strtotime($row->tanggal_event)) : "-" ); ?></td>
+                                            <td><?php echo parse_time($row->tanggal_event,'d F Y'); ?></td>
                                             <?php 
 											if ($row->status=="Belum berlangsung") {
 												?>

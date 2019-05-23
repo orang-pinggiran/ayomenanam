@@ -16,6 +16,7 @@
                                             <th>Judul event</th>
                                             <th>Nama pengadopsi</th>
                                             <th>Jenis pohon</th>
+                                            <th>Jumlah pohon</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
 											
@@ -32,6 +33,7 @@
                                             <td><?php echo $row->judul_event; ?></td>
                                             <td><?php echo $row->nama; ?></td>
                                             <td><?php echo $row->nama_jenis_pohon; ?></td>
+                                            <td><?php echo $row->jumlah_pohon; ?></td>
                                             <?php 
 											if ($row->status_adopsi=="Terdaftar") {
 												?>
