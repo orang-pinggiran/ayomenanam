@@ -1398,6 +1398,27 @@ class Komunitas extends CI_Controller {
 
 			$this->load->view('komunitas/template',$isi);
 		}
+		
+		public function listKota(){
+		// Ambil data ID Provinsi yang dikirim via ajax post
+		$id_posko = $this->input->post('id_posko');
+		
+		//$kota = $this->KotaModel->viewByProvinsi($id_posko);
+		$jenis_pohon = $this->db->query('Select * from tbl_pohon, jenis_pohon where tbl_pohon.id_posko='.$id_posko.' AND 
+		tbl_pohon.id_jenis_pohon=jenis_pohon.id_jenis_pohon');
+
+		// Buat variabel untuk menampung tag-tag option nya
+		// Set defaultnya dengan tag option Pilih
+		$lists = "<option value=''>Pilih</option>";
+	
+        foreach ($jenis_pohon->result() as $row ) {
+			$lists .= "<option value='".$row->id_jenis_pohon."'>".$row->nama_jenis_pohon."</option>"; // Tambahkan tag option ke variabel $lists
+		}
+		
+		$callback = array('list_kota'=>$lists); // Masukan variabel lists tadi ke dalam array $callback dengan index array : list_kota
+
+		echo json_encode($callback); // konversi varibael $callback menjadi JSON
+	}
 
       public function logout() {
 		$this->session->sess_destroy();
