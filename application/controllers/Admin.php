@@ -25,6 +25,11 @@ class Admin extends CI_Controller {
 		$isi['data'] 		= $this->db->get('tbl_pengguna');
 		$this->load->view('admin/template',$isi);
 	}
+	
+	public function home()
+	{
+		$this->load->view('home','sign');
+	}
         
 		public function pengguna()
 	{
@@ -2555,6 +2560,53 @@ class Admin extends CI_Controller {
 		//exit();
 		export_pdf($halaman,'sertifikat_adopsi');
 		}
+		
+		public function kirim_notifikasi() {
+		$this->load->model('m_squrity');
+		$this->m_squrity->getsqurity();
+		$isi['email'] = $this->session->userdata('email');
+		
+		$last_segment = $this->uri->total_segments();
+		$id_adopsi = $this->uri->segment($last_segment);
+
+		$cek = $this->db->query("Select * from tbl_adopsi, tbl_pengguna, jenis_pohon, tbl_event where tbl_adopsi.id_adopsi='$id_adopsi'
+		AND tbl_adopsi.id_pengguna=tbl_pengguna.id_pengguna
+		AND tbl_adopsi.id_jenis_pohon=jenis_pohon.id_jenis_pohon
+		AND tbl_adopsi.id_event=tbl_event.id_event");
+
+		 if($cek->num_rows()>0){
+			$data=$cek->row_array();
+			$data_pengguna = array(
+                            'id_pengguna'=>$data['id_pengguna'],
+                            'nama'=>$data['nama'],
+                            'email'=>$data['email'],
+                            'password'=>$data['password'],
+                            'level'=>$data['level'],
+							'alamat'=>$data['alamat'],
+							'tlp'=>$data['tlp'],
+							'foto'=>$data['foto'],
+							'waktu_registrasi'=>$data['waktu_registrasi'],
+							'jenis_adopsi'=>$data['jenis_adopsi'],
+							'nama_jenis_pohon'=>$data['nama_jenis_pohon'],
+							'nama_pohon'=>$data['nama_pohon'],
+							'jumlah_pohon'=>$data['jumlah_pohon'],
+							'tgl_adopsi'=>$data['tgl_adopsi'],
+							'judul_event'=>$data['judul_event'],
+							'tempat_event'=>$data['tempat_event'],
+							'tanggal_event'=>$data['tanggal_event']
+							);
+		
+
+			$url = base_url('mail/kirim-notifikasi-adopsi/');
+			post_to_url($url, $data_pengguna);
+			$this->session->set_flashdata('info','<div class="alert alert-success">Notifikasi sertifikat adopsi berhasil dikirim ke '.$data['nama'].'</div>');		
+			redirect(site_url('admin/adopsi'));
+		}
+		else {
+			$this->session->set_flashdata('info','<div class="alert alert-danger">Mohon maaf email tidak ditemukan</div>');		
+			redirect(site_url('admin/adopsi'));
+		}
+	}
 		
 		public function diagrampohon() {
 		$this->load->model('m_grafik');		

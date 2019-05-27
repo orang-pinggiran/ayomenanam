@@ -291,5 +291,6 @@ $data = $this->db->query($sql)->row_array();
 
    
 <a href="<?php echo base_url();?>admin/adopsi" class="btn bg-orange m-t-15 waves-effect">Kembali </button></a>
-<a href="<?php echo base_url();?>admin/download_sertifikat/<?php echo $id_adopsi; ?>" class="btn btn-primary m-t-15 waves-effect">Download</button>
+<a href="<?php echo base_url();?>admin/download_sertifikat/<?php echo $id_adopsi; ?>" class="btn btn-primary m-t-15 waves-effect">Download</button></a>
+<a href="<?php echo base_url();?>admin/kirim_notifikasi/<?php echo $id_adopsi; ?>" class="btn btn-success m-t-15 waves-effect">Kirim Notifikasi</button></a>
 							
