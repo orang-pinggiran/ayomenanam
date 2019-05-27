@@ -38,5 +38,9 @@ class M_donasi extends CI_model {
 		return $this->db->query($data);
 	}
 	
+	public function view(){
+		return $this->db->get('tbl_posko')->result(); // Tampilkan semua data yang ada di tabel provinsi
+	}
+	
 
 }
