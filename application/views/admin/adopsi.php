@@ -15,6 +15,7 @@
                                             <th>No</th>
                                             <th>Judul event</th>
                                             <th>Nama pengadopsi</th>
+                                            <th>Ambil dari posko</th>
                                             <th>Jenis pohon</th>
                                             <th>Jumlah pohon</th>
                                             <th>Status</th>
@@ -32,6 +33,7 @@
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $row->judul_event; ?></td>
                                             <td><?php echo $row->nama; ?></td>
+                                            <td><?php echo $row->nama_posko; ?></td>
                                             <td><?php echo $row->nama_jenis_pohon; ?></td>
                                             <td><?php echo $row->jumlah_pohon; ?></td>
                                             <?php 
