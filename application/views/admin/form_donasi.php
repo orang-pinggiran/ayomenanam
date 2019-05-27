@@ -19,29 +19,15 @@
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                         <div class="form-group">
                                             <select name="id_posko" id="id_posko" class="form-control col-md-3 col-xs-3">
-<<<<<<< HEAD
-                                              <option value="">Pilih</option>
-  
-                                                <?php 
-                                                    $posko = $this->db->query('Select * from tbl_posko');
-                                                    foreach ($posko->result() as $row ) {
-                                                       
-                                                ?>
-                                                <option value="<?php echo $row->id_posko;?>"><?php echo $row->nama_posko;?></option>
-                                                <?php }?>
-
-                                            </select>
-=======
-                                                
                                                <option value="">Pilih</option>
 					
 													<?php
-													foreach($id_posko as $data){ // Lakukan looping pada variabel siswa dari controller
+                                                    $id_posko = $this->db->query('Select * from tbl_posko');
+                                                    foreach ($id_posko->result() as $data ) {
 														echo "<option value='".$data->id_posko."'>".$data->nama_posko."</option>";
 													}
 													?>
 												</select>
->>>>>>> fc834ac63a6cfe5fac17282ed42da5f25a5ade6c
                                         </div>
                                     </div>
                                 </div>
@@ -53,13 +39,13 @@
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                         <div class="form-group">
                                             <select name="id_jenis_pohon" id="id_jenis_pohon" class="form-control col-md-3 col-xs-3">
-                                            <option value="">Pilih</option>
+                                           
+											 <option value="">Pilih</option>
 												</select>
 
 												<div id="loading" style="margin-top: 15px;">
 											  <img src="<?php echo base_url(); ?>Green/img/loading.gif" width="18"> <small>Loading...</small>
 												</div>
-											
                                         </div>
                                     </div>
                                 </div>
@@ -149,9 +135,3 @@
 	});
 	</script>
 
-<<<<<<< HEAD
-    <!-- Custom Js -->
-    <script src="<?php echo base_url(); ?>adminBSB/js/pages/tables/jquery-datatable.js"></script>
-	
-=======
->>>>>>> fc834ac63a6cfe5fac17282ed42da5f25a5ade6c
