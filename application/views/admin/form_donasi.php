@@ -18,7 +18,8 @@
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                         <div class="form-group">
                                             <select name="id_posko" id="id_posko" class="form-control col-md-3 col-xs-3">
-                                                
+                                              <option value="">Pilih</option>
+  
                                                 <?php 
                                                     $posko = $this->db->query('Select * from tbl_posko');
                                                     foreach ($posko->result() as $row ) {
@@ -117,3 +118,4 @@
 
     <!-- Custom Js -->
     <script src="<?php echo base_url(); ?>adminBSB/js/pages/tables/jquery-datatable.js"></script>
+	
