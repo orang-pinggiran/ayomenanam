@@ -32,7 +32,7 @@ class M_pengguna extends CI_model {
 		public function pengguna()
 	{
 		$data = " SELECT *
-		FROM tbl_pengguna WHERE level='3'
+		FROM tbl_pengguna GROUP BY level asc
 
 		";
 		return $this->db->query($data);

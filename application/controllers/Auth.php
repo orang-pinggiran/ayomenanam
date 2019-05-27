@@ -39,6 +39,7 @@ class Auth extends CI_Controller {
               $sess_data['level'] = $sess->level;
 			  $sess_data['alamat'] = $sess->alamat;
 			  $sess_data['tlp'] = $sess->tlp;
+			  $sess_data['status'] = $sess->status;
 			  
 			 if ($sess->level=='4'){
 				$cek = $this->db->query("Select * from tbl_posko where id_pengguna=$sess->id_pengguna")->row();
@@ -50,27 +51,47 @@ class Auth extends CI_Controller {
 			  
               $this->session->set_userdata($sess_data);
               $this->session->set_userdata('is_login', TRUE);
-			  	
-
             }
-			if ($this->session->userdata('level')=='1'){
-				$redirect = 'admin'; 
+			
+			
+			$status = $sess->status;
+			$level = $this->session->userdata('level');
+			
+			if($status == 'Terdaftar') {
+				$pesan 	= 'Mohon maaf email anda belum terverifikasi ';
+				$status = 'error';
 			}
-			if ($this->session->userdata('level')=='2'){
-				$redirect = 'komunitas'; 
-			}
-			if ($this->session->userdata('level')=='3'){
+			else {
+				if ($this->session->userdata('level')=='1' AND $sess->status=='Terverifikasi'){
+					$redirect = 'admin';
+					$status = 'success';				
+				}
+				if ($this->session->userdata('level')=='2' AND $sess->status=='Terverifikasi'){
+				$redirect = 'komunitas';
+				$status = 'success';
+				}
+				if ($this->session->userdata('level')=='3' AND $sess->status=='Terverifikasi'){
 				$redirect = 'pengguna'; 
-			}
-			elseif ($this->session->userdata('level')=='4'){
+				$status = 'success';				
+				}
+				if ($this->session->userdata('level')=='4' AND $sess->status=='Terverifikasi'){
 				$redirect = 'posko'; 
+				$status = 'success';				
+				}
 			}
-
-			$response = array('status' => 'available', 'redirect' => $redirect);
+			
+			if($status == 'success') {
+				$response = array('status' => $status, 'redirect' => $redirect);
+			}
+			else {
+				$response = array('status' => $status, 'pesan' => $pesan);
+			}
+			
+			
 		}
 		else
 		{
-			$response = array('status' => 'unavailable');
+			$response = array('status' => 'error', 'pesan' => 'Maaf email atau password Anda salah');
 		}
 		echo json_encode($response);
 	}

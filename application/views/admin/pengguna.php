@@ -28,6 +28,7 @@
                                             <th>Nama Lengkap</th>
                                             <th>Alamat</th>
                                             <th>Telpon</th>
+                                            <th>Level</th>
                                             <th>Aksi</th>
 											
                                         </tr>
@@ -43,6 +44,7 @@
                                             <td><?php echo $row->nama; ?></td>
                                             <td><?php echo $row->alamat; ?></td>
                                             <td><?php echo $row->tlp; ?></td>
+                                            <td><?php echo $row->level; ?></td>
                                             <td>
 											<a href="<?php echo base_url();?>admin/detailpengguna/<?php echo $row->id_pengguna; ?>" class="btn btn-warning btn-xs"><i class="material-icons">search</i><span>Detail</span></a>
 											<a href="<?php echo base_url();?>admin/ambilpengguna/<?php echo $row->id_pengguna; ?>" class="btn btn-info btn-xs"><i class="material-icons">create</i><span>Ubah</span></a>

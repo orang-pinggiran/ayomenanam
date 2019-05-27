@@ -460,10 +460,10 @@ Sehingga Masyarakat dapat dengan mudah ikut andil dalam kegiatan ini.</p>
         }
       ?>	
       <form action="<?php echo base_url();?>auth/cek_login" method="post" role="form" class="modal-login">
-      <div class="modal-body mx-3">
+      <div class="modal-body">
         <div class="alert bg-red login-gagal hide">
 			<div class="alert alert-danger">
-			   <strong>Maaf</strong> <a href="javascript:void(0);" class="alert-link">email atau password Anda salah
+                Change a few things up and try submitting again.
 			</div>        
 		</div>
         <div class="form-group">
@@ -515,11 +515,11 @@ Sehingga Masyarakat dapat dengan mudah ikut andil dalam kegiatan ini.</p>
           var response = $.parseJSON(res);
           var status = response.status;
 
-          if(status == 'available') {
+          if(status == 'success') {
             location.href = response.redirect;
           }
           else {
-            $('.login-gagal').removeClass('hide');
+            $('.login-gagal').removeClass('hide').children('.alert-danger').html(response.pesan);
           }
         })
       });
