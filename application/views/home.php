@@ -379,7 +379,8 @@ Sehingga Masyarakat dapat dengan mudah ikut andil dalam kegiatan ini.</p>
 
       <div class="row mar-bot40">
         <div class="col-md-offset-3 col-md-6">
-		<div id="sendmessage">Data telah terkirim, lakukan Login untuk melengkapi data Anda</div>
+		<div id="sendmessage">Anda berhasil mendaftarkan diri. 
+			Silahkan buka email Anda untuk aktivasi akun Anda.</div>
           <div class="section-header">
             <h2 class="section-heading animated" data-animation="bounceInUp">Form Registrasi</h2>
             <p>Daftarkan diri Anda, satu donasi dari Anda telah membantu menghijaukan bumi kita</p>
@@ -390,30 +391,45 @@ Sehingga Masyarakat dapat dengan mudah ikut andil dalam kegiatan ini.</p>
         <div class="col-md-8 col-md-offset-2">
           <form action="<?php echo base_url();?>welcome/daftar" method="post" role="form" class="contactForm">
             <div class="form-group">
+			<label class="card-inside-title">Nama Lengkap</label>
               <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama lengkap" data-rule="minlen:4"
                 data-msg="Mohon isi nama lengkap Anda" />
               <div class="validation"></div>
             </div>
             <div class="form-group">
+			<label class="card-inside-title">Email</label>
               <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email"
                 data-msg="Mohon isi nama email yang benar" />
               <div class="validation"></div>
             </div>
             <div class="form-group">
+			<label class="card-inside-title">Password</label>
               <input type="password" class="form-control" name="password" id="password" placeholder="Password" data-rule="minlen:4"
                 data-msg="Mohon isi password Anda" />
               <div class="validation"></div>
             </div>
 			<div class="form-group">
+			<label class="card-inside-title">Untuk Keperluan</label>
+			<div class="row clearfix">
+                <div class="col-sm-12">
+					<select name="level" id="level" class="form-control show-tick">
+					<option value="">-- Pilih --</option>
+					<option value="2">Komunitas</option>
+					<option value="4">Posko</option>
+					<option value="3">Volunteer</option>
+					</select>
+                </div>            
+			</div>			
+			<div class="form-group">
               <input type="hidden" class="form-control" name="id_pengguna" id="id_pengguna" placeholder="ID Pengguna"  />
             </div>
 			<div class="form-group">
-              <input type="hidden" class="form-control" name="level" id="level" value="3" placeholder="Level pengguna"  />
-            </div>            
+              <input type="hidden" class="form-control" name="status" id="status" value="Terdaftar" placeholder="Status"  />
+            </div>
 			<div class="form-group">
               <input type="hidden" class="form-control" name="alamat" id="alamat" placeholder="Alamat" />
             </div>
-				<div class="form-group">
+			<div class="form-group">
               <input type="hidden" class="form-control" name="tlp" id="tlp" placeholder="No. Telepon"  />
             </div>
 			<div class="form-group">

@@ -22,6 +22,7 @@ class M_pengguna extends CI_model {
 		public function getinsert($data)
 	{
 		$this->db->insert('tbl_pengguna',$data);
+		return $this->db->insert_id();
 	}	
 	public function getdelete($id_pengguna)
 	{
@@ -32,7 +33,7 @@ class M_pengguna extends CI_model {
 		public function pengguna()
 	{
 		$data = " SELECT *
-		FROM tbl_pengguna GROUP BY level asc
+		FROM tbl_pengguna ORDER BY level asc
 
 		";
 		return $this->db->query($data);
