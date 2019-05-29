@@ -71,19 +71,27 @@
                                         </div>
                                     </div>
                                 </div>
+								<div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label>Level</label>
+                                    </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-2">
+												<select name="level" id="level" class="form-control show-tick">
+												<option value="">-- Pilih --</option>
+												<option value="2">Komunitas</option>
+												<option value="4">Posko</option>
+												<option value="3">Volunteer</option>
+												</select>
+											</div>
+										</div>
+                                </div>
 								
 								
 								<div class="row clearfix">
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
 										<input type="hidden" id="id_pengguna" name="id_pengguna" class="form-control" placeholder="ID pengguna">										
-                                        </div>
-                                    </div>
-                                </div>
-								<div class="row clearfix">
-                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
-                                        <div class="form-group">
-										<input type="hidden" id="level" name="level" value="3" class="form-control" placeholder="Level">										
                                         </div>
                                     </div>
                                 </div>

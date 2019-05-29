@@ -12,8 +12,9 @@ class Admin extends CI_Controller {
 		if($level != 1) {
 			redirect(404);
 		}
-
+		
 		$this->id_pengguna = $user_data['id_pengguna'];
+		$this->load->library('facebook');
 	}
 	
 	public function index()
@@ -120,8 +121,12 @@ class Admin extends CI_Controller {
 			
 
 		$this->load->model('m_pengguna');
-		$this->m_pengguna->getinsert($data);
-		$this->session->set_flashdata('info','<div class="alert alert-success">Data pengguna berhasil ditambahkan</div>');		
+		$id_pengguna = $this->m_pengguna->getinsert($data);
+			
+		$mail_data['id_pengguna'] = $id_pengguna;
+		$url	 = base_url('mails/konfirmasi-registrasi/');
+		post_to_url($url, $mail_data);
+		$this->session->set_flashdata('info','<div class="alert alert-success">Data pengguna berhasil ditambahkan. Silahkan tunggu verifikasi akun pengguna</div>');		
 		redirect(site_url('admin/tambahpengguna'));
 		}
 		
@@ -1850,7 +1855,7 @@ class Admin extends CI_Controller {
 		$this->load->model('m_squrity');
 		$this->m_squrity->getsqurity();
 		$isi['email'] = $this->session->userdata('email');
-
+		
 		 $config = array(
                         'upload_path'=>'./adminBSB/images',
                         'allowed_types'=>'jpg|png|jpeg',

@@ -49,13 +49,18 @@
 													if($row->level=='2'){
 														echo "Komunitas"; 
 													} elseif ($row->level=='3'){
-														echo "Pengguna"; 
+														echo "Volunteer"; 
 													} elseif ($row->level=='4'){
 														echo "Posko";
 													} elseif ($row->level=='1'){
 														echo "Admin";
 													}?></td>
-                                            <td><?php echo $row->status; ?></td>
+                                            <td><?php
+													if($row->status=='Terdaftar'){ ?>
+														<span class="label label-danger">Belum aktif</span>
+												<?php	} elseif ($row->status=='Terverifikasi'){ ?>
+														<span class="label label-info">Aktif</span>
+												<?php	}?></td>
                                             <td>
 											<a href="<?php echo base_url();?>admin/detailpengguna/<?php echo $row->id_pengguna; ?>" class="btn btn-warning btn-xs"><i class="material-icons">search</i><span>Detail</span></a>
 											<a href="<?php echo base_url();?>admin/ambilpengguna/<?php echo $row->id_pengguna; ?>" class="btn btn-info btn-xs"><i class="material-icons">create</i><span>Ubah</span></a>
