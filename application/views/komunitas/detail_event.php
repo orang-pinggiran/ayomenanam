@@ -21,7 +21,7 @@
                         <hr>
 						<p><i class="fa fa-thumb-tack"></i> Dilaksanakan pada hari <?php echo $hari_event; ?> 		
 						<p><i class="fa fa-calendar"></i> Tanggal <?php echo parse_time($tanggal_event,'d F Y'); ?> pukul <?php echo parse_time($waktu_event,'H:i') ; ?> WIB</p>
-						<p><i class="fa fa-chevron-right"></i> Status <span class="label bg-light-blue"><?php echo $status; ?> </span> </p>
+						<p><i class="fa fa-chevron-right"></i> Status <span class="label bg-light-blue"><?php echo $status_event; ?> </span> </p>
                         <div class="space-ten"></div>
                        
                     </div>

@@ -128,7 +128,7 @@
 								<div class="row clearfix">
                                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
-										<input type="hidden" id="status" name="status" value="Belum berlangsung" class="form-control" placeholder="Status">										
+										<input type="hidden" id="status_event" name="status_event" value="Belum berlangsung" class="form-control" placeholder="Status">										
                                         </div>
                                     </div>
                                 </div>

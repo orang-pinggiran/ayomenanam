@@ -102,7 +102,7 @@
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                         <div class="form-group">
 									<div class="form-line disabled">                                                
-										 <input type="text" class="form-control" value="<?php echo $status;?>" disabled />
+										 <input type="text" class="form-control" value="<?php echo $status_donasi;?>" disabled />
                                             </div>
                                         </div>
                                     </div>
