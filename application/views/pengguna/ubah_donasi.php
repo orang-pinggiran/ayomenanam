@@ -59,7 +59,7 @@
                                                 <input type="text" id="jumlah_pohon" name="jumlah_pohon" value="<?php echo $jumlah_pohon; ?>" class="form-control" placeholder="Jumlah pohon">
 												<input type="hidden" id="id_donasi" name="id_donasi" value="<?php echo $id_donasi; ?>" class="form-control" placeholder="ID donasi">										
 												<input type="hidden" id="id_pengguna" name="id_pengguna" value="<?php echo $id_pengguna; ?>" class="form-control" placeholder="ID pengguna">										
-												<input type="hidden" id="status" name="status" value="<?php echo $status; ?>" class="form-control" placeholder="Status">										
+												<input type="hidden" id="status_donasi" name="status_donasi" value="<?php echo $status_donasi; ?>" class="form-control" placeholder="Status">										
 												<input type="hidden" id="keterangan" name="keterangan" value="<?php echo $keterangan; ?>" class="form-control" placeholder="Keterangan">										
 												<input type="hidden" id="tgl_donasi" name="tgl_donasi" value="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="Tanggal">										
                                             </div>

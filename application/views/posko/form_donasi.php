@@ -21,7 +21,7 @@
 												<input type="hidden" id="id_donasi" name="id_donasi" class="form-control" placeholder="ID donasi">										
 												<input type="hidden" id="id_pengguna" name="id_pengguna" class="form-control" placeholder="ID pengguna">										
 												<input type="hidden" id="tgl_donasi" name="tgl_donasi" value="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="Tanggal">										
-												<input type="hidden" id="status" name="status" value="Terdaftar" class="form-control" placeholder="Status">										
+												<input type="hidden" id="status_donasi" name="status_donasi" value="Terdaftar" class="form-control" placeholder="Status">										
 												<input type="hidden" id="id_posko" name="id_posko" value="<?php echo $id_posko; ?>" class="form-control" placeholder="Nama Posko">										
 												<input type="hidden" id="id_jenis_pohon" name="id_jenis_pohon" value="<?php echo $id_jenis_pohon; ?>" class="form-control" placeholder="Nama Jenis Pohon">										
                                             </div>
