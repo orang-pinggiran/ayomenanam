@@ -32,16 +32,15 @@
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                         <div class="form-group">
                                             <select name="id_posko" id="id_posko" class="form-control col-md-3 col-xs-3">
-                                                
-                                                <?php 
-                                                    $posko = $this->db->query('Select * from tbl_posko');
-                                                    foreach ($posko->result() as $row ) {
-                                                       
-                                                ?>
-                                                <option value="<?php echo $row->id_posko;?>"><?php echo $row->nama_posko;?></option>
-                                                <?php }?>
-
-                                            </select>
+                                               <option value="">Pilih</option>
+					
+													<?php
+                                                    $id_posko = $this->db->query('Select * from tbl_posko');
+                                                    foreach ($id_posko->result() as $data ) {
+														echo "<option value='".$data->id_posko."'>".$data->nama_posko."</option>";
+													}
+													?>
+												</select>
                                         </div>
                                     </div>
                                 </div>
@@ -53,16 +52,13 @@
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                         <div class="form-group">
                                             <select name="id_jenis_pohon" id="id_jenis_pohon" class="form-control col-md-3 col-xs-3">
-                                                
-                                                <?php 
-                                                    $jenis = $this->db->query('Select * from jenis_pohon');
-                                                    foreach ($jenis->result() as $row2 ) {
-                                                       
-                                                ?>
-                                                <option value="<?php echo $row2->id_jenis_pohon;?>"><?php echo $row2->nama_jenis_pohon;?></option>
-                                                <?php }?>
+                                           
+											 <option value="">Pilih</option>
+												</select>
 
-                                            </select>
+												<div id="loading" style="margin-top: 15px;">
+											  <img src="<?php echo base_url(); ?>Green/img/loading.gif" width="18"> <small>Loading...</small>
+												</div>
                                         </div>
                                     </div>
                                 </div>
@@ -126,20 +122,40 @@
             </div>
             <!-- #END# Horizontal Layout -->
 
+  			 <!-- Load librari/plugin jquery nya -->
+	<script src="<?php echo base_url(); ?>adminBSB/js/jquery.min.js"); ?>" type="text/javascript"></script>
+	
+	<script>
+	$(document).ready(function(){ // Ketika halaman sudah siap (sudah selesai di load)
+		// Kita sembunyikan dulu untuk loadingnya
+		$("#loading").hide();
+		
+		$("#id_posko").change(function(){ // Ketika user mengganti atau memilih data provinsi
+			$("#id_jenis_pohon").hide(); // Sembunyikan dulu combobox kota nya
+			$("#loading").show(); // Tampilkan loadingnya
+		
+			$.ajax({
+				type: "POST", // Method pengiriman data bisa dengan GET atau POST
+				url: "<?php echo base_url();?>admin/listKota", // Isi dengan url/path file php yang dituju
+				data: {id_posko : $("#id_posko").val()}, // data yang akan dikirim ke file yang dituju
+				dataType: "json",
+				beforeSend: function(e) {
+					if(e && e.overrideMimeType) {
+						e.overrideMimeType("application/json;charset=UTF-8");
+					}
+				},
+				success: function(response){ // Ketika proses pengiriman berhasil
+					$("#loading").hide(); // Sembunyikan loadingnya
+
+					// set isi dari combobox kota
+					// lalu munculkan kembali combobox kotanya
+					$("#id_jenis_pohon").html(response.list_kota).show();
+				},
+				error: function (xhr, ajaxOptions, thrownError) { // Ketika ada error
+					alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+				}
+			});
+		});
+	});
+	</script>
     
-
-
-
-    <!-- Jquery DataTable Plugin Js -->
-    <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/jquery.dataTables.js"></script>
-    <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-    <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
-    <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
-    <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
-    <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
-    <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
-    <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
-    <script src="<?php echo base_url(); ?>adminBSB/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-
-    <!-- Custom Js -->
-    <script src="<?php echo base_url(); ?>adminBSB/js/pages/tables/jquery-datatable.js"></script>

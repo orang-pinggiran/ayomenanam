@@ -906,7 +906,7 @@ class Komunitas extends CI_Controller {
 				$isi['tanggal_event'] 		=$row->tanggal_event;
 				$isi['waktu_event'] 		=$row->waktu_event;
 				$isi['tempat_event'] 		=$row->tempat_event;
-				$isi['status']	 			=$row->status;
+				$isi['status_event']		=$row->status_event;
 				$isi['poster'] 				=$row->poster;
 			
 			}
@@ -921,7 +921,7 @@ class Komunitas extends CI_Controller {
 				$isi['tanggal_event']='';
 				$isi['waktu_event']='';
 				$isi['tempat_event']='';
-				$isi['status']='';
+				$isi['status_event']='';
 				$isi['poster']='';
 
 		}
