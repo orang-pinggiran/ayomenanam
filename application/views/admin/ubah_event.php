@@ -104,11 +104,11 @@
 										<div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
 										<div class="demo-radio-button">
-										<input name="status" type="radio" class="with-gap" id="radio_3" value="Belum berlangsung" />
+										<input name="status_event" type="radio" class="with-gap" id="radio_3" value="Belum berlangsung" />
 										<label for="radio_3">Belum berlangsung</label>
-										<input name="status" type="radio" id="radio_4" class="with-gap" value="Berlangsung" />
+										<input name="status_event" type="radio" id="radio_4" class="with-gap" value="Berlangsung" />
 										<label for="radio_4">Berlangsung</label>
-										<input name="status" type="radio" id="radio_5" class="with-gap" value="Selesai" />
+										<input name="status_event" type="radio" id="radio_5" class="with-gap" value="Selesai" />
 										<label for="radio_5">Selesai</label>
 									</div>
 										</div>

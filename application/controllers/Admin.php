@@ -14,7 +14,7 @@ class Admin extends CI_Controller {
 		}
 		
 		$this->id_pengguna = $user_data['id_pengguna'];
-		$this->load->library('facebook');
+		///$this->load->library('facebook');
 	}
 	
 	public function index()
@@ -1494,7 +1494,7 @@ class Admin extends CI_Controller {
 		$tempat_event		 	= $this->input->post('tempat_event');
 		$longitude_event		= $this->input->post('longitude_event');
 		$latitude_event		 	= $this->input->post('latitude_event');
-		$status 				= $this->input->post('status');
+		$status_event 			= $this->input->post('status_event');
 		$tgl_event 				= $this->input->post('tgl_event');
 		$jam_event 				= $this->input->post('jam_event');
 
@@ -1520,7 +1520,7 @@ class Admin extends CI_Controller {
 							'tempat_event'=>$tempat_event,
 							'longitude_event'=>$longitude_event,
 							'latitude_event'=>$latitude_event,
-							'status'=>$status,
+							'status_event'=>$status_event,
 							'tgl_event'=>$tgl_event,
 							'jam_event'=>$jam_event
 							);
@@ -1569,7 +1569,7 @@ class Admin extends CI_Controller {
 				$isi['tempat_event'] =$row->tempat_event;
 				$isi['longitude_event'] =$row->longitude_event;
 				$isi['latitude_event'] =$row->latitude_event;
-				$isi['status'] =$row->status;
+				$isi['status_event'] =$row->status_event;
 				$isi['tgl_event'] =$row->tgl_event;
 				$isi['jam_event'] =$row->jam_event;
 			}
@@ -1587,7 +1587,7 @@ class Admin extends CI_Controller {
 				$isi['tempat_event']='';
 				$isi['longitude_event']='';
 				$isi['latitude_event']='';
-				$isi['status']='';
+				$isi['status_event']='';
 				$isi['tgl_event']='';
 				$isi['jam_event']='';
 		}
@@ -1617,7 +1617,7 @@ class Admin extends CI_Controller {
 		$tempat_event		 	= $this->input->post('tempat_event');
 		$longitude_event		= $this->input->post('longitude_event');
 		$latitude_event		 	= $this->input->post('latitude_event');
-		$status 				= $this->input->post('status');
+		$status_event 			= $this->input->post('status_event');
 		$tgl_event 				= $this->input->post('tgl_event');
 		$jam_event 				= $this->input->post('jam_event');
         
@@ -1653,7 +1653,7 @@ class Admin extends CI_Controller {
 							'tempat_event'=>$tempat_event,
 							'longitude_event'=>$longitude_event,
 							'latitude_event'=>$latitude_event,
-							'status'=>$status,
+							'status_event'=>$status_event,
 							'tgl_event'=>$tgl_event,
 							'jam_event'=>$jam_event
 							);
@@ -1683,7 +1683,7 @@ class Admin extends CI_Controller {
 							'tempat_event'=>$tempat_event,
 							'longitude_event'=>$longitude_event,
 							'latitude_event'=>$latitude_event,
-							'status'=>$status,
+							'status_event'=>$status_event,
 							'tgl_event'=>$tgl_event,
 							'jam_event'=>$jam_event
 							);
@@ -1721,7 +1721,7 @@ class Admin extends CI_Controller {
 				$isi['tempat_event'] 		=$row->tempat_event;
 				$isi['longitude_event'] 	=$row->longitude_event;
 				$isi['latitude_event'] 		=$row->latitude_event;
-				$isi['status']	 			=$row->status;
+				$isi['status_event']		=$row->status_event;
 				$isi['poster'] 				=$row->poster;
 				$isi['tgl_event'] 			=$row->tgl_event;
 				$isi['jam_event'] 			=$row->jam_event;
@@ -1740,7 +1740,7 @@ class Admin extends CI_Controller {
 				$isi['tempat_event']='';
 				$isi['longitude_event']='';
 				$isi['latitude_event']='';
-				$isi['status']='';
+				$isi['status_event']='';
 				$isi['poster']='';
 				$isi['tgl_event']='';
 				$isi['jam_event']='';
@@ -2122,7 +2122,7 @@ class Admin extends CI_Controller {
 		$data['jumlah_pohon']		= $this->input->post('jumlah_pohon');
 		$data['tgl_donasi']			= $this->input->post('tgl_donasi');
 		$data['waktu_donasi']		= $this->input->post('waktu_donasi');
-		$data['status']				= $this->input->post('status');
+		$data['status_donasi']		= $this->input->post('status_donasi');
 		$data['keterangan']			= $this->input->post('keterangan');
 
 		$this->load->model('m_donasi');
@@ -2151,7 +2151,7 @@ class Admin extends CI_Controller {
 				$isi['jumlah_pohon'] 	=$row->jumlah_pohon;
 				$isi['tgl_donasi'] 		=$row->tgl_donasi;
 				$isi['waktu_donasi'] 	=$row->waktu_donasi;
-				$isi['status'] 			=$row->status;
+				$isi['status_donasi'] 	=$row->status_donasi;
 				$isi['keterangan'] 		=$row->keterangan;
 			}
 		}
@@ -2164,7 +2164,7 @@ class Admin extends CI_Controller {
 				$isi['jumlah_pohon']='';
 				$isi['tgl_donasi']='';
 				$isi['waktu_donasi']='';
-				$isi['status']='';
+				$isi['status_donasi']='';
 				$isi['keterangan']='';
 		}
 		$this->load->view('admin/template',$isi);
@@ -2183,7 +2183,7 @@ class Admin extends CI_Controller {
 		$jumlah_pohon				= $this->input->post('jumlah_pohon'); 
 		$tgl_donasi					= $this->input->post('tgl_donasi'); 
 		$waktu_donasi				= $this->input->post('waktu_donasi'); 
-		$status						= $this->input->post('status'); 
+		$status_donasi				= $this->input->post('status_donasi'); 
 		$keterangan					= $this->input->post('keterangan'); 
 		
 		$cek = $this->db->query("Select * from tbl_pohon, tbl_donasi where tbl_pohon.id_posko='$id_posko'
@@ -2207,7 +2207,7 @@ class Admin extends CI_Controller {
                             'jumlah_pohon'=>$jumlah_pohon,
 							'tgl_donasi'=>$tgl_donasi,
 							'waktu_donasi'=>$waktu_donasi,
-							'status'=>$status,
+							'status_donasi'=>$status_donasi,
 							'keterangan'=>$keterangan
 							);
 			$this->load->model('m_pohon');
@@ -2227,7 +2227,7 @@ class Admin extends CI_Controller {
                             'jumlah_pohon'=>$jumlah_pohon,
 							'tgl_donasi'=>$tgl_donasi,
 							'waktu_donasi'=>$waktu_donasi,
-							'status'=>$status,
+							'status_donasi'=>$status_donasi,
 							'keterangan'=>$keterangan
 							);
 			$this->load->model('m_donasi');		
@@ -2258,7 +2258,7 @@ class Admin extends CI_Controller {
 				$isi['jumlah_pohon']		=$row->jumlah_pohon;
 				$isi['tgl_donasi'] 			=$row->tgl_donasi;
 				$isi['waktu_donasi'] 		=$row->waktu_donasi;
-				$isi['status'] 				=$row->status;
+				$isi['status_donasi'] 		=$row->status_donasi;
 				$isi['keterangan'] 			=$row->keterangan;
 			}
 		}
@@ -2271,7 +2271,7 @@ class Admin extends CI_Controller {
 				$isi['jumlah_pohon']='';
 				$isi['tgl_donasi']='';
 				$isi['waktu_donasi']='';
-				$isi['status']='';
+				$isi['status_donasi']='';
 				$isi['keterangan']='';
 
 		}

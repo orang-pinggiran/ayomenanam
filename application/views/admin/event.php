@@ -45,16 +45,16 @@
                                             <td><?php echo $row->nama; ?></td>
                                             <td><?php echo $row->judul_event; ?></td>
                                             <td><?php echo parse_time($row->tanggal_event,'d F Y'); ?></td>
-                                            <?php 
-											if ($row->status=="Belum berlangsung") {
+                                            <td><?php 
+											if ($row->status_event=='Belum berlangsung') {
 												?>
-												<td> <span class="label label-info">Belum berlangsung</span></td>
-											<?php } else if ($row->status=="Berlangsung") {
+												<span class="label label-info">Belum berlangsung</span>
+											<?php } else if ($row->status_event=='Berlangsung') {
 											?>
-											<td> <span class="label label-success">Berlangsung</span></td>
-											<?php } else if ($row->status=="Selesai") {
+												<span class="label label-success">Berlangsung</span>
+											<?php } else if ($row->status_event=='Selesai') {
 											?>
-											<td> <span class="label label-danger">Selesai</span></td>
+												<span class="label label-danger">Selesai</span></td>
 											<?php }
 											?>
 											<td>

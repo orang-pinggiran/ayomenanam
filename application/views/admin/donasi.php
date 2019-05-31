@@ -48,13 +48,13 @@
                                             <td><?php echo $row->nama_jenis_pohon; ?></td>
                                             <td><?php echo $row->jumlah_pohon; ?></td>
                                             <?php 
-											if ($row->status=="Terdaftar") {
+											if ($row->status_donasi=="Terdaftar") {
 												?>
 												<td> <span class="label label-info">Terdaftar</span></td>
-											<?php } else if ($row->status=="Disetujui") {
+											<?php } else if ($row->status_donasi=="Disetujui") {
 											?>
 											<td> <span class="label label-success">Disetujui</span></td>
-											<?php } else if ($row->status=="Ditolak") {
+											<?php } else if ($row->status_donasi=="Ditolak") {
 											?>
 											<td> <span class="label label-danger">Ditolak</span></td>
 											<?php }

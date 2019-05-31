@@ -72,11 +72,11 @@
 										<div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
                                         <div class="form-group">
 										<div class="demo-radio-button">
-										<input name="status" type="radio" class="with-gap" id="radio_3" value="Terdaftar" />
+										<input name="status_donasi" type="radio" class="with-gap" id="radio_3" value="Terdaftar" />
 										<label for="radio_3">Terdaftar</label>
-										<input name="status" type="radio" id="radio_4" class="with-gap" value="Disetujui" />
+										<input name="status_donasi" type="radio" id="radio_4" class="with-gap" value="Disetujui" />
 										<label for="radio_4">Disetujui</label>
-										<input name="status" type="radio" id="radio_5" class="with-gap" value="Ditolak" />
+										<input name="status_donasi" type="radio" id="radio_5" class="with-gap" value="Ditolak" />
 										<label for="radio_5">Ditolak</label>
 									</div>
 										</div>
